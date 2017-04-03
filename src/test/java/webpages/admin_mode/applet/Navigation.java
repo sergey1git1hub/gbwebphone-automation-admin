@@ -1,32 +1,29 @@
 package webpages.admin_mode.applet;
 
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class Navigation {
 
     private SelenideElement userList = $x(".//span[text()='User list']");
     private SelenideElement groupList = $x(".//span[text()='Group list']");
-    private SelenideElement queueList = $(byXpath(".//span[text()='Queue list']"));
-    private SelenideElement departmentList = $(byXpath(".//span[text()='Department list']"));
-    private SelenideElement prefixList = $(byXpath(".//span[text()='Prefix list']"));
-    private SelenideElement statusList = $(byXpath(".//span[text()='Status list']"));
-    private SelenideElement numberList = $(byXpath(".//span[text()='Number list']"));
-    private SelenideElement resultCodeList = $(byXpath(".//span[text()='Result code list']"));
-    private SelenideElement teamList = $(byXpath(".//span[text()='Team list']"));
-    private SelenideElement locationList = $(byXpath(".//span[text()='Location list']"));
-    private SelenideElement serverList = $(byXpath(".//span[text()='Server list']"));
-    private SelenideElement tenantList = $(byXpath(".//span[text()='Tenant list']"));
-    private SelenideElement skillList = $(byXpath(".//span[text()='Skill list']"));
-    private SelenideElement trunkList = $(byXpath(".//span[text()='Trunk list']"));
-    private SelenideElement ivr = $(byXpath(".//span[text()='IVR']"));
-    private SelenideElement permissionProfiles = $(byXpath(".//span[text()='Permission profiles']"));
-    private SelenideElement other = $(byXpath(".//span[text()='Other']"));
+    private SelenideElement queueList = $x(".//span[text()='Queue list']");
+    private SelenideElement departmentList = $x(".//span[text()='Department list']");
+    private SelenideElement prefixList = $x(".//span[text()='Prefix list']");
+    private SelenideElement statusList = $x(".//span[text()='Status list']");
+    private SelenideElement numberList = $x(".//span[text()='Number list']");
+    private SelenideElement resultCodeList = $x(".//span[text()='Result code list']");
+    private SelenideElement teamList = $x(".//span[text()='Team list']");
+    private SelenideElement locationList = $x(".//span[text()='Location list']");
+    private SelenideElement serverList = $x(".//span[text()='Server list']");
+    private SelenideElement tenantList = $x(".//span[text()='Tenant list']");
+    private SelenideElement skillList = $x(".//span[text()='Skill list']");
+    private SelenideElement trunkList = $x(".//span[text()='Trunk list']");
+    private SelenideElement ivr = $x(".//span[text()='IVR']");
+    private SelenideElement permissionProfiles = $x(".//span[text()='Permission profiles']");
+    private SelenideElement other = $x(".//span[text()='Other']");
     private SelenideElement logout = $x(".//*[text()='Logout']");
 
 

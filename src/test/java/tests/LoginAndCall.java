@@ -14,6 +14,7 @@ import webpages.select_user_or_admin.SelectModePage;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
+import static utils.Configurations.closeDriver;
 import static utils.Configurations.openURL;
 import static utils.Configurations.quitDriver;
 
@@ -123,6 +124,6 @@ public class LoginAndCall {
 
     @AfterClass
     public void exit() {
-        quitDriver();
+        closeDriver();
     }
 }

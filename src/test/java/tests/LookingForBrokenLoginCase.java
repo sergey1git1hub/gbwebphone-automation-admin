@@ -14,6 +14,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static utils.Configurations.closeDriver;
 import static utils.Configurations.openURL;
 import static utils.Configurations.quitDriver;
 
@@ -72,6 +73,6 @@ public class LookingForBrokenLoginCase {
 
     @AfterClass
     public void exit() {
-        quitDriver();
+        closeDriver();
     }
 }

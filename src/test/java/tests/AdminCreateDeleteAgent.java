@@ -18,6 +18,7 @@ import webpages.select_user_or_admin.SelectModePage;
 import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.visible;
 import static org.assertj.db.api.Assertions.assertThat;
+import static utils.Configurations.closeDriver;
 import static utils.Configurations.openURL;
 import static utils.Configurations.quitDriver;
 
@@ -40,7 +41,7 @@ public class AdminCreateDeleteAgent {
 
 
     @BeforeClass
-    public void configBrowser() {
+    public void openBrowser() {
         openURL();
     }
 
@@ -106,6 +107,6 @@ public class AdminCreateDeleteAgent {
 
     @AfterClass
     public void exit() {
-        quitDriver();
+        closeDriver();
     }
 }

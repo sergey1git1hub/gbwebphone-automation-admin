@@ -3,16 +3,14 @@ package webpages.admin_mode.department_list;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Id {
 
-    private SelenideElement idSort = $(By.xpath(".//*[@id='departmentDataForm:departmentDataTable_head']//span[text()='id']"));
-    private SelenideElement idInput = $(By.xpath(".//*[@id='departmentDataForm:departmentDataTable_head']//span[text()='id']/following-sibling::input"));
-    private ElementsCollection idCollection = $$(By.xpath(".//*[@id='departmentDataForm:departmentDataTable_data']//td[1]"));
+    private SelenideElement idSort = $x(".//*[@id='departmentDataForm:departmentDataTable_head']//span[text()='id']");
+    private SelenideElement idInput = $x(".//*[@id='departmentDataForm:departmentDataTable_head']//span[text()='id']/following-sibling::input");
+    private ElementsCollection idCollection = $$x(".//*[@id='departmentDataForm:departmentDataTable_data']//td[1]");
 
 
     //actions

@@ -2,6 +2,7 @@
 
 
 <suite name="Smoke">
+    <!--<test name="TestMainFunc" preserve-order="true">-->
     <test name="Smoke" preserve-order="true">
         <packages>
             <package name="tests"/>

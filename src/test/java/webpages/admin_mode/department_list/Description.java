@@ -3,16 +3,14 @@ package webpages.admin_mode.department_list;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Description {
 
-    private SelenideElement descriptionSort = $(By.xpath(".//*[@id='departmentDataForm:departmentDataTable_head']//span[text()='Description']"));
-    private SelenideElement descriptionInput = $(By.xpath(".//*[@id='departmentDataForm:departmentDataTable_head']//span[text()='Description']/following-sibling::input"));
-    private ElementsCollection description = $$(By.xpath(".//*[@id='departmentDataForm:departmentDataTable_data']//td[3]"));
+    private SelenideElement descriptionSort = $x(".//*[@id='departmentDataForm:departmentDataTable_head']//span[text()='Description']");
+    private SelenideElement descriptionInput = $x(".//*[@id='departmentDataForm:departmentDataTable_head']//span[text()='Description']/following-sibling::input");
+    private ElementsCollection description = $$x(".//*[@id='departmentDataForm:departmentDataTable_data']//td[3]");
 
 
     //actions

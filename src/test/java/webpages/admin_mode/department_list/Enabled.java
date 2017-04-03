@@ -3,16 +3,14 @@ package webpages.admin_mode.department_list;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Enabled {
 
-    private SelenideElement enabledSort = $(By.xpath(".//*[@id='departmentDataForm:departmentDataTable_head']//span[text()='Enabled']"));
-    private SelenideElement enabledIs = $(By.xpath(".//*[@id='departmentDataForm:departmentDataTable_head']//select"));
-    private ElementsCollection enabledCollection = $$(By.xpath(".//*[@id='departmentDataForm:departmentDataTable_data']//td[5]"));
+    private SelenideElement enabledSort = $x(".//*[@id='departmentDataForm:departmentDataTable_head']//span[text()='Enabled']");
+    private SelenideElement enabledIs = $x(".//*[@id='departmentDataForm:departmentDataTable_head']//select");
+    private ElementsCollection enabledCollection = $$x(".//*[@id='departmentDataForm:departmentDataTable_data']//td[5]");
 
     //actions
     public void clickEnabledSort() {

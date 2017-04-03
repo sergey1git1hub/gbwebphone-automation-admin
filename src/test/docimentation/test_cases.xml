@@ -1,0 +1,175 @@
+<suit>
+
+    <class name="LookingForBrokenLoginCase">
+        <testcase number="TC#00001">
+            <description
+                    title="This TC#00001 uses loop (100 times) login for admin to verify there is no broken page (according to issue #5154).">
+                <steps>
+                    1. Login with valid data.
+                    1.1 If Login page is broken -> take Screenshot.
+                    2. Click logout button.
+                </steps>
+            </description>
+        </testcase>
+
+        <testcase number="TC#00005">
+            <description
+                    title="This TC#00005 uses loop (100 times) login for agent to verify there is no broken stage in the AgentDesktop Tab (according to the issue #5187).">
+                <steps>
+                    1. Login with valid data.
+                    2. Switch to AgentDesktop Tab.
+                    3. Verify text "Welcome!" is present.
+                    4. Click logout button.
+                </steps>
+            </description>
+        </testcase>
+    </class>
+
+    <class name="LoginAndCall">
+        <testcase number="TC#00002">
+            <description title="This TC#00002 verify that Agent can Login.">
+                <steps>
+                    1. Login with valid data.
+                    2. Choose group.
+                    3. Click continue.
+                    4. Verify "call button" is visible.
+                    5. Verify "Logged in as:" (this group, this user).
+                    6. Click logout button.
+                </steps>
+            </description>
+        </testcase>
+
+        <testcase number="TC#00003">
+            <description title="This TC#00003 verify that Admin can Login.">
+                <steps>
+                    1. Login with valid data.
+                    2. Click admin panel.
+                    3. Verify URL contains "admin".
+                    4. Click logout button.
+                </steps>
+            </description>
+        </testcase>
+
+        <testcase number="TC#00004">
+            <description title="This TC#00004 verify that Agent can call">
+                <steps>
+                    1. Login with valid data.
+                    2. Choose group.
+                    3. Click continue.
+                    4. Set up phone number.
+                    5. Click call button.
+                    6. Wait...
+                    7. Click hangup button
+                    8. Wait...
+                    9. Click logout button.
+                    10. Wait...
+                </steps>
+            </description>
+        </testcase>
+
+        <testcase number="TC#00007">
+            <description
+                    title="This TC#00007 verifies that Agent cannot Login with invalid credentials, error message is shown">
+                <steps>
+                    1. Login with invalid data.
+                    2. Click connect.
+                    3. Error message should be shown.
+                </steps>
+            </description>
+        </testcase>
+
+        <testcase number="TC#00009">
+            <description
+                    title="This TC#00009 verifies that Agent can call via Keypad">
+                <steps>
+                    1. Login with valid data.
+                    2. Choose group.
+                    3. Click continue.
+                    4. Set up phone number via Keypad.
+                    5. Click call button.
+                    6. Wait...
+                    7. Click hangup button
+                    8. Wait...
+                    9. Click logout button.
+                    10. Wait...
+                </steps>
+            </description>
+        </testcase>
+    </class>
+
+    <class name="CallAgentToAgent">
+        <testcase number="TC#00006">
+            <description title="This TC#00006 verifies that Agent1 can call to Agent2">
+                <steps>
+                    1. Create two instances of Driver
+                    2.
+                    3.
+                </steps>
+            </description>
+        </testcase>
+
+        <testcase number="TC#00008">
+            <description
+                    title="This TC#00008 verifies that Agent1 can log out Agent1 (when it is login at that moment)">
+                <steps>
+                    1. Login with valid data.
+                    2. Choose group.
+                    3. Click continue.
+                    4. Wait...
+
+                    5. Open new Browser
+                    6. Login with valid data.
+                    7. Verify the "User is already logged in. Do you want to log user out" message is shown.
+                    8. Click "Yes"
+                </steps>
+            </description>
+        </testcase>
+    </class>
+
+    <class name="AdminCreateDeleteAgent">
+        <testcase number="TC#00010">
+            <description title="This TC#00010 verifies that Admin can create Agent">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click user list
+                    4. Click add button
+                    5. Fill in the General tab
+                    6. Click save button
+                    7. Verify "Saved successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+
+        <testcase number="TC#00012">
+            <description title="This TC#00012 verifies that Agent was added to DataBase">
+                <steps>
+
+                </steps>
+            </description>
+        </testcase>
+
+        <testcase number="TC#00011">
+            <description title="This TC#00011 verifies that Admin can delete Agent">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click user list
+                    4. Fill sort list of users
+                    5. Click on the searched user
+                    6. Click delete button
+                    7. Verify "Deleted successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+
+        <testcase number="TC#00013">
+            <description title="This TC#00013 verifies that Agent was deleted from DataBase">
+                <steps>
+
+                </steps>
+            </description>
+        </testcase>
+    </class>
+
+</suit>

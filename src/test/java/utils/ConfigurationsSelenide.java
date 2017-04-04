@@ -8,6 +8,7 @@ import com.codeborne.selenide.Configuration;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
+import io.github.bonigarcia.wdm.PhantomJsDriverManager;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
@@ -17,15 +18,16 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class Configurations {
+public class ConfigurationsSelenide {
 
     public static void configuration() {
-        Configuration.browser = "chrome";
-        Configuration.timeout = 10000;
 //        Configuration.holdBrowserOpen = true;
+//        PhantomJsDriverManager.getInstance().setup();
         ChromeDriverManager.getInstance().setup();
 //        InternetExplorerDriverManager.getInstance().setup();
 //        FirefoxDriverManager.getInstance().setup();
+        Configuration.browser = "chrome";
+        Configuration.timeout = 10000;
         VideoRecorder.conf()
                 .withVideoFolder("build/reports/video")
                 .withRecordMode(RecordingMode.ALL)

@@ -14,9 +14,8 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static utils.Configurations.closeDriver;
-import static utils.Configurations.openURL;
-import static utils.Configurations.quitDriver;
+import static utils.ConfigurationsSelenide.closeDriver;
+import static utils.ConfigurationsSelenide.openURL;
 
 
 @Listeners(VideoListener.class)
@@ -33,6 +32,11 @@ public class LookingForBrokenLoginCase {
     @BeforeMethod
     public void openBrowser() {
         openURL();
+    }
+
+    @AfterClass
+    public void exit() {
+        closeDriver();
     }
 
     @Test(description = "This TC#00001 uses loop (100 times) login for admin to verify there is no broken page (according to the issue #5154).",
@@ -71,8 +75,5 @@ public class LookingForBrokenLoginCase {
 //            Integer numberOfFrames = Integer.parseInt(exe.executeScript("return window.length").toString());
 //            System.out.println("Number of iframes on the page are " + numberOfFrames);
 
-    @AfterClass
-    public void exit() {
-        closeDriver();
-    }
+
 }

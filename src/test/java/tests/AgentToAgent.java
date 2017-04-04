@@ -3,9 +3,12 @@ package tests;
 import com.automation.remarks.testng.VideoListener;
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import utils.ConfigurationsExtentReport;
 import utils.UserData;
 import webpages.agent_mode.Call;
 import webpages.agent_mode.Status;
@@ -18,8 +21,8 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static utils.Configurations.closeDriver;
-import static utils.Configurations.quitDriver;
+import static utils.ConfigurationsExtentReport.extent;
+import static utils.ConfigurationsSelenide.quitDriver;
 
 @Listeners(VideoListener.class)
 public class AgentToAgent {
@@ -33,10 +36,20 @@ public class AgentToAgent {
 
     String group = "VadimShubkin_test_group2";
 
+    @AfterClass
+    public void closeBrowser() {
+        quitDriver();
+    }
+
+    @AfterMethod
+    public void recordTestsToExtentReport(ITestResult result) {
+        ConfigurationsExtentReport.getResult(result);
+    }
 
     @Test(description = "This TC#00006 verifies that Agent1 can call to Agent2",
             enabled = false)
     public void callAgentToAgent() {
+        ConfigurationsExtentReport.test = extent.createTest("callAgentToAgent", "This TC#00006 verifies that Agent1 can call to Agent2");
 
         SelenideDriver webDriver1 = new SelenideDriver(new ChromeDriver());
         SelenideDriver webDriver2 = new SelenideDriver(new ChromeDriver());
@@ -67,6 +80,8 @@ public class AgentToAgent {
 
     @Test(description = "This TC#00008 verifies that Agent1 can log out Agent1 (when it is login at that moment)")
     public void logoutAgent1ByAgent1() {
+        ConfigurationsExtentReport.test = extent.createTest("logoutAgent1ByAgent1", "This TC#00008 verifies that Agent1 can log out Agent1 (when it is login at that moment)");
+
         SelenideDriver webDriver1 = new SelenideDriver(new ChromeDriver());
         SelenideDriver webDriver2 = new SelenideDriver(new ChromeDriver());
 
@@ -95,8 +110,4 @@ public class AgentToAgent {
         webDriver2.quit();
     }
 
-    @AfterClass
-    public void closeBrowser() {
-        quitDriver();
-    }
 }

@@ -4,7 +4,7 @@ package utils;
 import org.assertj.db.type.Source;
 import org.assertj.db.type.Table;
 
-public class DataBaseConnection {
+public class ConnectionDataBase {
 
     private static Source source = new Source("jdbc:sqlserver://172.21.7.225\\\\corporate;DatabaseName=GBWebPhoneTest;portNumber=1438", "GBWebPhoneTest", "yt~k$tCW8%Gj");
 

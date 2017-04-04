@@ -106,7 +106,7 @@ public class AdminCreateDeleteAgent {
     }
 
     @AfterClass
-    public void exit() {
+    public void closeBrowser() {
         closeDriver();
     }
 }

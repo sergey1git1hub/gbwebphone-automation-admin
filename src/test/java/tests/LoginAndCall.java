@@ -3,6 +3,8 @@ package tests;
 
 import com.automation.remarks.testng.VideoListener;
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import org.testng.annotations.*;
 import utils.UserData;
 import webpages.admin_mode.applet.Navigation;
@@ -36,11 +38,15 @@ public class LoginAndCall {
     String group = "VadimShubkin_test_group1";
 
 
-    @BeforeMethod
+    @BeforeClass
     public void openBrowser() {
         openURL();
     }
 
+    @BeforeMethod
+    public void clearBrowserCache() {
+        WebDriverRunner.clearBrowserCache();
+    }
 
     @Test(description = "This TC#00002 verifies that Agent can Login")
     public void loginAsAgent() {
@@ -123,7 +129,7 @@ public class LoginAndCall {
     }
 
     @AfterClass
-    public void exit() {
+    public void closeBrowser() {
         closeDriver();
     }
 }

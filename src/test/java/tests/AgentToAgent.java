@@ -96,7 +96,7 @@ public class AgentToAgent {
     }
 
     @AfterClass
-    public void exit() {
+    public void closeBrowser() {
         quitDriver();
     }
 }

@@ -4,7 +4,7 @@ package tests;
 import com.automation.remarks.testng.VideoListener;
 import org.testng.annotations.*;
 import utils.UserData;
-import webpages.admin_mode.applet.Navigation;
+import webpages.admin_mode.navigation.Navigation;
 import webpages.agent_mode.Controls;
 import webpages.agent_mode.Status;
 import webpages.login.LoginPage;

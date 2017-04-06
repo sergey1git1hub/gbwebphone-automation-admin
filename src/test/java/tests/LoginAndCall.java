@@ -8,7 +8,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.ConfigurationsExtentReport;
 import utils.UserData;
-import webpages.admin_mode.applet.Navigation;
+import webpages.admin_mode.navigation.Navigation;
 import webpages.agent_mode.*;
 import webpages.alerts.LoginMsg;
 import webpages.login.LoginPage;

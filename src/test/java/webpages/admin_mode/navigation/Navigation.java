@@ -1,4 +1,4 @@
-package webpages.admin_mode.applet;
+package webpages.admin_mode.navigation;
 
 
 import com.codeborne.selenide.SelenideElement;

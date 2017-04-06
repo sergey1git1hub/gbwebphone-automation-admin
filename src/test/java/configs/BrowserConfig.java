@@ -1,23 +1,22 @@
-package tests;
+package configs;
 
 
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
+import com.codeborne.selenide.testng.GlobalTextReport;
+import org.testng.annotations.*;
 import utils.ConfigurationsExtentReport;
 import utils.ConfigurationsSelenide;
 
 @Test
-//@Listeners(GlobalTextReport.class)
+@Listeners(GlobalTextReport.class)
 public class BrowserConfig {
 
-    @BeforeSuite
+    @BeforeTest
     public static void setUp() {
         ConfigurationsSelenide.configuration();
         ConfigurationsExtentReport.startExtentReporting();
     }
 
-    @AfterSuite
+    @AfterTest
     public static void tearDown() {
         ConfigurationsExtentReport.endExtentReporting();
         ConfigurationsSelenide.quitDriver();

@@ -13,7 +13,7 @@
         <selenium.version>3.3.1</selenium.version>
         <testng.version>6.11</testng.version>
         <selenide.version>4.4.2</selenide.version>
-        <webdrivermanager.version>1.6.1</webdrivermanager.version>
+        <webdrivermanager.version>1.6.2</webdrivermanager.version>
         <video-recorder-testng.version>LATEST</video-recorder-testng.version>
         <mssql-jdbc.version>6.1.0.jre8</mssql-jdbc.version>
         <assertj-db.version>1.1.1</assertj-db.version>

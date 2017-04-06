@@ -1,8 +1,9 @@
 package tests;
 
 
-import com.automation.remarks.testng.VideoListener;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import utils.UserData;
 import webpages.admin_mode.navigation.Navigation;
 import webpages.agent_mode.Controls;
@@ -18,7 +19,7 @@ import static utils.ConfigurationsSelenide.closeDriver;
 import static utils.ConfigurationsSelenide.openURL;
 
 
-@Listeners(VideoListener.class)
+//@Listeners(VideoListener.class)
 public class LookingForBrokenLoginCase {
 
     LoginPage loginPage = new LoginPage();

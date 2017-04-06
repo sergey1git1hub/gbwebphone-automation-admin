@@ -76,6 +76,9 @@ public class AgentToAgent {
 
         webDriver1.close();
         webDriver2.close();
+
+        webDriver1.quit();
+        webDriver2.quit();
     }
 
     @Test(description = "This TC#00008 verifies that Agent1 can log out Agent1 (when it is login at that moment)")

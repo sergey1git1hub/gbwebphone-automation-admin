@@ -2,14 +2,17 @@
 
 <suite name="Regression">
     <test name="TestAll" preserve-order="true">
-        <classes>
-            <class name="tests.BrowserConfig"/>
-            <class name="tests.AdminCreateDeleteAgent"/>
-            <class name="tests.AgentToAgent"/>
-            <class name="tests.LoginAndCall"/>
-        </classes>
-        <!--<packages>-->
-        <!--<package name="tests"/>-->
-        <!--</packages>-->
+
+        <packages>
+            <package name="configs"/>
+            <package name="tests"/>
+        </packages>
+        <!--<classes>-->
+        <!--<class name="configs.BrowserConfig"/>-->
+        <!--<class name="tests.AdminCreateDeleteAgent"/>-->
+        <!--<class name="tests.LoginAndCall"/>-->
+        <!--<class name="tests.AdminCreateDeleteGroup"/>-->
+        <!--<class name="tests.AgentToAgent"/>-->
+        <!--</classes>-->
     </test>
 </suite>

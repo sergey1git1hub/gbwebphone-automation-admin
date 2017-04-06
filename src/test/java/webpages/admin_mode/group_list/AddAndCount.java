@@ -2,14 +2,13 @@ package webpages.admin_mode.group_list;
 
 
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class AddAndCount {
 
-    private SelenideElement add = $("#groupDataForm:btn_add_group");
-    private SelenideElement counter = $("#groupDataForm:groupCounter");
+    private SelenideElement add = $x(".//*[@id='groupDataForm:btn_add_group']");
+    private SelenideElement counter = $x(".//*[@id='groupDataForm:groupCounter']");
 
 
     //actions

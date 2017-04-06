@@ -20,6 +20,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 import static utils.ConfigurationsExtentReport.extent;
 import static utils.ConfigurationsSelenide.closeDriver;
 import static utils.ConfigurationsSelenide.openURL;
+import static utils.ConfigurationsSelenide.quitDriver;
 
 
 @Listeners(VideoListener.class)
@@ -56,7 +57,7 @@ public class LoginAndCall {
 
     @AfterClass
     public void closeBrowser() {
-        closeDriver();
+        quitDriver();
     }
 
     @Test(description = "This TC#00002 verifies that Agent can Login")

@@ -24,7 +24,7 @@ public class ConfigurationsExtentReport {
 
         extent.setSystemInfo("Hostname", "SVadim");
         extent.setSystemInfo("OS", "Windows 7");
-        extent.setSystemInfo("Environment", "TEST");
+        extent.setSystemInfo("Department", "QA");
         extent.setSystemInfo("User Name", "Vadim Shubkin");
 
         html.config().setDocumentTitle("GBWebphone");

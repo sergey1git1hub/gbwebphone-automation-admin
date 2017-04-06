@@ -17,6 +17,7 @@
         <video-recorder-testng.version>LATEST</video-recorder-testng.version>
         <mssql-jdbc.version>6.1.0.jre8</mssql-jdbc.version>
         <assertj-db.version>1.1.1</assertj-db.version>
+        <extentreports.version>3.0.4</extentreports.version>
 
         <!--Plugins Version-->
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
@@ -68,7 +69,7 @@
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
-            <version>3.0.4</version>
+            <version>${extentreports.version}</version>
         </dependency>
         <!--<dependency>-->
         <!--<groupId>io.rest-assured</groupId>-->

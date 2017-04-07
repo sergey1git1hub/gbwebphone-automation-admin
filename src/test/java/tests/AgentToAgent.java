@@ -48,8 +48,8 @@ public class AgentToAgent {
 
     @Test(description = "This TC#00006 verifies that Agent1 can call to Agent2",
             enabled = false)
-    public void callAgentToAgent() {
-        ConfigurationsExtentReport.test = extent.createTest("callAgentToAgent", "This TC#00006 verifies that Agent1 can call to Agent2");
+    public void testCallAgentToAgent() {
+        ConfigurationsExtentReport.test = extent.createTest("testCallAgentToAgent", "This TC#00006 verifies that Agent1 can call to Agent2");
 
         SelenideDriver webDriver1 = new SelenideDriver(new ChromeDriver());
         SelenideDriver webDriver2 = new SelenideDriver(new ChromeDriver());
@@ -82,8 +82,8 @@ public class AgentToAgent {
     }
 
     @Test(description = "This TC#00008 verifies that Agent1 can log out Agent1 (when it is login at that moment)")
-    public void logoutAgent1ByAgent1() {
-        ConfigurationsExtentReport.test = extent.createTest("logoutAgent1ByAgent1", "This TC#00008 verifies that Agent1 can log out Agent1 (when it is login at that moment)");
+    public void testLogoutAgent1ByAgent1() {
+        ConfigurationsExtentReport.test = extent.createTest("testLogoutAgent1ByAgent1", "This TC#00008 verifies that Agent1 can log out Agent1 (when it is login at that moment)");
 
         SelenideDriver webDriver1 = new SelenideDriver(new ChromeDriver());
         SelenideDriver webDriver2 = new SelenideDriver(new ChromeDriver());

@@ -12,7 +12,7 @@ public class Name {
 
     private SelenideElement nameSort = $(By.xpath(".//*[@id='groupDataForm:groupTable_head']//span[text()='Name']"));
     private SelenideElement nameInput = $(By.xpath(".//*[@id='groupDataForm:groupTable_head']//span[text()='Name']/following-sibling::input"));
-    private ElementsCollection nameCollection = $$(By.xpath(".//*[@id='groupDataForm:groupTable_data']//td[2]"));
+    private ElementsCollection nameCollection = $$(By.xpath(".//*[@id='groupDataForm:groupTable_data']//td[2]/span"));
 
 
     //actions

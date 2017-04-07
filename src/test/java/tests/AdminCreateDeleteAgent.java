@@ -7,6 +7,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
+import utils.ConfigurationsSelenide;
 import utils.ConnectionDataBase;
 import webpages.admin_mode.navigation.Navigation;
 import webpages.admin_mode.user_list.AddAndCount;
@@ -20,7 +21,6 @@ import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.visible;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
-import static utils.ConfigurationsSelenide.closeDriver;
 import static utils.ConfigurationsSelenide.openURL;
 import static utils.ConfigurationsSelenide.quitDriver;
 
@@ -36,8 +36,12 @@ public class AdminCreateDeleteAgent {
     AdminMode adminMode = new AdminMode();
     AdminPage adminPage = new AdminPage();
 
-    String usernameNew = "81600";
-    String sqlRequest = "SELECT * FROM wbp_user WHERE username = " + usernameNew + " AND id = (SELECT max(id)FROM wbp_user)";
+    String userNameNew = "81600";
+    String firstName = "QA";
+    String lastName = "Automation";
+    String email = "qa@automation.com";
+    String password = "1";
+    String sqlRequest = "SELECT * FROM wbp_user WHERE username = " + "\'" + userNameNew + "\'" + " AND id = (SELECT max(id)FROM wbp_user)";
     String id;
 
 
@@ -65,12 +69,12 @@ public class AdminCreateDeleteAgent {
         addAndCount.clickAdd();
         general.getUsername_inpt().click();
         general.getEnabled_chbx().waitUntil(enabled, 5000);
-        general.getUsername_inpt().setValue(usernameNew); //must be paused, but didn't find the way out
-        general.getUsername_inpt().setValue(usernameNew);
-        general.getFirstname_inpt().setValue("QA");
-        general.getLastname_inpt().setValue("Automation");
-        general.getPassword_inpt().setValue("1");
-        general.getEmail_inpt().setValue("qa@automation.com");
+        general.getUsername_inpt().setValue(userNameNew); //must be paused, but didn't find the way out
+        general.getUsername_inpt().setValue(userNameNew);
+        general.getFirstname_inpt().setValue(firstName);
+        general.getLastname_inpt().setValue(lastName);
+        general.getPassword_inpt().setValue(password);
+        general.getEmail_inpt().setValue(email);
         general.getRoles_slct().find(Condition.text("ROLE_USER")).click();
         general.getSave_btn().click();
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(Condition.text("Saved successfully!"));
@@ -83,10 +87,10 @@ public class AdminCreateDeleteAgent {
         Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
         this.id = request.getRow(0).getColumnValue("id").getValue().toString();
         assertThat(request).row()
-                .value("username").isEqualTo(usernameNew)
-                .value("firstname").isEqualTo("QA")
-                .value("lastname").isEqualTo("Automation")
-                .value("email").isEqualTo("qa@automation.com")
+                .value("username").isEqualTo(userNameNew)
+                .value("firstname").isEqualTo(firstName)
+                .value("lastname").isEqualTo(lastName)
+                .value("email").isEqualTo(email)
                 .value("deleted").isEqualTo(false);
     }
 
@@ -95,8 +99,8 @@ public class AdminCreateDeleteAgent {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteAgent", "This TC#00011 verifies that Admin can delete Agent");
 
         navigation.clickUserList();
-        username.getUsernameInput().setValue(usernameNew).pressEnter();
-        username.getUsernameCollection().find(Condition.text(usernameNew)).click();
+        username.getUsernameInput().setValue(userNameNew).pressEnter();
+        username.getUsernameCollection().find(Condition.text(userNameNew)).click();
         general.getDelete_btn().click();
         confirmation.clickYes();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(Condition.text("Deleted successfully!"));
@@ -112,10 +116,10 @@ public class AdminCreateDeleteAgent {
         Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
         assertThat(request).row()
                 .value("id").isEqualTo(this.id)
-                .value("username").isEqualTo(usernameNew)
-                .value("firstname").isEqualTo("QA")
-                .value("lastname").isEqualTo("Automation")
-                .value("email").isEqualTo("qa@automation.com")
+                .value("username").isEqualTo(userNameNew)
+                .value("firstname").isEqualTo(firstName)
+                .value("lastname").isEqualTo(lastName)
+                .value("email").isEqualTo(email)
                 .value("deleted").isEqualTo(true);
     }
 

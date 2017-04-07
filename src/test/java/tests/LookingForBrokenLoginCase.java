@@ -42,7 +42,7 @@ public class LookingForBrokenLoginCase {
 
     @Test(description = "This TC#00001 uses loop (100 times) login for admin to verify there is no broken page (according to the issue #5154).",
             enabled = false)
-    public void loginAsAdmin() {
+    public void testLoopLoginAsAdmin() {
         for (int i = 1; i < 100; i++) {
             loginPage.getPassword().waitUntil(visible, 10000);
             loginPage.getUsername().shouldBe(visible);
@@ -56,7 +56,7 @@ public class LookingForBrokenLoginCase {
     //Agent must have AgentDesktopTab in chosen group!
     @Test(description = "This TC#00005 uses loop (100 times) login for agent to verify there is no broken stage in the AgentDesktop Tab (according to the issue #5187).",
             enabled = false)
-    public void loginAsAgentAndSwitchToAgentDesktopTab() {
+    public void testLoopLoginAsAgentAndSwitchToAgentDesktopTab() {
         for (int i = 1; i < 100; i++) {
             loginPage.getPassword().waitUntil(visible, 10000);
             loginPage.getUsername().shouldBe(visible);

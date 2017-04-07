@@ -3,10 +3,12 @@ package tests;
 
 import com.automation.remarks.testng.VideoListener;
 import com.codeborne.selenide.Condition;
+import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
+import utils.ConnectionDataBase;
 import webpages.admin_mode.group_list.AddAndCount;
 import webpages.admin_mode.group_list.Name;
 import webpages.admin_mode.group_list.group_form.General;
@@ -17,6 +19,7 @@ import webpages.alerts.Confirmation;
 import webpages.login.LoginPage;
 
 import static com.codeborne.selenide.Condition.visible;
+import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
 import static utils.ConfigurationsSelenide.openURL;
 import static utils.ConfigurationsSelenide.quitDriver;
@@ -39,6 +42,9 @@ public class AdminCreateDeleteGroup {
     String description = "Description_of_Group";
     String archivePeriod = "11";
     String email = "mail@email.com";
+    String sqlRequest = "SELECT * FROM wbp_group WHERE group_name = " + "\'" + nameOfGroup + "\'" + " AND id = (SELECT max(id)FROM wbp_group)";
+    String id;
+
 
     @BeforeClass
     public void openBrowser() {
@@ -56,8 +62,8 @@ public class AdminCreateDeleteGroup {
     }
 
     @Test(description = "This TC#00014 verifies that Admin can create Group")
-    public void adminCreateGroup() {
-        ConfigurationsExtentReport.test = extent.createTest("adminCreateGroup", "This TC#00014 verifies that Admin can create Group");
+    public void testAdminCreateGroup() {
+        ConfigurationsExtentReport.test = extent.createTest("testAdminCreateGroup", "This TC#00014 verifies that Admin can create Group");
 
         adminPage.getAdminPage();
         navigation.clickGroupList();
@@ -100,9 +106,21 @@ public class AdminCreateDeleteGroup {
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(Condition.text("Saved successfully!"));
     }
 
-    @Test(description = "This TC#00015 verifies that Admin can delete the Group")
-    public void adminDeleteGroup() {
-        ConfigurationsExtentReport.test = extent.createTest("adminDeleteGroup", "This TC#000?? verifies that Admin can delete the Group");
+    @Test(description = "This TC#00016 verifies that Agent was added to DataBase", dependsOnMethods = "testAdminCreateGroup")
+    public void testGroupWasAddedToDataBase() {
+        ConfigurationsExtentReport.test = extent.createTest("testGroupWasAddedToDataBase", "This TC#00016 verifies that Agent was added to DataBase");
+
+        Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
+        this.id = request.getRow(0).getColumnValue("id").getValue().toString();
+        assertThat(request).row()
+                .value("group_name").isEqualTo(nameOfGroup)
+                .value("group_description").isEqualTo(description)
+                .value("deleted").isEqualTo(false);
+    }
+
+    @Test(description = "This TC#00015 verifies that Admin can delete the Group", dependsOnMethods = "testGroupWasAddedToDataBase")
+    public void testAdminDeleteGroup() {
+        ConfigurationsExtentReport.test = extent.createTest("testAdminDeleteGroup", "This TC#00015 verifies that Admin can delete the Group");
 
         name.getNameInput().setValue(nameOfGroup).pressEnter();
         name.getNameCollection().find(Condition.text(nameOfGroup)).click();
@@ -111,6 +129,5 @@ public class AdminCreateDeleteGroup {
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(Condition.text("Deleted successfully!"));
         navigation.clickLogout();
         loginPage.getConnect().waitUntil(visible, 10000);
-
     }
 }

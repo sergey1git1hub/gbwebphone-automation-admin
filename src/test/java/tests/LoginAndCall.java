@@ -18,7 +18,6 @@ import webpages.select_user_or_admin.SelectModePage;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static utils.ConfigurationsExtentReport.extent;
-import static utils.ConfigurationsSelenide.closeDriver;
 import static utils.ConfigurationsSelenide.openURL;
 import static utils.ConfigurationsSelenide.quitDriver;
 
@@ -61,8 +60,8 @@ public class LoginAndCall {
     }
 
     @Test(description = "This TC#00002 verifies that Agent can Login")
-    public void loginAsAgent() {
-        ConfigurationsExtentReport.test = extent.createTest("loginAsAgent", "This TC#00002 verifies that Agent can Login");
+    public void testLoginAsAgent() {
+        ConfigurationsExtentReport.test = extent.createTest("testLoginAsAgent", "This TC#00002 verifies that Agent can Login");
 
         loginPage.setUserData(data.getUsernameAgentValid(), data.getPasswordAgentValid());
         loginPage.clickConnect();
@@ -76,8 +75,8 @@ public class LoginAndCall {
     }
 
     @Test(description = "This TC#00003 verifies that Admin can Login")
-    public void loginAsAdmin() {
-        ConfigurationsExtentReport.test = extent.createTest("loginAsAdmin", "This TC#00003 verifies that Admin can Login");
+    public void testLoginAsAdmin() {
+        ConfigurationsExtentReport.test = extent.createTest("testLoginAsAdmin", "This TC#00003 verifies that Admin can Login");
 
         loginPage.setUserData(data.getUsernameAdminValid(), data.getPasswordAdminValid());
         loginPage.clickConnect();
@@ -88,9 +87,9 @@ public class LoginAndCall {
     }
 
     @Test(description = "This TC#00004 verifies that Agent can call",
-            dependsOnMethods = "loginAsAgent", alwaysRun = true)
-    public void agentCall() {
-        ConfigurationsExtentReport.test = extent.createTest("agentCall", "This TC#00004 verifies that Agent can call");
+            dependsOnMethods = "testLoginAsAgent", alwaysRun = true)
+    public void testAgentCall() {
+        ConfigurationsExtentReport.test = extent.createTest("testAgentCall", "This TC#00004 verifies that Agent can call");
 
         loginPage.setUserData(data.getUsernameAgentValid(), data.getPasswordAgentValid());
         loginPage.clickConnect();
@@ -113,8 +112,8 @@ public class LoginAndCall {
 
     @Test(description = "This TC#00007 verifies that Agent cannot Login with invalid credentials, error message is shown",
             groups = {"Negative"})
-    public void loginAsAgentNegative() {
-        ConfigurationsExtentReport.test = extent.createTest("loginAsAgentNegative", "This TC#00007 verifies that Agent cannot Login with invalid credentials, error message is shown");
+    public void testLoginAsAgentNegative() {
+        ConfigurationsExtentReport.test = extent.createTest("testLoginAsAgentNegative", "This TC#00007 verifies that Agent cannot Login with invalid credentials, error message is shown");
 
         loginPage.setUserData(data.getUsernameAgentInvalid(), data.getPasswordAgentInvalid());
         loginPage.clickConnect();
@@ -122,9 +121,9 @@ public class LoginAndCall {
     }
 
     @Test(description = "This TC#00009 verifies that Agent can call via Keypad",
-            dependsOnMethods = "loginAsAgent", alwaysRun = true)
-    public void agentCallViaKeypad() {
-        ConfigurationsExtentReport.test = extent.createTest("agentCallViaKeypad", "This TC#00009 verifies that Agent can call via Keypad");
+            dependsOnMethods = "testLoginAsAgent", alwaysRun = true)
+    public void testAgentCallViaKeypad() {
+        ConfigurationsExtentReport.test = extent.createTest("testAgentCallViaKeypad", "This TC#00009 verifies that Agent can call via Keypad");
 
         loginPage.setUserData(data.getUsernameAgentValid(), data.getPasswordAgentValid());
         loginPage.clickConnect();

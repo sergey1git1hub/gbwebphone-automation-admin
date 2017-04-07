@@ -39,7 +39,7 @@ public class General {
     private SelenideElement deletePeriod_inpt = $x(".//*[@id='groupDialogForm:tabs:media_delete_period_input']");
     private SelenideElement transferCall_chbx = $x(".//*[@id='groupDialogForm:tabs:hasTransferCall']/div[2]");
     private SelenideElement chat_chbx = $x(".//*[@id='groupDialogForm:tabs:hasChat']/div[2]");
-    private SelenideElement autoAccept_chbx = $x(".//v[@id='groupDialogForm:tabs:hasAutoAccept']/div[2]");
+    private SelenideElement autoAccept_chbx = $x(".//*[@id='groupDialogForm:tabs:hasAutoAccept']/div[2]");
     private SelenideElement hold_chbx = $x(".//*[@id='groupDialogForm:tabs:hasHold']/div[2]");
     private SelenideElement audioSettings_chbx = $x(".//*[@id='groupDialogForm:tabs:hasAudioSettings']/div[2]");
     private SelenideElement linearStrategy_chbx = $x(".//*[@id='groupDialogForm:tabs:linearStrategy']/div[2]");

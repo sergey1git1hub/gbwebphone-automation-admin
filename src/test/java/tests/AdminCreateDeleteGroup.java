@@ -8,6 +8,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
+import utils.ConfigurationsSelenide;
 import utils.ConnectionDataBase;
 import webpages.admin_mode.group_list.AddAndCount;
 import webpages.admin_mode.group_list.Name;
@@ -95,7 +96,7 @@ public class AdminCreateDeleteGroup {
         general.getResultCodeStatus_slct().get(1).click();  //must be known
         general.getTransferCall_chbx().click();
         general.getChat_chbx().click();
-        general.getAutoAccept_chbx();
+        general.getAutoAccept_chbx().click();
         general.getHold_chbx().click();
         general.getAudioSettings_chbx().click();
         general.getLinearStrategy_chbx().click();
@@ -129,5 +130,16 @@ public class AdminCreateDeleteGroup {
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(Condition.text("Deleted successfully!"));
         navigation.clickLogout();
         loginPage.getConnect().waitUntil(visible, 10000);
+    }
+
+    @Test(description = "This TC#00017 verifies that Agent was deleted from DataBase", dependsOnMethods = "testAdminDeleteGroup")
+    public void testGroupWasDeletedFromDataBase() {
+        ConfigurationsExtentReport.test = extent.createTest("testGroupWasDeletedFromDataBase", "This TC#00017 verifies that Agent was deleted from DataBase");
+
+        Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
+        assertThat(request).row()
+                .value("group_name").isEqualTo(nameOfGroup)
+                .value("group_description").isEqualTo(description)
+                .value("deleted").isEqualTo(true);
     }
 }

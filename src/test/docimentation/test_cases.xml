@@ -144,7 +144,8 @@
         <testcase number="TC#00012">
             <description title="This TC#00012 verifies that Agent was added to DataBase">
                 <steps>
-
+                    1. Request to DB
+                    2. Verify fields
                 </steps>
             </description>
         </testcase>
@@ -166,7 +167,8 @@
         <testcase number="TC#00013">
             <description title="This TC#00013 verifies that Agent was deleted from DataBase">
                 <steps>
-
+                    1. Request to DB
+                    2. Verify field "deleted"=true
                 </steps>
             </description>
         </testcase>
@@ -187,6 +189,15 @@
             </description>
         </testcase>
 
+        <testcase number="This TC#00016">
+            <description title="This TC#00016 verifies that Agent was added to DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+
         <testcase number="This TC#00015">
             <description title="This TC#00015 verifies that Admin can delete Group">
                 <steps>
@@ -197,6 +208,15 @@
                     5. Click on the searched group
                     6. Click delete button
                     7. Verify "Deleted successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+
+        <testcase number="This TC#00017">
+            <description title="This TC#00017 verifies that Agent was deleted from DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify field "deleted"=true
                 </steps>
             </description>
         </testcase>

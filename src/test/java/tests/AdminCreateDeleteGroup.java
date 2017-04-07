@@ -8,14 +8,16 @@ import org.testng.annotations.*;
 import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
 import webpages.admin_mode.group_list.AddAndCount;
+import webpages.admin_mode.group_list.Name;
 import webpages.admin_mode.group_list.group_form.General;
 import webpages.admin_mode.group_list.group_form.GlobalButtons;
 import webpages.admin_mode.navigation.Navigation;
 import webpages.alerts.AdminMode;
+import webpages.alerts.Confirmation;
+import webpages.login.LoginPage;
 
 import static com.codeborne.selenide.Condition.visible;
 import static utils.ConfigurationsExtentReport.extent;
-import static utils.ConfigurationsSelenide.closeDriver;
 import static utils.ConfigurationsSelenide.openURL;
 import static utils.ConfigurationsSelenide.quitDriver;
 
@@ -28,6 +30,9 @@ public class AdminCreateDeleteGroup {
     General general = new General();
     GlobalButtons globalButtons = new GlobalButtons();
     AdminMode adminMode = new AdminMode();
+    Name name = new Name();
+    Confirmation confirmation = new Confirmation();
+    LoginPage loginPage = new LoginPage();
 
     String nameOfGroup = "Name_of_Group";
     String resultCodeTimer = "8";
@@ -50,9 +55,9 @@ public class AdminCreateDeleteGroup {
         quitDriver();
     }
 
-    @Test(description = "This TC#000?? verifies that Admin can create new Group")
+    @Test(description = "This TC#00014 verifies that Admin can create Group")
     public void adminCreateGroup() {
-        ConfigurationsExtentReport.test = extent.createTest("adminCreateGroup", "This TC#000?? verifies that Admin can create new Group");
+        ConfigurationsExtentReport.test = extent.createTest("adminCreateGroup", "This TC#00014 verifies that Admin can create Group");
 
         adminPage.getAdminPage();
         navigation.clickGroupList();
@@ -95,4 +100,17 @@ public class AdminCreateDeleteGroup {
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(Condition.text("Saved successfully!"));
     }
 
+    @Test(description = "This TC#00015 verifies that Admin can delete the Group")
+    public void adminDeleteGroup() {
+        ConfigurationsExtentReport.test = extent.createTest("adminDeleteGroup", "This TC#000?? verifies that Admin can delete the Group");
+
+        name.getNameInput().setValue(nameOfGroup).pressEnter();
+        name.getNameCollection().find(Condition.text(nameOfGroup)).click();
+        globalButtons.getDelete_btn().click();
+        confirmation.clickYes();
+        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(Condition.text("Deleted successfully!"));
+        navigation.clickLogout();
+        loginPage.getConnect().waitUntil(visible, 10000);
+
+    }
 }

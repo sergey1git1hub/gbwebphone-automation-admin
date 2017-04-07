@@ -8,8 +8,8 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class Confirmation {
 
-    private SelenideElement yes_btn = $(By.xpath(".//*[@id='j_idt234:j_idt235']"));
-    private SelenideElement no_btn = $(By.xpath(".//*[@id='j_idt234:j_idt236']"));
+    private SelenideElement yes_btn = $(By.xpath(".//*[@aria-live='polite'][2]//button[1]"));
+    private SelenideElement no_btn = $(By.xpath(".//*[@aria-live='polite'][2]//button[2]"));
 
 
     //actions

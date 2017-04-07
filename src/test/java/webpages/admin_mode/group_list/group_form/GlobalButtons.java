@@ -9,6 +9,8 @@ public class GlobalButtons {
 
     private SelenideElement save_btn = $x(".//*[@id='groupDialogForm:btnSaveGroup']");
     private SelenideElement cancel_btn = $x(".//*[@id='groupDialogForm:j_idt234']");
+    private SelenideElement delete_btn = $x(".//*[@id='groupDialogForm:btnCallDeleteGroup']");
+    private SelenideElement clone_btn = $x(".//*[@id='groupDialogForm:j_idt233']");
 
 
     //actions
@@ -16,8 +18,16 @@ public class GlobalButtons {
         save_btn.click();
     }
 
-    public void cancelSave() {
+    public void clickCancel() {
         cancel_btn.click();
+    }
+
+    public void clickDelete() {
+        delete_btn.click();
+    }
+
+    public void clickClone() {
+        clone_btn.click();
     }
 
 
@@ -28,5 +38,13 @@ public class GlobalButtons {
 
     public SelenideElement getCancel_btn() {
         return cancel_btn;
+    }
+
+    public SelenideElement getDelete_btn() {
+        return delete_btn;
+    }
+
+    public SelenideElement getClone_btn() {
+        return clone_btn;
     }
 }

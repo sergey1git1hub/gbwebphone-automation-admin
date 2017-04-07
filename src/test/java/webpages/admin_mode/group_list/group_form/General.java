@@ -11,8 +11,8 @@ public class General {
 
     private SelenideElement name_inpt = $x(".//*[@id='groupDialogForm:tabs:groupName']");
     private SelenideElement defaultNumberPrefix_slct = $x(".//*[@id='groupDialogForm:tabs:phoneNumberPrefix']//span");
-    private SelenideElement tenant_slct_btn = $x(".//*[@id='groupDialogForm:tabs:tenant']//span");
-    private ElementsCollection tenant_slct = $$x(".//*[@id='groupDialogForm:tabs:tenant_panel']/div/ul/li");
+    private SelenideElement tenant_slct_btn = $x(".//*[@id='groupDialogForm:tabs:tenant_label']");
+    private ElementsCollection tenant_slct = $$x(".//*[@id='groupDialogForm:tabs:tenant_panel']//li");
     private SelenideElement resultCodeTimer_inpt = $x(".//*[@id='groupDialogForm:tabs:resultCodeTimer_input']");
     private SelenideElement transferToBusyUser_chbx = $x(".//*[@id='groupDialogForm:tabs:transferToUnavailable']/div[2]");
     private SelenideElement manualCall_chbx = $x(".//*[@id='groupDialogForm:tabs:hasManualCall']/div[2]");

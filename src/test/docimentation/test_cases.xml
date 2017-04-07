@@ -172,4 +172,34 @@
         </testcase>
     </class>
 
+    <class name="AdminCreateDeleteGroup">
+        <testcase number="This TC#00014">
+            <description title="This TC#00014 verifies that Admin can create Group">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click group list
+                    4. Click add button
+                    5. Fill in the General tab
+                    6. Click save button
+                    7. Verify "Saved successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+
+        <testcase number="This TC#00015">
+            <description title="This TC#00015 verifies that Admin can delete Group">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click group list
+                    4. Fill sort list of group
+                    5. Click on the searched group
+                    6. Click delete button
+                    7. Verify "Deleted successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+    </class>
+
 </suit>

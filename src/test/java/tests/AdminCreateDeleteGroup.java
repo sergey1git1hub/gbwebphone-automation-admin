@@ -19,6 +19,8 @@ import webpages.alerts.AdminMode;
 import webpages.alerts.Confirmation;
 import webpages.login.LoginPage;
 
+import java.io.IOException;
+
 import static com.codeborne.selenide.Condition.visible;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
@@ -53,7 +55,7 @@ public class AdminCreateDeleteGroup {
     }
 
     @AfterMethod
-    public void recordTestsToExtentReport(ITestResult result) {
+    public void recordTestsToExtentReport(ITestResult result) throws IOException {
         ConfigurationsExtentReport.getResult(result);
     }
 

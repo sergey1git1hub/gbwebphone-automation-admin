@@ -17,6 +17,8 @@ import webpages.login.LoginPage;
 import webpages.select_user_or_admin.SelectModePage;
 import utils.SelenideDriver;
 
+import java.io.IOException;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
@@ -42,7 +44,7 @@ public class AgentToAgent {
     }
 
     @AfterMethod
-    public void recordTestsToExtentReport(ITestResult result) {
+    public void recordTestsToExtentReport(ITestResult result) throws IOException {
         ConfigurationsExtentReport.getResult(result);
     }
 

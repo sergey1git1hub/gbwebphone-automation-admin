@@ -22,7 +22,8 @@ public class ConfigurationsSelenide {
 //        InternetExplorerDriverManager.getInstance().setup();
 //        FirefoxDriverManager.getInstance().setup();
         Configuration.browser = "chrome";
-        Configuration.timeout = 10000;
+        Configuration.reportsFolder = "build/reports/screenshots";
+        Configuration.timeout = 15000;
         VideoRecorder.conf()
                 .withVideoFolder("build/reports/video")
                 .withRecordMode(RecordingMode.ALL)

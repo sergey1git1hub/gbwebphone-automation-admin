@@ -15,6 +15,8 @@ import webpages.login.LoginPage;
 import webpages.select_user_or_admin.SelectModePage;
 
 
+import java.io.IOException;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static utils.ConfigurationsExtentReport.extent;
@@ -50,7 +52,7 @@ public class LoginAndCall {
     }
 
     @AfterMethod
-    public void recordTestsToExtentReport(ITestResult result) {
+    public void recordTestsToExtentReport(ITestResult result) throws IOException {
         ConfigurationsExtentReport.getResult(result);
     }
 

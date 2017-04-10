@@ -7,7 +7,10 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.codeborne.selenide.Screenshots;
 import org.testng.ITestResult;
+
+import java.io.IOException;
 
 
 public class ConfigurationsExtentReport {
@@ -34,13 +37,14 @@ public class ConfigurationsExtentReport {
     }
 
 
-    public static void getResult(ITestResult result) {
+    public static void getResult(ITestResult result) throws IOException {
         if (result.getStatus() == ITestResult.FAILURE) {
             test.log(com.aventstack.extentreports.Status.FAIL, MarkupHelper.createLabel(result.getName() + " FAILED", ExtentColor.RED));
             test.fail(result.getThrowable());
+            test.fail("Screenshot below: " + test.addScreenCaptureFromPath("screenshots/" + Screenshots.getLastScreenshot().getName()));
         } else if (result.getStatus() == ITestResult.SUCCESS) {
             test.log(com.aventstack.extentreports.Status.PASS, MarkupHelper.createLabel(result.getName() + " PASSED", ExtentColor.GREEN));
-        } else if (result.getStatus() == ITestResult.SKIP){
+        } else if (result.getStatus() == ITestResult.SKIP) {
             test.log(com.aventstack.extentreports.Status.SKIP, MarkupHelper.createLabel(result.getName() + " SKIPPED", ExtentColor.ORANGE));
             test.skip(result.getThrowable());
         }

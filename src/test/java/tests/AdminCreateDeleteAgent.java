@@ -7,7 +7,6 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.*;
 import webpages.admin_mode.navigation.Navigation;
-import webpages.admin_mode.user_list.AddAndCount;
 import webpages.admin_mode.user_list.Username;
 import webpages.admin_mode.user_list.user_form.General;
 import webpages.alerts.AdminMode;
@@ -33,7 +32,7 @@ public class AdminCreateDeleteAgent {
     Confirmation confirmation = new Confirmation();
     AdminMode adminMode = new AdminMode();
     AdminPage adminPage = new AdminPage();
-    GlobalButtonAddInLists globalButtonAddInLists = new GlobalButtonAddInLists();
+    GlobalButtonsAddAndCountInLists globalButtonsAddAndCountInLists = new GlobalButtonsAddAndCountInLists();
 
     String userNameNew = "81600";
     String firstName = "QA";
@@ -65,7 +64,7 @@ public class AdminCreateDeleteAgent {
 
         adminPage.getAdminPage();
         navigation.clickUserList();
-        globalButtonAddInLists.getAdd_btn().click();
+        globalButtonsAddAndCountInLists.getAdd_btn().click();
         general.getUsername_inpt().click();
         general.getEnabled_chbx().waitUntil(enabled, 5000);
         general.getUsername_inpt().setValue(userNameNew); //must be paused, but didn't find the way out

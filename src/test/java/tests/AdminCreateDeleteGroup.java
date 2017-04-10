@@ -7,7 +7,6 @@ import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.*;
-import webpages.admin_mode.group_list.AddAndCount;
 import webpages.admin_mode.group_list.Name;
 import webpages.admin_mode.group_list.group_form.General;
 import webpages.admin_mode.group_list.group_form.GlobalButtons;
@@ -29,14 +28,13 @@ public class AdminCreateDeleteGroup {
 
     Navigation navigation = new Navigation();
     AdminPage adminPage = new AdminPage();
-    AddAndCount addAndCount = new AddAndCount();
     General general = new General();
     GlobalButtons globalButtons = new GlobalButtons();
     AdminMode adminMode = new AdminMode();
     Name name = new Name();
     Confirmation confirmation = new Confirmation();
     LoginPage loginPage = new LoginPage();
-    GlobalButtonAddInLists globalButtonAddInLists = new GlobalButtonAddInLists();
+    GlobalButtonsAddAndCountInLists globalButtonsAddAndCountInLists = new GlobalButtonsAddAndCountInLists();
 
     String nameOfGroup = "Name_of_Group";
     String resultCodeTimer = "8";
@@ -68,7 +66,7 @@ public class AdminCreateDeleteGroup {
 
         adminPage.getAdminPage();
         navigation.clickGroupList();
-        globalButtonAddInLists.getAdd_btn().click();
+        globalButtonsAddAndCountInLists.getAdd_btn().click();
 
         general.getName_inpt().setValue(nameOfGroup);
         general.getTenant_slct_btn().click();

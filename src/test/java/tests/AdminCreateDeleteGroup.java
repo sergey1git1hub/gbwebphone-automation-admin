@@ -6,10 +6,7 @@ import com.codeborne.selenide.Condition;
 import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-import utils.AdminPage;
-import utils.ConfigurationsExtentReport;
-import utils.ConfigurationsSelenide;
-import utils.ConnectionDataBase;
+import utils.*;
 import webpages.admin_mode.group_list.AddAndCount;
 import webpages.admin_mode.group_list.Name;
 import webpages.admin_mode.group_list.group_form.General;
@@ -39,6 +36,7 @@ public class AdminCreateDeleteGroup {
     Name name = new Name();
     Confirmation confirmation = new Confirmation();
     LoginPage loginPage = new LoginPage();
+    GlobalButtonAddInLists globalButtonAddInLists = new GlobalButtonAddInLists();
 
     String nameOfGroup = "Name_of_Group";
     String resultCodeTimer = "8";
@@ -70,7 +68,7 @@ public class AdminCreateDeleteGroup {
 
         adminPage.getAdminPage();
         navigation.clickGroupList();
-        addAndCount.clickAdd();
+        globalButtonAddInLists.getAdd_btn().click();
 
         general.getName_inpt().setValue(nameOfGroup);
         general.getTenant_slct_btn().click();

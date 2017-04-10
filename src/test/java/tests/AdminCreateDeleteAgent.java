@@ -5,10 +5,7 @@ import com.codeborne.selenide.Condition;
 import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-import utils.AdminPage;
-import utils.ConfigurationsExtentReport;
-import utils.ConfigurationsSelenide;
-import utils.ConnectionDataBase;
+import utils.*;
 import webpages.admin_mode.navigation.Navigation;
 import webpages.admin_mode.user_list.AddAndCount;
 import webpages.admin_mode.user_list.Username;
@@ -30,13 +27,13 @@ import static utils.ConfigurationsSelenide.quitDriver;
 public class AdminCreateDeleteAgent {
 
     LoginPage loginPage = new LoginPage();
-    AddAndCount addAndCount = new AddAndCount();
     General general = new General();
     Username username = new Username();
     Navigation navigation = new Navigation();
     Confirmation confirmation = new Confirmation();
     AdminMode adminMode = new AdminMode();
     AdminPage adminPage = new AdminPage();
+    GlobalButtonAddInLists globalButtonAddInLists = new GlobalButtonAddInLists();
 
     String userNameNew = "81600";
     String firstName = "QA";
@@ -68,7 +65,7 @@ public class AdminCreateDeleteAgent {
 
         adminPage.getAdminPage();
         navigation.clickUserList();
-        addAndCount.clickAdd();
+        globalButtonAddInLists.getAdd_btn().click();
         general.getUsername_inpt().click();
         general.getEnabled_chbx().waitUntil(enabled, 5000);
         general.getUsername_inpt().setValue(userNameNew); //must be paused, but didn't find the way out

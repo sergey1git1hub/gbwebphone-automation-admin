@@ -16,11 +16,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 public class ConfigurationsSelenide {
 
     public static void configuration() {
-//        Configuration.holdBrowserOpen = true;
-//        PhantomJsDriverManager.getInstance().setup();
-        ChromeDriverManager.getInstance().setup();
-//        InternetExplorerDriverManager.getInstance().setup();
-//        FirefoxDriverManager.getInstance().setup();
+        ChromeDriverManager.getInstance().proxy("agproxy:3128").setup();
         Configuration.browser = "chrome";
         Configuration.reportsFolder = "build/reports/screenshots";
         Configuration.timeout = 15000;

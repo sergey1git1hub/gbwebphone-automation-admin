@@ -17,7 +17,7 @@ public class ConfigurationsSelenide {
 
     public static void configuration() {
         ChromeDriverManager.getInstance().proxy("agproxy:3128").setup();
-        Configuration.browser = "chrome";
+        Configuration.browser = ChromeDriverProvider.class.getName();
         Configuration.reportsFolder = "build/reports/screenshots";
         Configuration.timeout = 15000;
         VideoRecorder.conf()

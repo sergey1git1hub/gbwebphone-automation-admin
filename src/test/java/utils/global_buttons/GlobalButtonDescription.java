@@ -13,16 +13,6 @@ public class GlobalButtonDescription {
     private ElementsCollection description_collection = $$x(".//*[@id='layoutCenter']//td[3]");
 
 
-    //actions
-    public void clickDescriptionSort() {
-        description_sort.click();
-    }
-
-    public void fillDescriptionInput(String description) {
-        description_inpt.sendKeys(description);
-    }
-
-
     //getters
     public SelenideElement getDescription_sort() {
         return description_sort;

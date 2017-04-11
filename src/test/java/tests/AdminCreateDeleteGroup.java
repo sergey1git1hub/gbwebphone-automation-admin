@@ -2,12 +2,12 @@ package tests;
 
 
 import com.automation.remarks.testng.VideoListener;
-import com.codeborne.selenide.Condition;
 import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.*;
-import webpages.admin_mode.group_list.Name;
+import utils.global_buttons.GlobalButtonName;
+import utils.global_buttons.GlobalButtonsAddAndCountInLists;
 import webpages.admin_mode.group_list.group_form.General;
 import webpages.admin_mode.group_list.group_form.GlobalButtons;
 import webpages.admin_mode.navigation.Navigation;
@@ -17,6 +17,7 @@ import webpages.login.LoginPage;
 
 import java.io.IOException;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
@@ -31,7 +32,7 @@ public class AdminCreateDeleteGroup {
     General general = new General();
     GlobalButtons globalButtons = new GlobalButtons();
     AdminMode adminMode = new AdminMode();
-    Name name = new Name();
+    GlobalButtonName globalButtonName = new GlobalButtonName();
     Confirmation confirmation = new Confirmation();
     LoginPage loginPage = new LoginPage();
     GlobalButtonsAddAndCountInLists globalButtonsAddAndCountInLists = new GlobalButtonsAddAndCountInLists();
@@ -102,7 +103,7 @@ public class AdminCreateDeleteGroup {
 
         globalButtons.clickSave();
 
-        adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(Condition.text("Saved successfully!"));
+        adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
     @Test(description = "This TC#00016 verifies that Agent was added to DataBase", dependsOnMethods = "testAdminCreateGroup")
@@ -121,11 +122,11 @@ public class AdminCreateDeleteGroup {
     public void testAdminDeleteGroup() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminDeleteGroup", "This TC#00015 verifies that Admin can delete the Group");
 
-        name.getNameInput().setValue(nameOfGroup).pressEnter();
-        name.getNameCollection().find(Condition.text(nameOfGroup)).click();
+        globalButtonName.getNameInput().setValue(nameOfGroup).pressEnter();
+        globalButtonName.getNameCollection().find(text(nameOfGroup)).click();
         globalButtons.getDelete_btn().click();
         confirmation.clickYes();
-        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(Condition.text("Deleted successfully!"));
+        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
         navigation.clickLogout();
         loginPage.getConnect().waitUntil(visible, 10000);
     }

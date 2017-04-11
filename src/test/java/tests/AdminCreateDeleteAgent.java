@@ -6,6 +6,7 @@ import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.*;
+import utils.global_buttons.GlobalButtonsAddAndCountInLists;
 import webpages.admin_mode.navigation.Navigation;
 import webpages.admin_mode.user_list.Username;
 import webpages.admin_mode.user_list.user_form.General;

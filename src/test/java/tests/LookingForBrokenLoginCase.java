@@ -63,7 +63,7 @@ public class LookingForBrokenLoginCase {
             loginPage.setUserData(userData.getUsernameAgentValid(), userData.getPasswordAgentValid());
             loginPage.getConnect().shouldBe(visible).click();
             selectModePage.getContinueButton().shouldBe(visible).click();
-            getWebDriver().switchTo().frame($("#TAB_123"));  //name of AD_Tab, given by Admin in WP.
+            getWebDriver().switchTo().frame($("#TAB_123"));  //globalButtonName of AD_Tab, given by Admin in WP.
             $("#main>h1").waitUntil(visible, 10000).shouldHave(text("Welcome!"));
             getWebDriver().switchTo().defaultContent();
             status.getCallStatus().waitUntil(text("Registered"), 30000);  //Should be used in brilliant case.

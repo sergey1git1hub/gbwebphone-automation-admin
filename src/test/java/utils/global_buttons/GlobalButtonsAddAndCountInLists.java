@@ -1,4 +1,4 @@
-package utils;
+package utils.global_buttons;
 
 
 import com.codeborne.selenide.SelenideElement;

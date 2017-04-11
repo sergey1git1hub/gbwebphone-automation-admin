@@ -10,22 +10,17 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class Team {
 
-    private SelenideElement teamInput = $(By.xpath(".//*[@id='userDataForm:userDataTable_head']//span[text()='Team']/following-sibling::input"));
-    private ElementsCollection teamCollection = $$(By.xpath(".//*[@id='userDataForm:userDataTable_data']//td[7]"));
-
-    //actions
-    public void fillTeamInput(String team) {
-        teamInput.sendKeys(team);
-    }
+    private SelenideElement team_inpt = $(By.xpath(".//*[@id='userDataForm:userDataTable_head']//span[text()='Team']/following-sibling::input"));
+    private ElementsCollection team_collection = $$(By.xpath(".//*[@id='userDataForm:userDataTable_data']//td[7]"));
 
 
     //getters
-    public SelenideElement getTeamInput() {
-        return teamInput;
+    public SelenideElement getTeam_inpt() {
+        return team_inpt;
     }
 
-    public ElementsCollection getTeamCollection() {
-        return teamCollection;
+    public ElementsCollection getTeam_collection() {
+        return team_collection;
     }
 
 }

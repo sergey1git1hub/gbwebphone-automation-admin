@@ -9,21 +9,21 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class GlobalButtonName {
 
-    private SelenideElement nameSort = $x(".//*[@id='layoutCenter']//span[text()='Name']");
-    private SelenideElement nameInput = $x("//*[@id='layoutCenter']//span[text()='Name']/following-sibling::input");
-    private ElementsCollection nameCollection = $$x(".//*[@id='layoutCenter']//td[2]");
+    private SelenideElement name_sort = $x(".//*[@id='layoutCenter']//span[text()='Name']");
+    private SelenideElement name_inpt = $x("//*[@id='layoutCenter']//span[text()='Name']/following-sibling::input");
+    private ElementsCollection name_collection = $$x(".//*[@id='layoutCenter']//td[2]");
 
 
     //getters
-    public SelenideElement getNameSort() {
-        return nameSort;
+    public SelenideElement getName_sort() {
+        return name_sort;
     }
 
-    public SelenideElement getNameInput() {
-        return nameInput;
+    public SelenideElement getName_inpt() {
+        return name_inpt;
     }
 
-    public ElementsCollection getNameCollection() {
-        return nameCollection;
+    public ElementsCollection getName_collection() {
+        return name_collection;
     }
 }

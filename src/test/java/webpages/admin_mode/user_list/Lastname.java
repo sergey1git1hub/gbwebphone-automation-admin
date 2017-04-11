@@ -10,32 +10,22 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class Lastname {
 
-    private SelenideElement lastnameSort = $(By.xpath(".//*[@id='userDataForm:userDataTable_head']//span[text()='Lastname']"));
-    private SelenideElement lastnameInput = $(By.xpath(".//*[@id='userDataForm:userDataTable_head']//span[text()='Lastname']/following-sibling::input"));
-    private ElementsCollection lastnameCollection = $$(By.xpath(".//*[@id='userDataForm:userDataTable_data']//td[4]"));
-
-
-    //actions
-    public void clickLastnameSort() {
-        lastnameSort.click();
-    }
-
-    public void fillLastnameInput(String lastname) {
-        lastnameInput.sendKeys(lastname);
-    }
+    private SelenideElement lastname_sort = $(By.xpath(".//*[@id='userDataForm:userDataTable_head']//span[text()='Lastname']"));
+    private SelenideElement lastname_input = $(By.xpath(".//*[@id='userDataForm:userDataTable_head']//span[text()='Lastname']/following-sibling::input"));
+    private ElementsCollection lastname_collection = $$(By.xpath(".//*[@id='userDataForm:userDataTable_data']//td[4]"));
 
 
     //getters
-    public SelenideElement getLastnameSort() {
-        return lastnameSort;
+    public SelenideElement getLastname_sort() {
+        return lastname_sort;
     }
 
-    public SelenideElement getLastnameInput() {
-        return lastnameInput;
+    public SelenideElement getLastname_input() {
+        return lastname_input;
     }
 
-    public ElementsCollection getLastnameCollection() {
-        return lastnameCollection;
+    public ElementsCollection getLastname_collection() {
+        return lastname_collection;
     }
 
 }

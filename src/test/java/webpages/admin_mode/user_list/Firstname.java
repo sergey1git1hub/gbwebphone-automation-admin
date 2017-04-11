@@ -10,32 +10,22 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class Firstname {
 
-    private SelenideElement firstnameSort = $(By.xpath(".//*[@id='userDataForm:userDataTable_head']//span[text()='Firstname']"));
-    private SelenideElement firstnameInput = $(By.xpath(".//*[@id='userDataForm:userDataTable_head']//span[text()='Firstname']/following-sibling::input"));
-    private ElementsCollection firstnameCollection = $$(By.xpath(".//*[@id='userDataForm:userDataTable_data']//td[3]"));
-
-
-    //actions
-    public void clickFirstnameSort() {
-        firstnameSort.click();
-    }
-
-    public void fillFirstnameInput(String firstname) {
-        firstnameInput.sendKeys(firstname);
-    }
+    private SelenideElement firstname_sort = $(By.xpath(".//*[@id='userDataForm:userDataTable_head']//span[text()='Firstname']"));
+    private SelenideElement firstname_inpt = $(By.xpath(".//*[@id='userDataForm:userDataTable_head']//span[text()='Firstname']/following-sibling::input"));
+    private ElementsCollection firstname_collection = $$(By.xpath(".//*[@id='userDataForm:userDataTable_data']//td[3]"));
 
 
     //getters
-    public SelenideElement getFirstnameSort() {
-        return firstnameSort;
+    public SelenideElement getFirstname_sort() {
+        return firstname_sort;
     }
 
-    public SelenideElement getFirstnameInput() {
-        return firstnameInput;
+    public SelenideElement getFirstname_inpt() {
+        return firstname_inpt;
     }
 
-    public ElementsCollection getFirstnameCollection() {
-        return firstnameCollection;
+    public ElementsCollection getFirstname_collection() {
+        return firstname_collection;
     }
 
 }

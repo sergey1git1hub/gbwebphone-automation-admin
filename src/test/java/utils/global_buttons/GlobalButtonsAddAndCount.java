@@ -5,7 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
 
-public class GlobalButtonsAddAndCountInLists {
+public class GlobalButtonsAddAndCount {
 
     private SelenideElement add_btn = $x(".//*[@id='layoutCenter']//button");
     private SelenideElement counter = $x(".//*[@id='layoutCenter']//*[@class='elementCounter']");

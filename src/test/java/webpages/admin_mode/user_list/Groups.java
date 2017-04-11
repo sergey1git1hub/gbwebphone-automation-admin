@@ -10,22 +10,17 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class Groups {
 
-    private SelenideElement groupsInput = $(By.xpath(".//*[@id='userDataForm:userDataTable_head']//span[text()='Groups']/following-sibling::input"));
-    private ElementsCollection groupsCollection = $$(By.xpath(".//*[@id='userDataForm:userDataTable_data']//td[6]"));
-
-    //actions
-    public void fillGroupsInput(String groups) {
-        groupsInput.sendKeys(groups);
-    }
+    private SelenideElement groups_input = $(By.xpath(".//*[@id='userDataForm:userDataTable_head']//span[text()='Groups']/following-sibling::input"));
+    private ElementsCollection groups_collection = $$(By.xpath(".//*[@id='userDataForm:userDataTable_data']//td[6]"));
 
 
     //getters
-    public SelenideElement getGroupsInput() {
-        return groupsInput;
+    public SelenideElement getGroups_input() {
+        return groups_input;
     }
 
-    public ElementsCollection getGroupsCollection() {
-        return groupsCollection;
+    public ElementsCollection getGroups_collection() {
+        return groups_collection;
     }
 
 }

@@ -7,7 +7,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.*;
 import utils.global_buttons.GlobalButtonName;
-import utils.global_buttons.GlobalButtonsAddAndCountInLists;
+import utils.global_buttons.GlobalButtonsAddAndCount;
 import webpages.admin_mode.group_list.group_form.General;
 import webpages.admin_mode.group_list.group_form.GlobalButtons;
 import webpages.admin_mode.navigation.Navigation;
@@ -35,7 +35,7 @@ public class AdminCreateDeleteGroup {
     GlobalButtonName globalButtonName = new GlobalButtonName();
     Confirmation confirmation = new Confirmation();
     LoginPage loginPage = new LoginPage();
-    GlobalButtonsAddAndCountInLists globalButtonsAddAndCountInLists = new GlobalButtonsAddAndCountInLists();
+    GlobalButtonsAddAndCount globalButtonsAddAndCountInLists = new GlobalButtonsAddAndCount();
 
     String nameOfGroup = "Name_of_Group";
     String resultCodeTimer = "8";
@@ -122,8 +122,8 @@ public class AdminCreateDeleteGroup {
     public void testAdminDeleteGroup() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminDeleteGroup", "This TC#00015 verifies that Admin can delete the Group");
 
-        globalButtonName.getNameInput().setValue(nameOfGroup).pressEnter();
-        globalButtonName.getNameCollection().find(text(nameOfGroup)).click();
+        globalButtonName.getName_inpt().setValue(nameOfGroup).pressEnter();
+        globalButtonName.getName_collection().find(text(nameOfGroup)).click();
         globalButtons.getDelete_btn().click();
         confirmation.clickYes();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));

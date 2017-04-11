@@ -6,7 +6,7 @@ import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.*;
-import utils.global_buttons.GlobalButtonsAddAndCountInLists;
+import utils.global_buttons.GlobalButtonsAddAndCount;
 import webpages.admin_mode.navigation.Navigation;
 import webpages.admin_mode.user_list.Username;
 import webpages.admin_mode.user_list.user_form.General;
@@ -33,7 +33,7 @@ public class AdminCreateDeleteAgent {
     Confirmation confirmation = new Confirmation();
     AdminMode adminMode = new AdminMode();
     AdminPage adminPage = new AdminPage();
-    GlobalButtonsAddAndCountInLists globalButtonsAddAndCountInLists = new GlobalButtonsAddAndCountInLists();
+    GlobalButtonsAddAndCount globalButtonsAddAndCountInLists = new GlobalButtonsAddAndCount();
 
     String userNameNew = "81600";
     String firstName = "QA";
@@ -98,8 +98,8 @@ public class AdminCreateDeleteAgent {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteAgent", "This TC#00011 verifies that Admin can delete Agent");
 
         navigation.clickUserList();
-        username.getUsernameInput().setValue(userNameNew).pressEnter();
-        username.getUsernameCollection().find(Condition.text(userNameNew)).click();
+        username.getUsername_inpt().setValue(userNameNew).pressEnter();
+        username.getUsername_collection().find(Condition.text(userNameNew)).click();
         general.getDelete_btn().click();
         confirmation.clickYes();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(Condition.text("Deleted successfully!"));

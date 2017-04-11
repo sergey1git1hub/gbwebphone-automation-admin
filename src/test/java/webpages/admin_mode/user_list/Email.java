@@ -10,32 +10,21 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class Email {
 
-    private SelenideElement emailSort = $(By.xpath(".//*[@id='userDataForm:userDataTable_head']//span[text()='Email']"));
-    private SelenideElement emailInput = $(By.xpath(".//*[@id='userDataForm:userDataTable_head']//span[text()='Email']/following-sibling::input"));
-    private ElementsCollection emailCollection = $$(By.xpath(".//*[@id='userDataForm:userDataTable_data']//td[5]"));
-
-
-    //actions
-    public void clickEmailSort() {
-        emailSort.click();
-    }
-
-    public void fillEmailInput(String email) {
-        emailInput.sendKeys(email);
-    }
+    private SelenideElement email_sort = $(By.xpath(".//*[@id='userDataForm:userDataTable_head']//span[text()='Email']"));
+    private SelenideElement email_input = $(By.xpath(".//*[@id='userDataForm:userDataTable_head']//span[text()='Email']/following-sibling::input"));
+    private ElementsCollection email_collection = $$(By.xpath(".//*[@id='userDataForm:userDataTable_data']//td[5]"));
 
 
     //getters
-    public SelenideElement getEmailSort() {
-        return emailSort;
+    public SelenideElement getEmail_sort() {
+        return email_sort;
     }
 
-    public SelenideElement getEmailInput() {
-        return emailInput;
+    public SelenideElement getEmail_input() {
+        return email_input;
     }
 
-    public ElementsCollection getEmailCollection() {
-        return emailCollection;
+    public ElementsCollection getEmail_collection() {
+        return email_collection;
     }
-
 }

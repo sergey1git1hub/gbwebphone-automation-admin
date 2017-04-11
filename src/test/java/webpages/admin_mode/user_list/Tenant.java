@@ -10,23 +10,17 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class Tenant {
 
-    private SelenideElement tenantInput = $(By.xpath(".//*[@id='userDataForm:userDataTable_head']//span[text()='Tenant']/following-sibling::input"));
-    private ElementsCollection tenantCollection = $$(By.xpath(".//*[@id='userDataForm:userDataTable_data']//td[8]"));
-
-
-    //actions
-    public void fillTenantInput(String tenant) {
-        tenantInput.sendKeys(tenant);
-    }
+    private SelenideElement tenant_inpt = $(By.xpath(".//*[@id='userDataForm:userDataTable_head']//span[text()='Tenant']/following-sibling::input"));
+    private ElementsCollection tenant_collection = $$(By.xpath(".//*[@id='userDataForm:userDataTable_data']//td[8]"));
 
 
     //getters
-    public SelenideElement getTenantInput() {
-        return tenantInput;
+    public SelenideElement getTenant_inpt() {
+        return tenant_inpt;
     }
 
-    public ElementsCollection getTenantCollection() {
-        return tenantCollection;
+    public ElementsCollection getTenant_collection() {
+        return tenant_collection;
     }
 
 }

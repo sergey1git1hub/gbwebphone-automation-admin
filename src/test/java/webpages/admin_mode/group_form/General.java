@@ -1,4 +1,4 @@
-package webpages.admin_mode.group_list.group_form;
+package webpages.admin_mode.group_form;
 
 
 import com.codeborne.selenide.ElementsCollection;

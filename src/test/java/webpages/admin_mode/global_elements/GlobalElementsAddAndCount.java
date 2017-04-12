@@ -1,4 +1,4 @@
-package utils.global_elements;
+package webpages.admin_mode.global_elements;
 
 
 import com.codeborne.selenide.SelenideElement;

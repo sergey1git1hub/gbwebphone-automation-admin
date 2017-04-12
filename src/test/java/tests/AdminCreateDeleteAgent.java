@@ -6,11 +6,10 @@ import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.*;
-import utils.global_elements.AnyElementByText;
-import utils.global_elements.GlobalElementsAddAndCount;
+import webpages.admin_mode.global_elements.AnyElementInListGrid;
+import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
 import webpages.admin_mode.navigation.Navigation;
-import webpages.admin_mode.user_list.Username;
-import webpages.admin_mode.user_list.user_form.General;
+import webpages.admin_mode.user_form.General;
 import webpages.alerts.AdminMode;
 import webpages.alerts.Confirmation;
 import webpages.login.LoginPage;
@@ -29,13 +28,12 @@ public class AdminCreateDeleteAgent {
 
     LoginPage loginPage = new LoginPage();
     General general = new General();
-    Username username = new Username();
     Navigation navigation = new Navigation();
     Confirmation confirmation = new Confirmation();
     AdminMode adminMode = new AdminMode();
     AdminPage adminPage = new AdminPage();
     GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
-    AnyElementByText anyElementByText = new AnyElementByText();
+    AnyElementInListGrid anyElementByText = new AnyElementInListGrid();
 
     String usernameNew = "81600";
     String firstName = "QA";
@@ -101,8 +99,7 @@ public class AdminCreateDeleteAgent {
 
         navigation.clickUserList();
         anyElementByText.findUpperInput(anyElementByText.USERNAME).setValue(usernameNew).pressEnter();
-        username.getUsername_inpt().setValue(usernameNew).pressEnter();
-        username.getUsername_collection().find(Condition.text(usernameNew)).click();
+        anyElementByText.findCollectionByColumn(2).find(Condition.text(usernameNew)).click();
         general.getDelete_btn().click();
         confirmation.clickYes();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(Condition.text("Deleted successfully!"));

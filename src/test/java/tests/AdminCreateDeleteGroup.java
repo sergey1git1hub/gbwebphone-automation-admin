@@ -6,8 +6,8 @@ import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.*;
-import utils.global_buttons.GlobalButtonName;
-import utils.global_buttons.GlobalButtonsAddAndCount;
+import utils.global_elements.AnyElementByText;
+import utils.global_elements.GlobalElementsAddAndCount;
 import webpages.admin_mode.group_list.group_form.General;
 import webpages.admin_mode.group_list.group_form.GlobalButtons;
 import webpages.admin_mode.navigation.Navigation;
@@ -32,10 +32,10 @@ public class AdminCreateDeleteGroup {
     General general = new General();
     GlobalButtons globalButtons = new GlobalButtons();
     AdminMode adminMode = new AdminMode();
-    GlobalButtonName globalButtonName = new GlobalButtonName();
+    AnyElementByText anyElementByText = new AnyElementByText();
     Confirmation confirmation = new Confirmation();
     LoginPage loginPage = new LoginPage();
-    GlobalButtonsAddAndCount globalButtonsAddAndCountInLists = new GlobalButtonsAddAndCount();
+    GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
 
     String nameOfGroup = "Name_of_Group";
     String resultCodeTimer = "8";
@@ -122,8 +122,8 @@ public class AdminCreateDeleteGroup {
     public void testAdminDeleteGroup() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminDeleteGroup", "This TC#00015 verifies that Admin can delete the Group");
 
-        globalButtonName.getName_inpt().setValue(nameOfGroup).pressEnter();
-        globalButtonName.getName_collection().find(text(nameOfGroup)).click();
+        anyElementByText.findUpperInput(anyElementByText.NAME).setValue(nameOfGroup).pressEnter();
+        anyElementByText.findCollectionByColumn(2).find(text(nameOfGroup)).click();
         globalButtons.getDelete_btn().click();
         confirmation.clickYes();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));

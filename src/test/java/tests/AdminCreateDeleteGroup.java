@@ -9,7 +9,7 @@ import utils.*;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
 import webpages.admin_mode.group_form.General;
-import webpages.admin_mode.group_form.GlobalButtons;
+import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.navigation.Navigation;
 import webpages.alerts.AdminMode;
 import webpages.alerts.Confirmation;
@@ -30,7 +30,7 @@ public class AdminCreateDeleteGroup {
     Navigation navigation = new Navigation();
     AdminPage adminPage = new AdminPage();
     General general = new General();
-    GlobalButtons globalButtons = new GlobalButtons();
+    GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
     AdminMode adminMode = new AdminMode();
     AnyElementInListGrid anyElementByText = new AnyElementInListGrid();
     Confirmation confirmation = new Confirmation();
@@ -101,7 +101,7 @@ public class AdminCreateDeleteGroup {
         general.getLinearStrategy_chbx().click();
         general.getEnabled_chbx().click();
 
-        globalButtons.clickSave();
+        globalButtonsInsideForm.getSaveFooter_btn().click();
 
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
@@ -124,7 +124,7 @@ public class AdminCreateDeleteGroup {
 
         anyElementByText.findUpperInput(anyElementByText.NAME).setValue(nameOfGroup).pressEnter();
         anyElementByText.findCollectionByColumn(2).find(text(nameOfGroup)).click();
-        globalButtons.getDelete_btn().click();
+        globalButtonsInsideForm.getDeleteFooter_btn().click();
         confirmation.clickYes();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
         navigation.clickLogout();

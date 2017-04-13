@@ -36,15 +36,6 @@ public class General {
     private SelenideElement extensionIsAvailable_chbx = $(By.xpath(".//*[@id='userDialogForm:tabs:extensionAvailable']/div[2]"));
     private SelenideElement personalGreeting_chbx = $(By.xpath(".//*[@id='userDialogForm:tabs:personalGreeting']/div[2]"));
 
-    private SelenideElement save_btn = $(By.xpath(".//button[@id='userDialogForm:btn_save']"));
-    private SelenideElement cancel_btn = $(By.xpath(".//button[@id='userDialogForm:j_idt232']"));
-
-    private SelenideElement clone_btn = $(By.xpath(".//button[@id='userDialogForm:copyUserButton']"));
-    private SelenideElement delete_btn = $(By.xpath(".//button[@id='userDialogForm:j_idt231']"));
-
-
-    //actions
-
 
     //getters
     public SelenideElement getUsername_inpt() {
@@ -131,19 +122,4 @@ public class General {
         return personalGreeting_chbx;
     }
 
-    public SelenideElement getSave_btn() {
-        return save_btn;
-    }
-
-    public SelenideElement getCancel_btn() {
-        return cancel_btn;
-    }
-
-    public SelenideElement getClone_btn() {
-        return clone_btn;
-    }
-
-    public SelenideElement getDelete_btn() {
-        return delete_btn;
-    }
 }

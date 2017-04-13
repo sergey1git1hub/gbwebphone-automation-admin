@@ -1,15 +1,14 @@
 package webpages.admin_mode.global_elements;
 
-import com.codeborne.selenide.ElementsCollection;
+
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
-
-public class AnyElementInListGrid {
+public class AnyFormAndTab {
 
     public final String ID = "id";
+    public final String GENERAL = "General";
     public final String NAME = "Name";
     public final String DESCRIPTION = "Description";
     public final String TENANT = "Tenant";
@@ -28,23 +27,13 @@ public class AnyElementInListGrid {
     public final String AVAILABLE_FOR_INBOUND_CALLS = "Available for inbound calls";
     public final String AVAILABLE_FOR_DAILER_CALLS = "Available for dialer calls";
 
-    public SelenideElement findCellInGrid(String textInCell) {
-        SelenideElement element = $x("//*[@id='layoutCenter']//span[text()='" + textInCell + "']");
+    public SelenideElement findForm() {
+        SelenideElement element = $x(".//*[@aria-live='polite']");
         return element;
     }
 
-    public ElementsCollection findCollectionByColumn(int numberOfColumnFrom1ToN) {
-        ElementsCollection element = $$x(".//*[@id='layoutCenter']//td[" + numberOfColumnFrom1ToN + "]");
-        return element;
-    }
-
-    public SelenideElement findUpperInput(String finalStringNameFromClass) {
-        SelenideElement element = $x("//*[@id='layoutCenter']//span[text()='" + finalStringNameFromClass + "']/following-sibling::input");
-        return element;
-    }
-
-    public SelenideElement findUpperSort(String finalStringNameFromClass) {
-        SelenideElement element = $x("//*[@id='layoutCenter']//span[text()='" + finalStringNameFromClass + "']");
+    public SelenideElement findTab(String finalStringNameFromClass) {
+        SelenideElement element = $x(".//*[@aria-live='polite']//li/a[text()='" + finalStringNameFromClass + "']");
         return element;
     }
 

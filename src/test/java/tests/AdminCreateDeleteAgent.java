@@ -7,6 +7,8 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.*;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
+import webpages.admin_mode.global_elements.AnyFormAndTab;
+import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
 import webpages.admin_mode.navigation.Navigation;
 import webpages.admin_mode.user_form.General;
@@ -34,6 +36,8 @@ public class AdminCreateDeleteAgent {
     AdminPage adminPage = new AdminPage();
     GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
     AnyElementInListGrid anyElementByText = new AnyElementInListGrid();
+    AnyFormAndTab anyFormAndTab = new AnyFormAndTab();
+    GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
 
     String usernameNew = "81600";
     String firstName = "QA";
@@ -66,6 +70,7 @@ public class AdminCreateDeleteAgent {
         adminPage.getAdminPage();
         navigation.clickUserList();
         globalButtonsAddAndCountInLists.getAdd_btn().click();
+        anyFormAndTab.findTab(anyFormAndTab.GENERAL).click();
         general.getUsername_inpt().click();
         general.getEnabled_chbx().waitUntil(enabled, 5000);
         general.getUsername_inpt().setValue(usernameNew); //must be paused, but didn't find the way out
@@ -75,7 +80,7 @@ public class AdminCreateDeleteAgent {
         general.getPassword_inpt().setValue(password);
         general.getEmail_inpt().setValue(email);
         general.getRoles_slct().find(Condition.text("ROLE_USER")).click();
-        general.getSave_btn().click();
+        globalButtonsInsideForm.getSaveFooter_btn().click();
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(Condition.text("Saved successfully!"));
     }
 
@@ -100,7 +105,8 @@ public class AdminCreateDeleteAgent {
         navigation.clickUserList();
         anyElementByText.findUpperInput(anyElementByText.USERNAME).setValue(usernameNew).pressEnter();
         anyElementByText.findCollectionByColumn(2).find(Condition.text(usernameNew)).click();
-        general.getDelete_btn().click();
+        anyFormAndTab.findTab(anyFormAndTab.GENERAL).click();
+        globalButtonsInsideForm.getDeleteFooter_btn().click();
         confirmation.clickYes();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(Condition.text("Deleted successfully!"));
         navigation.clickLogout();

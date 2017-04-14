@@ -12,11 +12,12 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static utils.Constants.*;
 
 public class ConfigurationsSelenide {
 
     public static void configuration() {
-        ChromeDriverManager.getInstance().proxy("agproxy:3128").setup();
+        ChromeDriverManager.getInstance().proxy(PROXY).setup();
         Configuration.browser = ChromeDriverProvider.class.getName();
         Configuration.reportsFolder = "build/reports/screenshots";
         Configuration.timeout = 15000;
@@ -27,7 +28,7 @@ public class ConfigurationsSelenide {
     }
 
     public static void openURL() {
-        open("http://172.21.7.239/gbwebphone/");
+        open(WEBPHONE_URL);
         $(By.className("logo")).waitUntil(visible, 30000);
     }
 

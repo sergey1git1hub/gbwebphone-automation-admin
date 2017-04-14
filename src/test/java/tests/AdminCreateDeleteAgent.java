@@ -98,7 +98,7 @@ public class AdminCreateDeleteAgent {
                 .value("deleted").isEqualTo(false);
     }
 
-    
+
     @Test(description = "This TC#00011 verifies that Admin can delete Agent", dependsOnMethods = "testAgentWasAddedToDataBase")
     public void testAdminCanDeleteAgent() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteAgent", "This TC#00011 verifies that Admin can delete Agent");

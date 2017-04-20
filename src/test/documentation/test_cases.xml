@@ -175,7 +175,7 @@
     </class>
 
     <class name="AdminCreateDeleteGroup">
-        <testcase number="This TC#00014">
+        <testcase number="TC#00014">
             <description title="This TC#00014 verifies that Admin can create Group">
                 <steps>
                     1. Admin login
@@ -189,7 +189,7 @@
             </description>
         </testcase>
 
-        <testcase number="This TC#00016">
+        <testcase number="TC#00016">
             <description title="This TC#00016 verifies that Agent was added to DataBase">
                 <steps>
                     1. Request to DB
@@ -198,7 +198,7 @@
             </description>
         </testcase>
 
-        <testcase number="This TC#00015">
+        <testcase number="TC#00015">
             <description title="This TC#00015 verifies that Admin can delete Group">
                 <steps>
                     1. Admin login
@@ -212,11 +212,35 @@
             </description>
         </testcase>
 
-        <testcase number="This TC#00017">
+        <testcase number="TC#00017">
             <description title="This TC#00017 verifies that Agent was deleted from DataBase">
                 <steps>
                     1. Request to DB
                     2. Verify field "deleted"=true
+                </steps>
+            </description>
+        </testcase>
+    </class>
+
+    <class name="AdminCreateDeleteQueue">
+        <testcase number="TC#00018">
+            <description title="This TC#00018 verifies that Admin can create Queue">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click queue list
+                    4. Click add button
+                    5. Fill in the General tab
+                    6. Click save button
+                    7. Verify "Saved successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00019">
+            <description title="This TC#00019 verifies that Queue was added to DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
                 </steps>
             </description>
         </testcase>

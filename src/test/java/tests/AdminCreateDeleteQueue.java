@@ -54,7 +54,6 @@ public class AdminCreateDeleteQueue {
     private String memberMacro = "MemberMacro_of_Queue";
     private String oneForAll = "11";
 
-    private String email = "mail@email.com";
     private String sqlRequest = "SELECT * FROM wbp_queue WHERE queue_name = " + "\'" + name + "\'" + " AND id = (SELECT max(id)FROM wbp_queue)";
     private String id;
 
@@ -87,9 +86,9 @@ public class AdminCreateDeleteQueue {
         quitDriver();
     }
 
-    @Test(description = "This TC#000?? verifies that Admin can create Queue")
+    @Test(description = "This TC#00018 verifies that Admin can create Queue")
     public void testAdminCanCreateQueue() {
-        ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateQueue", "This TC#000?? verifies that Admin can create Queue");
+        ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateQueue", "This TC#00018 verifies that Admin can create Queue");
 
         adminPage.getAdminPage();
         navigation.clickQueueList();
@@ -146,9 +145,9 @@ public class AdminCreateDeleteQueue {
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
-    @Test(description = "This TC#000?? verifies that Queue was added to DataBase", dependsOnMethods = "testAdminCanCreateQueue")
+    @Test(description = "This TC#00019 verifies that Queue was added to DataBase", dependsOnMethods = "testAdminCanCreateQueue")
     public void testQueueWasAddedToDataBase() {
-        ConfigurationsExtentReport.test = extent.createTest("testQueueWasAddedToDataBase", "This TC#000?? verifies that Queue was added to DataBase");
+        ConfigurationsExtentReport.test = extent.createTest("testQueueWasAddedToDataBase", "This TC#00019 verifies that Queue was added to DataBase");
 
         Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
         this.id = request.getRow(0).getColumnValue("id").getValue().toString();

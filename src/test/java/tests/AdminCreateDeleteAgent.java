@@ -64,8 +64,8 @@ public class AdminCreateDeleteAgent {
     }
 
     @Test(description = "This TC#00010 verifies that Admin can create Agent")
-    public void testAdminCreateAgent() {
-        ConfigurationsExtentReport.test = extent.createTest("testAdminCreateAgent", "This TC#00010 verifies that Admin can create Agent");
+    public void testAdminCanCreateAgent() {
+        ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateAgent", "This TC#00010 verifies that Admin can create Agent");
 
         adminPage.getAdminPage();
         navigation.clickUserList();
@@ -84,7 +84,7 @@ public class AdminCreateDeleteAgent {
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(Condition.text("Saved successfully!"));
     }
 
-    @Test(description = "This TC#00012 verifies that Agent was added to DataBase", dependsOnMethods = "testAdminCreateAgent")
+    @Test(description = "This TC#00012 verifies that Agent was added to DataBase", dependsOnMethods = "testAdminCanCreateAgent")
     public void testAgentWasAddedToDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testAgentWasAddedToDataBase", "This TC#00012 verifies that Agent was added to DataBase");
 

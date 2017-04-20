@@ -2,11 +2,13 @@ package tests;
 
 import com.automation.remarks.testng.VideoListener;
 import com.codeborne.selenide.SelenideElement;
+import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
 import utils.ConfigurationsSelenide;
+import utils.ConnectionDataBase;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
@@ -21,6 +23,7 @@ import java.io.IOException;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
+import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
 import static utils.ConfigurationsSelenide.openURL;
 import static utils.ConfigurationsSelenide.quitDriver;
@@ -52,21 +55,21 @@ public class AdminCreateDeleteQueue {
     private String oneForAll = "11";
 
     private String email = "mail@email.com";
-    private String sqlRequest = "SELECT * FROM wbp_group WHERE group_name = " + "\'" + name + "\'" + " AND id = (SELECT max(id)FROM wbp_group)";
+    private String sqlRequest = "SELECT * FROM wbp_queue WHERE queue_name = " + "\'" + name + "\'" + " AND id = (SELECT max(id)FROM wbp_queue)";
     private String id;
 
 
-//    @BeforeTest
-//    public static void setUp() {
-//        ConfigurationsSelenide.configuration();
-//        ConfigurationsExtentReport.startExtentReporting();
-//    }
-//
-//    @AfterTest
-//    public static void tearDown() {
-//        ConfigurationsExtentReport.endExtentReporting();
-//        ConfigurationsSelenide.quitDriver();
-//    }
+    @BeforeTest
+    public static void setUp() {
+        ConfigurationsSelenide.configuration();
+        ConfigurationsExtentReport.startExtentReporting();
+    }
+
+    @AfterTest
+    public static void tearDown() {
+        ConfigurationsExtentReport.endExtentReporting();
+        ConfigurationsSelenide.quitDriver();
+    }
 
 
     @BeforeClass
@@ -85,8 +88,8 @@ public class AdminCreateDeleteQueue {
     }
 
     @Test(description = "This TC#000?? verifies that Admin can create Queue")
-    public void testAdminCreateQueue() {
-        ConfigurationsExtentReport.test = extent.createTest("testAdminCreateQueue", "This TC#000?? verifies that Admin can create Queue");
+    public void testAdminCanCreateQueue() {
+        ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateQueue", "This TC#000?? verifies that Admin can create Queue");
 
         adminPage.getAdminPage();
         navigation.clickQueueList();
@@ -141,6 +144,21 @@ public class AdminCreateDeleteQueue {
         globalButtonsInsideForm.getSaveFooter_btn().click();
 
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
+    }
+
+    @Test(description = "This TC#000?? verifies that Queue was added to DataBase", dependsOnMethods = "testAdminCanCreateQueue")
+    public void testQueueWasAddedToDataBase() {
+        ConfigurationsExtentReport.test = extent.createTest("testQueueWasAddedToDataBase", "This TC#000?? verifies that Queue was added to DataBase");
+
+        Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
+        this.id = request.getRow(0).getColumnValue("id").getValue().toString();
+        assertThat(request).row()
+                .value("queue_name").isEqualTo(name)
+                .value("queue_description").isEqualTo(description)
+                .value("announce").isEqualTo(announce)
+                .value("context").isEqualTo(context)
+                .value("member_macro").isEqualTo(memberMacro)
+                .value("deleted").isEqualTo(false);
     }
 
 }

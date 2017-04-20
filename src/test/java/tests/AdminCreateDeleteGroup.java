@@ -62,8 +62,8 @@ public class AdminCreateDeleteGroup {
     }
 
     @Test(description = "This TC#00014 verifies that Admin can create Group")
-    public void testAdminCreateGroup() {
-        ConfigurationsExtentReport.test = extent.createTest("testAdminCreateGroup", "This TC#00014 verifies that Admin can create Group");
+    public void testAdminCanCreateGroup() {
+        ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateGroup", "This TC#00014 verifies that Admin can create Group");
 
         adminPage.getAdminPage();
         navigation.clickGroupList();
@@ -106,7 +106,7 @@ public class AdminCreateDeleteGroup {
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
-    @Test(description = "This TC#00016 verifies that Agent was added to DataBase", dependsOnMethods = "testAdminCreateGroup")
+    @Test(description = "This TC#00016 verifies that Agent was added to DataBase", dependsOnMethods = "testAdminCanCreateGroup")
     public void testGroupWasAddedToDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testGroupWasAddedToDataBase", "This TC#00016 verifies that Agent was added to DataBase");
 
@@ -119,8 +119,8 @@ public class AdminCreateDeleteGroup {
     }
 
     @Test(description = "This TC#00015 verifies that Admin can delete the Group", dependsOnMethods = "testGroupWasAddedToDataBase")
-    public void testAdminDeleteGroup() {
-        ConfigurationsExtentReport.test = extent.createTest("testAdminDeleteGroup", "This TC#00015 verifies that Admin can delete the Group");
+    public void testAdminCanDeleteGroup() {
+        ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteGroup", "This TC#00015 verifies that Admin can delete the Group");
 
         anyElementByText.findUpperInput(anyElementByText.NAME).setValue(nameOfGroup).pressEnter();
         anyElementByText.findCollectionByColumn(2).find(text(nameOfGroup)).click();
@@ -131,7 +131,7 @@ public class AdminCreateDeleteGroup {
         loginPage.getConnect().waitUntil(visible, 10000);
     }
 
-    @Test(description = "This TC#00017 verifies that Agent was deleted from DataBase", dependsOnMethods = "testAdminDeleteGroup")
+    @Test(description = "This TC#00017 verifies that Agent was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteGroup")
     public void testGroupWasDeletedFromDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testGroupWasDeletedFromDataBase", "This TC#00017 verifies that Agent was deleted from DataBase");
 

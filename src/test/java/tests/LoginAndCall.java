@@ -27,18 +27,18 @@ import static utils.ConfigurationsSelenide.quitDriver;
 @Listeners(VideoListener.class)
 public class LoginAndCall {
 
-    LoginPage loginPage = new LoginPage();
-    UserData data = new UserData();
-    SelectModePage selectModePage = new SelectModePage();
-    Call call = new Call();
-    Version version = new Version();
-    Controls controls = new Controls();
-    Navigation navigation = new Navigation();
-    Status status = new Status();
-    LoginMsg loginMsg = new LoginMsg();
-    Keypad keypad = new Keypad();
+    private LoginPage loginPage = new LoginPage();
+    private UserData data = new UserData();
+    private SelectModePage selectModePage = new SelectModePage();
+    private Call call = new Call();
+    private Version version = new Version();
+    private Controls controls = new Controls();
+    private Navigation navigation = new Navigation();
+    private Status status = new Status();
+    private LoginMsg loginMsg = new LoginMsg();
+    private Keypad keypad = new Keypad();
 
-    String group = "VadimShubkin_test_group1";
+    private String group = "VadimShubkin_test_group1";
 
 
     @BeforeClass

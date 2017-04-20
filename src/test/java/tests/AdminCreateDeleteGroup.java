@@ -27,23 +27,23 @@ import static utils.ConfigurationsSelenide.quitDriver;
 @Listeners(VideoListener.class)
 public class AdminCreateDeleteGroup {
 
-    Navigation navigation = new Navigation();
-    AdminPage adminPage = new AdminPage();
-    General general = new General();
-    GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
-    AdminMode adminMode = new AdminMode();
-    AnyElementInListGrid anyElementByText = new AnyElementInListGrid();
-    Confirmation confirmation = new Confirmation();
-    LoginPage loginPage = new LoginPage();
-    GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
+    private Navigation navigation = new Navigation();
+    private AdminPage adminPage = new AdminPage();
+    private General general = new General();
+    private GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
+    private AdminMode adminMode = new AdminMode();
+    private AnyElementInListGrid anyElementByText = new AnyElementInListGrid();
+    private Confirmation confirmation = new Confirmation();
+    private LoginPage loginPage = new LoginPage();
+    private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
 
-    String nameOfGroup = "Name_of_Group";
-    String resultCodeTimer = "8";
-    String description = "Description_of_Group";
-    String archivePeriod = "11";
-    String email = "mail@email.com";
-    String sqlRequest = "SELECT * FROM wbp_group WHERE group_name = " + "\'" + nameOfGroup + "\'" + " AND id = (SELECT max(id)FROM wbp_group)";
-    String id;
+    private String nameOfGroup = "Name_of_Group";
+    private String resultCodeTimer = "8";
+    private String description = "Description_of_Group";
+    private String archivePeriod = "11";
+    private String email = "mail@email.com";
+    private String sqlRequest = "SELECT * FROM wbp_group WHERE group_name = " + "\'" + nameOfGroup + "\'" + " AND id = (SELECT max(id)FROM wbp_group)";
+    private String id;
 
 
     @BeforeClass

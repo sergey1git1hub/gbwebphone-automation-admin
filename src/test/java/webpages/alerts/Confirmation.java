@@ -2,14 +2,13 @@ package webpages.alerts;
 
 
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class Confirmation {
 
-    private SelenideElement yes_btn = $(By.xpath(".//*[@aria-live='polite'][2]//button[1]"));
-    private SelenideElement no_btn = $(By.xpath(".//*[@aria-live='polite'][2]//button[2]"));
+    private SelenideElement yes_btn = $x(".//*[@aria-live='polite'][2]//button[1]");
+    private SelenideElement no_btn = $x(".//*[@aria-live='polite'][2]//button[2]");
 
 
     //actions

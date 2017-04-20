@@ -28,24 +28,24 @@ import static utils.ConfigurationsSelenide.quitDriver;
 @Listeners(VideoListener.class)
 public class AdminCreateDeleteAgent {
 
-    LoginPage loginPage = new LoginPage();
-    General general = new General();
-    Navigation navigation = new Navigation();
-    Confirmation confirmation = new Confirmation();
-    AdminMode adminMode = new AdminMode();
-    AdminPage adminPage = new AdminPage();
-    GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
-    AnyElementInListGrid anyElementByText = new AnyElementInListGrid();
-    AnyFormAndTab anyFormAndTab = new AnyFormAndTab();
-    GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
+    private LoginPage loginPage = new LoginPage();
+    private General general = new General();
+    private Navigation navigation = new Navigation();
+    private Confirmation confirmation = new Confirmation();
+    private AdminMode adminMode = new AdminMode();
+    private AdminPage adminPage = new AdminPage();
+    private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
+    private AnyElementInListGrid anyElementByText = new AnyElementInListGrid();
+    private AnyFormAndTab anyFormAndTab = new AnyFormAndTab();
+    private GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
 
-    String usernameNew = "81600";
-    String firstName = "QA";
-    String lastName = "Automation";
-    String email = "qa@automation.com";
-    String password = "1";
-    String sqlRequest = "SELECT * FROM wbp_user WHERE username = " + "\'" + usernameNew + "\'" + " AND id = (SELECT max(id)FROM wbp_user)";
-    String id;
+    private String usernameNew = "81600";
+    private String firstName = "QA";
+    private String lastName = "Automation";
+    private String email = "qa@automation.com";
+    private String password = "1";
+    private String sqlRequest = "SELECT * FROM wbp_user WHERE username = " + "\'" + usernameNew + "\'" + " AND id = (SELECT max(id)FROM wbp_user)";
+    private String id;
 
 
     @BeforeClass

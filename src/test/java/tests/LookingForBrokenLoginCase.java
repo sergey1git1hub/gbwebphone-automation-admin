@@ -22,12 +22,12 @@ import static utils.ConfigurationsSelenide.openURL;
 //@Listeners(VideoListener.class)
 public class LookingForBrokenLoginCase {
 
-    LoginPage loginPage = new LoginPage();
-    UserData userData = new UserData();
-    SelectModePage selectModePage = new SelectModePage();
-    Navigation navigation = new Navigation();
-    Controls controls = new Controls();
-    Status status = new Status();
+    private LoginPage loginPage = new LoginPage();
+    private UserData userData = new UserData();
+    private SelectModePage selectModePage = new SelectModePage();
+    private Navigation navigation = new Navigation();
+    private Controls controls = new Controls();
+    private Status status = new Status();
 
 
     @BeforeMethod

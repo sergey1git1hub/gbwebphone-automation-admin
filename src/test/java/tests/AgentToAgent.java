@@ -29,14 +29,14 @@ import static utils.ConfigurationsSelenide.quitDriver;
 @Listeners(VideoListener.class)
 public class AgentToAgent {
 
-    LoginPage loginPage = new LoginPage();
-    Status status = new Status();
-    Call call = new Call();
-    UserData data = new UserData();
-    SelectModePage selectModePage = new SelectModePage();
-    UserIsAlreadyLoggedIn userIsAlreadyLoggedIn = new UserIsAlreadyLoggedIn();
+    private LoginPage loginPage = new LoginPage();
+    private Status status = new Status();
+    private Call call = new Call();
+    private UserData data = new UserData();
+    private SelectModePage selectModePage = new SelectModePage();
+    private UserIsAlreadyLoggedIn userIsAlreadyLoggedIn = new UserIsAlreadyLoggedIn();
 
-    String group = "VadimShubkin_test_group2";
+    private String group = "VadimShubkin_test_group2";
 
     @AfterClass
     public void closeBrowser() {

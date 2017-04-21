@@ -1,18 +1,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Regression">
-    <test name="TestAll" preserve-order="true">
+    <test name="Regression" preserve-order="true" parallel="false">
 
-        <packages>
-            <package name="configs"/>
-            <package name="tests"/>
-        </packages>
-        <!--<classes>-->
-        <!--<class name="configs.BrowserConfig"/>-->
-        <!--<class name="tests.AdminCreateDeleteAgent"/>-->
-        <!--<class name="tests.LoginAndCall"/>-->
-        <!--<class name="tests.AdminCreateDeleteGroup"/>-->
-        <!--<class name="tests.AgentToAgent"/>-->
-        <!--</classes>-->
+        <classes>
+            <class name="configs.BrowserConfig"/>
+            <class name="tests.AdminCreateDeleteAgent"/>
+            <class name="tests.AdminCreateDeleteGroup"/>
+            <class name="tests.AdminCreateDeleteQueue"/>
+        </classes>
+
     </test>
 </suite>

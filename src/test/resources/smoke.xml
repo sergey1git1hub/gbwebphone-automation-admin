@@ -2,10 +2,13 @@
 
 
 <suite name="Smoke">
-    <!--<test name="TestMainFunc" preserve-order="true">-->
-    <test name="Smoke" preserve-order="true">
-        <packages>
-            <package name="tests"/>
-        </packages>
+    <test name="Smoke" preserve-order="true" parallel="false">
+
+        <classes>
+            <class name="configs.BrowserConfig"/>
+            <class name="tests.LoginAndCall"/>
+            <class name="tests.AgentToAgent"/>
+        </classes>
+
     </test>
 </suite>

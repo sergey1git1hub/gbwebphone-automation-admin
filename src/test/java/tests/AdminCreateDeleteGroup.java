@@ -125,7 +125,7 @@ public class AdminCreateDeleteGroup {
         anyElementByText.findUpperInput(anyElementByText.NAME).setValue(nameOfGroup).pressEnter();
         anyElementByText.findCollectionByColumn(2).find(text(nameOfGroup)).click();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
-        confirmation.clickYes();
+        confirmation.getYes_btn().waitUntil(visible,5000).click();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
         navigation.clickLogout();
         loginPage.getConnect().waitUntil(visible, 10000);

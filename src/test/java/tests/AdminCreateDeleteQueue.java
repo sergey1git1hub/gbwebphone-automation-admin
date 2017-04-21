@@ -1,13 +1,13 @@
 package tests;
 
 import com.automation.remarks.testng.VideoListener;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
-import utils.ConfigurationsSelenide;
 import utils.ConnectionDataBase;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
@@ -58,19 +58,6 @@ public class AdminCreateDeleteQueue {
     private String id;
 
 
-    @BeforeTest
-    public static void setUp() {
-        ConfigurationsSelenide.configuration();
-        ConfigurationsExtentReport.startExtentReporting();
-    }
-
-    @AfterTest
-    public static void tearDown() {
-        ConfigurationsExtentReport.endExtentReporting();
-        ConfigurationsSelenide.quitDriver();
-    }
-
-
     @BeforeClass
     public void openBrowser() {
         openURL();
@@ -86,7 +73,7 @@ public class AdminCreateDeleteQueue {
         quitDriver();
     }
 
-    @Test(description = "This TC#00018 verifies that Admin can create Queue")
+    @Test(description = "This TC#00018 verifies that Admin can create Queue", enabled = false)
     public void testAdminCanCreateQueue() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateQueue", "This TC#00018 verifies that Admin can create Queue");
 
@@ -145,7 +132,7 @@ public class AdminCreateDeleteQueue {
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
-    @Test(description = "This TC#00019 verifies that Queue was added to DataBase", dependsOnMethods = "testAdminCanCreateQueue")
+    @Test(description = "This TC#00019 verifies that Queue was added to DataBase", dependsOnMethods = "testAdminCanCreateQueue", enabled = false)
     public void testQueueWasAddedToDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testQueueWasAddedToDataBase", "This TC#00019 verifies that Queue was added to DataBase");
 
@@ -160,4 +147,31 @@ public class AdminCreateDeleteQueue {
                 .value("deleted").isEqualTo(false);
     }
 
+    @Test(description = "This TC#00020 verifies that Admin can delete the Queue", dependsOnMethods = "testQueueWasAddedToDataBase", enabled = false)
+    public void testAdminCanDeleteQueue() {
+        ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteQueue", "This TC#00020 verifies that Admin can delete the Queue");
+
+        anyElementByText.findUpperInput(anyElementByText.NAME).setValue(name).pressEnter();
+        anyElementByText.findCollectionByColumn(2).find(text(name)).click();
+        globalButtonsInsideForm.getDeleteFooter_btn().click();
+        Selenide.sleep(3000);
+        confirmation.getYes_btn().waitUntil(visible, 5000).click();
+        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
+        navigation.clickLogout();
+        loginPage.getConnect().waitUntil(visible, 10000);
+    }
+
+    @Test(description = "This TC#00021 verifies that Queue was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteQueue", enabled = false)
+    public void testQueueWasDeletedFromDataBase() {
+        ConfigurationsExtentReport.test = extent.createTest("testQueueWasDeletedFromDataBase", "This TC#00021 verifies that Queue was deleted from DataBase");
+
+        Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
+        assertThat(request).row()
+                .value("queue_name").isEqualTo(name)
+                .value("queue_description").isEqualTo(description)
+                .value("announce").isEqualTo(announce)
+                .value("context").isEqualTo(context)
+                .value("member_macro").isEqualTo(memberMacro)
+                .value("deleted").isEqualTo(false);
+    }
 }

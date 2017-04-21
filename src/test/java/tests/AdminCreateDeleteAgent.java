@@ -108,7 +108,7 @@ public class AdminCreateDeleteAgent {
         anyElementByText.findCollectionByColumn(2).find(Condition.text(usernameNew)).click();
         anyFormAndTab.findTab(anyFormAndTab.GENERAL).click();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
-        confirmation.clickYes();
+        confirmation.getYes_btn().waitUntil(visible, 5000).click();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(Condition.text("Deleted successfully!"));
         navigation.clickLogout();
         loginPage.getConnect().waitUntil(visible, 10000);

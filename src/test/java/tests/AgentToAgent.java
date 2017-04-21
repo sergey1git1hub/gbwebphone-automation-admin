@@ -48,8 +48,7 @@ public class AgentToAgent {
         ConfigurationsExtentReport.getResult(result);
     }
 
-    @Test(description = "This TC#00006 verifies that Agent1 can call to Agent2",
-            enabled = false)
+    @Test(description = "This TC#00006 verifies that Agent1 can call to Agent2", enabled = false)
     public void testCallAgentToAgent() {
         ConfigurationsExtentReport.test = extent.createTest("testCallAgentToAgent", "This TC#00006 verifies that Agent1 can call to Agent2");
 

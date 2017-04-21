@@ -98,7 +98,6 @@ public class AdminCreateDeleteAgent {
                 .value("deleted").isEqualTo(false);
     }
 
-
     @Test(description = "This TC#00011 verifies that Admin can delete Agent", dependsOnMethods = "testAgentWasAddedToDataBase")
     public void testAdminCanDeleteAgent() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteAgent", "This TC#00011 verifies that Admin can delete Agent");
@@ -113,7 +112,6 @@ public class AdminCreateDeleteAgent {
         navigation.clickLogout();
         loginPage.getConnect().waitUntil(visible, 10000);
     }
-
 
     @Test(description = "This TC#00013 verifies that Agent was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteAgent")
     public void testAgentWasDeletedFromDataBase() {

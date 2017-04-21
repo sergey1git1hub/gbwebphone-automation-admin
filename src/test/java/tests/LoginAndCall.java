@@ -111,8 +111,7 @@ public class LoginAndCall {
         loginPage.getConnect().waitUntil(visible, 10000);
     }
 
-    @Test(description = "This TC#00007 verifies that Agent cannot Login with invalid credentials, error message is shown",
-            groups = {"Negative"})
+    @Test(description = "This TC#00007 verifies that Agent cannot Login with invalid credentials, error message is shown")
     public void testAgentCannotLoginWithInvalidCredentials() {
         ConfigurationsExtentReport.test = extent.createTest("testAgentCannotLoginWithInvalidCredentials", "This TC#00007 verifies that Agent cannot Login with invalid credentials, error message is shown");
 
@@ -121,8 +120,7 @@ public class LoginAndCall {
         loginMsg.getRequiredFields().shouldBe(visible).shouldHave(text("Authentication failed"));
     }
 
-    @Test(description = "This TC#00009 verifies that Agent can call via Keypad",
-            dependsOnMethods = "testAgentCanLogin", alwaysRun = true)
+    @Test(description = "This TC#00009 verifies that Agent can call via Keypad")
     public void testAgentCanCallViaKeypad() {
         ConfigurationsExtentReport.test = extent.createTest("testAgentCanCallViaKeypad", "This TC#00009 verifies that Agent can call via Keypad");
 

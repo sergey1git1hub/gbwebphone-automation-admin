@@ -25,6 +25,7 @@ public class ChromeDriverProvider implements WebDriverProvider {
         options.addArguments("--no-sandbox"); // desired key
         options.setExperimentalOption("prefs", chromePrefs);
         options.addArguments("--disable-save-password-bubble");
+        options.addArguments("--disable-infobars");
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
         return new ChromeDriver(capabilities);
     }

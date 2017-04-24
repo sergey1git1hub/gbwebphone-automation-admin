@@ -128,7 +128,7 @@
 
     <class name="AdminCreateDeleteAgent">
         <testcase number="TC#00010">
-            <description title="This TC#00010 verifies that Admin can create Agent">
+            <description title="This TC#00010 verifies that Admin can create a Agent">
                 <steps>
                     1. Admin login
                     2. Click adminPanel
@@ -142,7 +142,7 @@
         </testcase>
 
         <testcase number="TC#00012">
-            <description title="This TC#00012 verifies that Agent was added to DataBase">
+            <description title="This TC#00012 verifies that the Agent was added to DataBase">
                 <steps>
                     1. Request to DB
                     2. Verify fields
@@ -151,7 +151,7 @@
         </testcase>
 
         <testcase number="TC#00011">
-            <description title="This TC#00011 verifies that Admin can delete Agent">
+            <description title="This TC#00011 verifies that Admin can delete the Agent">
                 <steps>
                     1. Admin login
                     2. Click adminPanel
@@ -165,7 +165,7 @@
         </testcase>
 
         <testcase number="TC#00013">
-            <description title="This TC#00013 verifies that Agent was deleted from DataBase">
+            <description title="This TC#00013 verifies that the Agent was deleted from DataBase">
                 <steps>
                     1. Request to DB
                     2. Verify field "deleted"=true
@@ -176,7 +176,7 @@
 
     <class name="AdminCreateDeleteGroup">
         <testcase number="TC#00014">
-            <description title="This TC#00014 verifies that Admin can create Group">
+            <description title="This TC#00014 verifies that Admin can create a Group">
                 <steps>
                     1. Admin login
                     2. Click adminPanel
@@ -190,7 +190,7 @@
         </testcase>
 
         <testcase number="TC#00016">
-            <description title="This TC#00016 verifies that Agent was added to DataBase">
+            <description title="This TC#00016 verifies that the Group was added to DataBase">
                 <steps>
                     1. Request to DB
                     2. Verify fields
@@ -199,7 +199,7 @@
         </testcase>
 
         <testcase number="TC#00015">
-            <description title="This TC#00015 verifies that Admin can delete Group">
+            <description title="This TC#00015 verifies that Admin can delete the Group">
                 <steps>
                     1. Admin login
                     2. Click adminPanel
@@ -213,7 +213,7 @@
         </testcase>
 
         <testcase number="TC#00017">
-            <description title="This TC#00017 verifies that Agent was deleted from DataBase">
+            <description title="This TC#00017 verifies that the Group was deleted from DataBase">
                 <steps>
                     1. Request to DB
                     2. Verify field "deleted"=true
@@ -224,7 +224,7 @@
 
     <class name="AdminCreateDeleteQueue">
         <testcase number="TC#00018">
-            <description title="This TC#00018 verifies that Admin can create Queue">
+            <description title="This TC#00018 verifies that Admin can create a Queue">
                 <steps>
                     1. Admin login
                     2. Click adminPanel
@@ -237,7 +237,73 @@
             </description>
         </testcase>
         <testcase number="TC#00019">
-            <description title="This TC#00019 verifies that Queue was added to DataBase">
+            <description title="This TC#00019 verifies that the Queue was added to DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00020">
+            <description title="This TC#00020 verifies that Admin can delete the Queue">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click queue list
+                    4. Fill sort list of queue
+                    5. Click on the searched queue
+                    6. Click delete button
+                    7. Verify "Deleted successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00021">
+            <description title="This TC#00021 verifies that the Queue was deleted from DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+    </class>
+
+    <class name="AdminCreateDeleteDepartment">
+        <testcase number="TC#00022">
+            <description title="This TC#00022 verifies that Admin can create a Department">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click department list
+                    4. Click add button
+                    5. Fill in the General tab
+                    6. Click save button
+                    7. Verify "Saved successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00023">
+            <description title="This TC#00023 verifies that the Department was added to DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00024">
+            <description title="This TC#00024 verifies that Admin can delete the Department">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click department list
+                    4. Fill sort list of department
+                    5. Click on the searched department
+                    6. Click delete button
+                    7. Verify "Deleted successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00025">
+            <description title="This TC#00025 verifies that the Department was deleted from DataBase">
                 <steps>
                     1. Request to DB
                     2. Verify fields

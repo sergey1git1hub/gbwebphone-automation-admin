@@ -25,13 +25,13 @@ public class ConfigurationsExtentReport {
         extent = new ExtentReports();
         extent.attachReporter(html);
 
-        extent.setSystemInfo("Hostname", "SVadim");
+        extent.setSystemInfo("Hostname", "GBUKR/VShubkin");
         extent.setSystemInfo("OS", "Windows 7");
         extent.setSystemInfo("Department", "QA");
         extent.setSystemInfo("User Name", "Vadim Shubkin");
 
         html.config().setDocumentTitle("GBWebphone");
-        html.config().setReportName("GBWebphone - QA Automation testing");
+        html.config().setReportName("GBWebphone - QA Automation");
         html.config().setTestViewChartLocation(ChartLocation.TOP);
         html.config().setTheme(Theme.DARK);
     }

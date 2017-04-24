@@ -63,7 +63,8 @@ public class AdminCreateDeleteAgent {
         quitDriver();
     }
 
-    @Test(description = "This TC#00010 verifies that Admin can create Agent")
+
+    @Test(description = "This TC#00010 verifies that Admin can create a Agent")
     public void testAdminCanCreateAgent() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateAgent", "This TC#00010 verifies that Admin can create Agent");
 
@@ -84,7 +85,7 @@ public class AdminCreateDeleteAgent {
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(Condition.text("Saved successfully!"));
     }
 
-    @Test(description = "This TC#00012 verifies that Agent was added to DataBase", dependsOnMethods = "testAdminCanCreateAgent")
+    @Test(description = "This TC#00012 verifies that the Agent was added to DataBase", dependsOnMethods = "testAdminCanCreateAgent")
     public void testAgentWasAddedToDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testAgentWasAddedToDataBase", "This TC#00012 verifies that Agent was added to DataBase");
 
@@ -98,7 +99,7 @@ public class AdminCreateDeleteAgent {
                 .value("deleted").isEqualTo(false);
     }
 
-    @Test(description = "This TC#00011 verifies that Admin can delete Agent", dependsOnMethods = "testAgentWasAddedToDataBase")
+    @Test(description = "This TC#00011 verifies that Admin can delete the Agent", dependsOnMethods = "testAgentWasAddedToDataBase")
     public void testAdminCanDeleteAgent() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteAgent", "This TC#00011 verifies that Admin can delete Agent");
 
@@ -113,7 +114,7 @@ public class AdminCreateDeleteAgent {
         loginPage.getConnect().waitUntil(visible, 10000);
     }
 
-    @Test(description = "This TC#00013 verifies that Agent was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteAgent")
+    @Test(description = "This TC#00013 verifies that the Agent was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteAgent")
     public void testAgentWasDeletedFromDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testAgentWasDeletedFromDataBase", "This TC#00013 verifies that Agent was deleted from DataBase");
 
@@ -125,6 +126,14 @@ public class AdminCreateDeleteAgent {
                 .value("lastname").isEqualTo(lastName)
                 .value("email").isEqualTo(email)
                 .value("deleted").isEqualTo(true);
+    }
+
+    @Test(description = "This is the DataBaseCleaner for Agent", dependsOnMethods = "testAgentWasDeletedFromDataBase")
+    public void DataBaseCleaner() {
+        ConfigurationsExtentReport.test = extent.createTest("DataBaseCleaner", "This is the DataBaseCleaner for Agent");
+
+        Request request = new Request(ConnectionDataBase.getSource(), "DELETE FROM wbp_user WHERE id=" + id);
+        assertThat(request).equals(true);
     }
 
 }

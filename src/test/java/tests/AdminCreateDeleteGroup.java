@@ -61,7 +61,8 @@ public class AdminCreateDeleteGroup {
         quitDriver();
     }
 
-    @Test(description = "This TC#00014 verifies that Admin can create Group")
+
+    @Test(description = "This TC#00014 verifies that Admin can create a Group")
     public void testAdminCanCreateGroup() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateGroup", "This TC#00014 verifies that Admin can create Group");
 
@@ -71,7 +72,7 @@ public class AdminCreateDeleteGroup {
 
         general.getName_inpt().setValue(nameOfGroup);
         general.getTenant_slct_btn().click();
-        general.getTenant_slct().get(1).click();  //must be known
+        general.getTenants().get(1).click();  //must be known
         general.getResultCodeTimer_inpt().setValue(resultCodeTimer);
         general.getTransferToBusyUser_chbx().click();
         general.getManualCall_chbx().click();
@@ -81,7 +82,7 @@ public class AdminCreateDeleteGroup {
 
         general.getDescription_inpt().setValue(description);
         general.getInitialStatus_slct_btn().click();
-        general.getInitialStatus_slct().get(1).click();  //must be known
+        general.getInitialStatuses().get(1).click();  //must be known
         general.getArchivePeriod_inpt().setValue(archivePeriod);
         general.getOutboundCallOnFirstLineOnly_chbx().click();
         general.getConferenceCall_chbx().click();
@@ -92,7 +93,7 @@ public class AdminCreateDeleteGroup {
 
         general.getFeedbackEmail_inpt().setValue(email);
         general.getResultCodeStatus_slct_btn().click();
-        general.getResultCodeStatus_slct().get(1).click();  //must be known
+        general.getResultCodeStatuses().get(1).click();  //must be known
         general.getTransferCall_chbx().click();
         general.getChat_chbx().click();
         general.getAutoAccept_chbx().click();
@@ -106,7 +107,7 @@ public class AdminCreateDeleteGroup {
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
-    @Test(description = "This TC#00016 verifies that Agent was added to DataBase", dependsOnMethods = "testAdminCanCreateGroup")
+    @Test(description = "This TC#00016 verifies that the Group was added to DataBase", dependsOnMethods = "testAdminCanCreateGroup")
     public void testGroupWasAddedToDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testGroupWasAddedToDataBase", "This TC#00016 verifies that Agent was added to DataBase");
 
@@ -125,20 +126,29 @@ public class AdminCreateDeleteGroup {
         anyElementByText.findUpperInput(anyElementByText.NAME).setValue(nameOfGroup).pressEnter();
         anyElementByText.findCollectionByColumn(2).find(text(nameOfGroup)).click();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
-        confirmation.getYes_btn().waitUntil(visible,5000).click();
+        confirmation.getYes_btn().waitUntil(visible, 5000).click();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
         navigation.clickLogout();
         loginPage.getConnect().waitUntil(visible, 10000);
     }
 
-    @Test(description = "This TC#00017 verifies that Agent was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteGroup")
+    @Test(description = "This TC#00017 verifies that the Group was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteGroup")
     public void testGroupWasDeletedFromDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testGroupWasDeletedFromDataBase", "This TC#00017 verifies that Agent was deleted from DataBase");
 
         Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
         assertThat(request).row()
+                .value("id").isEqualTo(this.id)
                 .value("group_name").isEqualTo(nameOfGroup)
                 .value("group_description").isEqualTo(description)
                 .value("deleted").isEqualTo(true);
+    }
+
+    @Test(description = "This is the DataBaseCleaner for Group", dependsOnMethods = "testGroupWasDeletedFromDataBase")
+    public void DataBaseCleaner() {
+        ConfigurationsExtentReport.test = extent.createTest("DataBaseCleaner", "This is the DataBaseCleaner for Group");
+
+        Request request = new Request(ConnectionDataBase.getSource(), "DELETE FROM wbp_group WHERE id=" + id);
+        assertThat(request).equals(true);
     }
 }

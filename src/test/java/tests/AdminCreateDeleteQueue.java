@@ -73,7 +73,7 @@ public class AdminCreateDeleteQueue {
         quitDriver();
     }
 
-    @Test(description = "This TC#00018 verifies that Admin can create Queue", enabled = false)
+    @Test(description = "This TC#00018 verifies that Admin can create a Queue")
     public void testAdminCanCreateQueue() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateQueue", "This TC#00018 verifies that Admin can create Queue");
 
@@ -132,7 +132,7 @@ public class AdminCreateDeleteQueue {
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
-    @Test(description = "This TC#00019 verifies that Queue was added to DataBase", dependsOnMethods = "testAdminCanCreateQueue", enabled = false)
+    @Test(description = "This TC#00019 verifies that the Queue was added to DataBase", dependsOnMethods = "testAdminCanCreateQueue")
     public void testQueueWasAddedToDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testQueueWasAddedToDataBase", "This TC#00019 verifies that Queue was added to DataBase");
 
@@ -147,7 +147,7 @@ public class AdminCreateDeleteQueue {
                 .value("deleted").isEqualTo(false);
     }
 
-    @Test(description = "This TC#00020 verifies that Admin can delete the Queue", dependsOnMethods = "testQueueWasAddedToDataBase", enabled = false)
+    @Test(description = "This TC#00020 verifies that Admin can delete the Queue", dependsOnMethods = "testQueueWasAddedToDataBase")
     public void testAdminCanDeleteQueue() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteQueue", "This TC#00020 verifies that Admin can delete the Queue");
 
@@ -161,17 +161,26 @@ public class AdminCreateDeleteQueue {
         loginPage.getConnect().waitUntil(visible, 10000);
     }
 
-    @Test(description = "This TC#00021 verifies that Queue was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteQueue", enabled = false)
+    @Test(description = "This TC#00021 verifies that the Queue was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteQueue")
     public void testQueueWasDeletedFromDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testQueueWasDeletedFromDataBase", "This TC#00021 verifies that Queue was deleted from DataBase");
 
         Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
         assertThat(request).row()
+                .value("id").isEqualTo(this.id)
                 .value("queue_name").isEqualTo(name)
                 .value("queue_description").isEqualTo(description)
                 .value("announce").isEqualTo(announce)
                 .value("context").isEqualTo(context)
                 .value("member_macro").isEqualTo(memberMacro)
                 .value("deleted").isEqualTo(false);
+    }
+
+    @Test(description = "This is the DataBaseCleaner for Queue", dependsOnMethods = "testQueueWasDeletedFromDataBase")
+    public void DataBaseCleaner() {
+        ConfigurationsExtentReport.test = extent.createTest("DataBaseCleaner", "This is the DataBaseCleaner for Queue");
+
+        Request request = new Request(ConnectionDataBase.getSource(), "DELETE FROM wbp_queue WHERE id=" + id);
+        assertThat(request).equals(true);
     }
 }

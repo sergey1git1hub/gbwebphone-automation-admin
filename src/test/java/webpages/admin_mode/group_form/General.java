@@ -12,7 +12,7 @@ public class General {
     private SelenideElement name_inpt = $x(".//*[@id='groupDialogForm:tabs:groupName']");
     private SelenideElement defaultNumberPrefix_slct = $x(".//*[@id='groupDialogForm:tabs:phoneNumberPrefix']//span");
     private SelenideElement tenant_slct_btn = $x(".//*[@id='groupDialogForm:tabs:tenant_label']");
-    private ElementsCollection tenant_slct = $$x(".//*[@id='groupDialogForm:tabs:tenant_panel']//li");
+    private ElementsCollection tenants = $$x(".//*[@id='groupDialogForm:tabs:tenant_panel']//li");
     private SelenideElement resultCodeTimer_inpt = $x(".//*[@id='groupDialogForm:tabs:resultCodeTimer_input']");
     private SelenideElement transferToBusyUser_chbx = $x(".//*[@id='groupDialogForm:tabs:transferToUnavailable']/div[2]");
     private SelenideElement manualCall_chbx = $x(".//*[@id='groupDialogForm:tabs:hasManualCall']/div[2]");
@@ -23,7 +23,7 @@ public class General {
 
     private SelenideElement description_inpt = $x(".//*[@id='groupDialogForm:tabs:groupDesc']");
     private SelenideElement initialStatus_slct_btn = $x(".//*[@id='groupDialogForm:tabs:initialStatus']//span");
-    private ElementsCollection initialStatus_slct = $$x(".//*[@id='groupDialogForm:tabs:initialStatus_panel']/div/ul/li");
+    private ElementsCollection initialStatuses = $$x(".//*[@id='groupDialogForm:tabs:initialStatus_panel']/div/ul/li");
     private SelenideElement archivePeriod_inpt = $x(".//*[@id='groupDialogForm:tabs:media_archive_period_input']");
     private SelenideElement outboundCallOnFirstLineOnly_chbx = $x(".//*[@id='groupDialogForm:tabs:hasOneLineOnly']/div[2]");
     private SelenideElement conferenceCall_chbx = $x(".//*[@id='groupDialogForm:tabs:hasConferenceCall']/div[2]");
@@ -35,7 +35,7 @@ public class General {
 
     private SelenideElement feedbackEmail_inpt = $x(".//*[@id='groupDialogForm:tabs:feedbackEmail']");
     private SelenideElement resultCodeStatus_slct_btn = $x(".//*[@id='groupDialogForm:tabs:resultCodeTimerStatus']//span");
-    private ElementsCollection resultCodeStatus_slct = $$x(".//*[@id='groupDialogForm:tabs:resultCodeTimerStatus_panel']/div/ul/li");
+    private ElementsCollection resultCodeStatuses = $$x(".//*[@id='groupDialogForm:tabs:resultCodeTimerStatus_panel']/div/ul/li");
     private SelenideElement deletePeriod_inpt = $x(".//*[@id='groupDialogForm:tabs:media_delete_period_input']");
     private SelenideElement transferCall_chbx = $x(".//*[@id='groupDialogForm:tabs:hasTransferCall']/div[2]");
     private SelenideElement chat_chbx = $x(".//*[@id='groupDialogForm:tabs:hasChat']/div[2]");
@@ -59,8 +59,8 @@ public class General {
         return tenant_slct_btn;
     }
 
-    public ElementsCollection getTenant_slct() {
-        return tenant_slct;
+    public ElementsCollection getTenants() {
+        return tenants;
     }
 
     public SelenideElement getResultCodeTimer_inpt() {
@@ -99,8 +99,8 @@ public class General {
         return initialStatus_slct_btn;
     }
 
-    public ElementsCollection getInitialStatus_slct() {
-        return initialStatus_slct;
+    public ElementsCollection getInitialStatuses() {
+        return initialStatuses;
     }
 
     public SelenideElement getArchivePeriod_inpt() {
@@ -143,8 +143,8 @@ public class General {
         return resultCodeStatus_slct_btn;
     }
 
-    public ElementsCollection getResultCodeStatus_slct() {
-        return resultCodeStatus_slct;
+    public ElementsCollection getResultCodeStatuses() {
+        return resultCodeStatuses;
     }
 
     public SelenideElement getDeletePeriod_inpt() {

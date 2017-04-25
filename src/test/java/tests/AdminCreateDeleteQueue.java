@@ -73,6 +73,7 @@ public class AdminCreateDeleteQueue {
         quitDriver();
     }
 
+
     @Test(description = "This TC#00018 verifies that Admin can create a Queue")
     public void testAdminCanCreateQueue() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateQueue", "This TC#00018 verifies that Admin can create Queue");

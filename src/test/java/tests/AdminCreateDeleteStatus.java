@@ -42,19 +42,6 @@ public class AdminCreateDeleteStatus {
     private String id;
 
 
-    @BeforeTest
-    public static void setUp() {
-        ConfigurationsSelenide.configuration();
-        ConfigurationsExtentReport.startExtentReporting();
-    }
-
-    @AfterTest
-    public static void tearDown() {
-        ConfigurationsExtentReport.endExtentReporting();
-        ConfigurationsSelenide.quitDriver();
-    }
-
-
     @BeforeClass
     public void openBrowser() {
         openURL();

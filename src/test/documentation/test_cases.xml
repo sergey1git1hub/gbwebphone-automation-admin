@@ -132,7 +132,7 @@
                 <steps>
                     1. Admin login
                     2. Click adminPanel
-                    3. Click user list
+                    3. Click User list
                     4. Click add button
                     5. Fill in the General tab
                     6. Click save button
@@ -140,7 +140,6 @@
                 </steps>
             </description>
         </testcase>
-
         <testcase number="TC#00012">
             <description title="This TC#00012 verifies that the Agent was added to DataBase">
                 <steps>
@@ -149,21 +148,19 @@
                 </steps>
             </description>
         </testcase>
-
         <testcase number="TC#00011">
             <description title="This TC#00011 verifies that Admin can delete the Agent">
                 <steps>
                     1. Admin login
                     2. Click adminPanel
-                    3. Click user list
-                    4. Fill sort list of users
-                    5. Click on the searched user
+                    3. Click User list
+                    4. Fill sort list of Users
+                    5. Click on the searched User
                     6. Click delete button
                     7. Verify "Deleted successfully!" message is shown
                 </steps>
             </description>
         </testcase>
-
         <testcase number="TC#00013">
             <description title="This TC#00013 verifies that the Agent was deleted from DataBase">
                 <steps>
@@ -180,7 +177,7 @@
                 <steps>
                     1. Admin login
                     2. Click adminPanel
-                    3. Click group list
+                    3. Click Group list
                     4. Click add button
                     5. Fill in the General tab
                     6. Click save button
@@ -188,7 +185,6 @@
                 </steps>
             </description>
         </testcase>
-
         <testcase number="TC#00016">
             <description title="This TC#00016 verifies that the Group was added to DataBase">
                 <steps>
@@ -197,21 +193,19 @@
                 </steps>
             </description>
         </testcase>
-
         <testcase number="TC#00015">
             <description title="This TC#00015 verifies that Admin can delete the Group">
                 <steps>
                     1. Admin login
                     2. Click adminPanel
-                    3. Click group list
-                    4. Fill sort list of group
-                    5. Click on the searched group
+                    3. Click Group list
+                    4. Fill sort list of Group
+                    5. Click on the searched Group
                     6. Click delete button
                     7. Verify "Deleted successfully!" message is shown
                 </steps>
             </description>
         </testcase>
-
         <testcase number="TC#00017">
             <description title="This TC#00017 verifies that the Group was deleted from DataBase">
                 <steps>
@@ -228,7 +222,7 @@
                 <steps>
                     1. Admin login
                     2. Click adminPanel
-                    3. Click queue list
+                    3. Click Queue list
                     4. Click add button
                     5. Fill in the General tab
                     6. Click save button
@@ -249,9 +243,9 @@
                 <steps>
                     1. Admin login
                     2. Click adminPanel
-                    3. Click queue list
-                    4. Fill sort list of queue
-                    5. Click on the searched queue
+                    3. Click Queue list
+                    4. Fill sort list of Queue
+                    5. Click on the searched Queue
                     6. Click delete button
                     7. Verify "Deleted successfully!" message is shown
                 </steps>
@@ -273,9 +267,9 @@
                 <steps>
                     1. Admin login
                     2. Click adminPanel
-                    3. Click department list
+                    3. Click Department list
                     4. Click add button
-                    5. Fill in the General tab
+                    5. Fill in the form
                     6. Click save button
                     7. Verify "Saved successfully!" message is shown
                 </steps>
@@ -294,9 +288,9 @@
                 <steps>
                     1. Admin login
                     2. Click adminPanel
-                    3. Click department list
-                    4. Fill sort list of department
-                    5. Click on the searched department
+                    3. Click Department list
+                    4. Fill sort list of Department
+                    5. Click on the searched Department
                     6. Click delete button
                     7. Verify "Deleted successfully!" message is shown
                 </steps>
@@ -304,6 +298,96 @@
         </testcase>
         <testcase number="TC#00025">
             <description title="This TC#00025 verifies that the Department was deleted from DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+    </class>
+
+    <class name="AdminCreateDeletePrefix">
+        <testcase number="TC#00026">
+            <description title="This TC#00026 verifies that Admin can create a Prefix">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click Prefix list
+                    4. Click add button
+                    5. Fill in the General tab
+                    6. Click save button
+                    7. Verify "Saved successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00027">
+            <description title="This TC#00027 verifies that the Prefix was added to DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00028">
+            <description title="This TC#00028 verifies that Admin can delete the Prefix">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click Prefix list
+                    4. Fill sort list of Prefix
+                    5. Click on the searched Prefix
+                    6. Click delete button
+                    7. Verify "Deleted successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00029">
+            <description title="This TC#00029 verifies that the Prefix was deleted from DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+    </class>
+
+    <class name="AdminCreateDeletePrefix">
+        <testcase number="TC#00030">
+            <description title="This TC#00030 verifies that Admin can create a Status">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click Status list
+                    4. Click add button
+                    5. Fill in the General tab
+                    6. Click save button
+                    7. Verify "Saved successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00031">
+            <description title="This TC#00031 verifies that the Status was added to DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00032">
+            <description title="This TC#00032 verifies that Admin can delete the Status">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click Status list
+                    4. Fill sort list of Status
+                    5. Click on the searched Status
+                    6. Click delete button
+                    7. Verify "Deleted successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00033">
+            <description title="This TC#00033 verifies that the Status was deleted from DataBase">
                 <steps>
                     1. Request to DB
                     2. Verify fields

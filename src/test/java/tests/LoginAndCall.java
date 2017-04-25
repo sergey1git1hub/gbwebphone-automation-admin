@@ -88,7 +88,7 @@ public class LoginAndCall {
     }
 
     @Test(description = "This TC#00004 verifies that Agent can call",
-            dependsOnMethods = "testAgentCanLogin", alwaysRun = true, enabled = false)  //todo switch ON after fix of Statuses
+            dependsOnMethods = "testAgentCanLogin", alwaysRun = true)
     public void testAgentCanCall() {
         ConfigurationsExtentReport.test = extent.createTest("testAgentCanCall", "This TC#00004 verifies that Agent can call");
 
@@ -100,13 +100,13 @@ public class LoginAndCall {
         status.setPhoneNumber("94629");
         call.clickCall();
         call.getCall_btn().waitUntil(disabled, 5000);
-        call.getCall_btn().shouldBe(disabled);
-        status.getCallStatus().shouldHave(text("Ringing"));
-        status.getStatusDuration().waitUntil(exactText("(00:00:10)"), 15000);
+//        call.getCall_btn().shouldBe(disabled);
+        status.getCallStatus().waitUntil(text("Registered"), 60000);
+        status.getStatusDuration().waitUntil(text("(00:00:30)"), 15000);
         call.clickHangup();
         call.getHangup_btn().waitUntil(disabled, 5000);
         status.getStatus_btnText().waitUntil(text("Wrapup"), 10000);
-        status.getStatusDuration().waitUntil(exactText("(00:00:10)"), 15000);
+        status.getStatusDuration().waitUntil(text("(00:00:30)"), 15000);
         controls.clickPower();
         loginPage.getConnect().waitUntil(visible, 10000);
     }

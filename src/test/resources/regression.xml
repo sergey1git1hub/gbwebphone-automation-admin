@@ -8,6 +8,7 @@
             <class name="tests.AdminCreateDeleteAgent"/>
             <class name="tests.AdminCreateDeleteGroup"/>
             <!--<class name="tests.AdminCreateDeleteQueue"/>-->
+            <class name="tests.AdminCreateDeletePrefix"/>
         </classes>
 
     </test>

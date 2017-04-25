@@ -32,7 +32,7 @@ public class AdminCreateDeleteGroup {
     private General general = new General();
     private GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
     private AdminMode adminMode = new AdminMode();
-    private AnyElementInListGrid anyElementByText = new AnyElementInListGrid();
+    private AnyElementInListGrid anyElementInListGrid = new AnyElementInListGrid();
     private Confirmation confirmation = new Confirmation();
     private LoginPage loginPage = new LoginPage();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
@@ -123,8 +123,8 @@ public class AdminCreateDeleteGroup {
     public void testAdminCanDeleteGroup() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteGroup", "This TC#00015 verifies that Admin can delete the Group");
 
-        anyElementByText.findUpperInput(anyElementByText.NAME).setValue(nameOfGroup).pressEnter();
-        anyElementByText.findCollectionByColumn(2).find(text(nameOfGroup)).click();
+        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfGroup).pressEnter();
+        anyElementInListGrid.findCollectionByColumn(2).find(text(nameOfGroup)).click();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));

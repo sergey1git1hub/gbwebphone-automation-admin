@@ -36,12 +36,12 @@ public class AdminCreateDeleteQueue {
     private General general = new General();
     private GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
     private AdminMode adminMode = new AdminMode();
-    private AnyElementInListGrid anyElementByText = new AnyElementInListGrid();
+    private AnyElementInListGrid anyElementInListGrid = new AnyElementInListGrid();
     private Confirmation confirmation = new Confirmation();
     private LoginPage loginPage = new LoginPage();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
 
-    private SelenideElement attention = $x("//span[text()='Attention']");
+    private SelenideElement attention = $x(".//span[text()='Attention']");
     private SelenideElement attentionMessage = $x(".//*[@id='queueDialogForm:queueDialogTabView:j_idt117']/div[2]");
     private SelenideElement attentionClose = $x(".//*[@id='queueDialogForm:queueDialogTabView:j_idt117']/div[1]/a");
     private String attentionMessageText = "After changing 'Strategy' field you have to contact your system administrator to reboot server for the changes to take effect.";
@@ -151,8 +151,8 @@ public class AdminCreateDeleteQueue {
     public void testAdminCanDeleteQueue() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteQueue", "This TC#00020 verifies that Admin can delete the Queue");
 
-        anyElementByText.findUpperInput(anyElementByText.NAME).setValue(name).pressEnter();
-        anyElementByText.findCollectionByColumn(2).find(text(name)).click();
+        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(name).pressEnter();
+        anyElementInListGrid.findCollectionByColumn(2).find(text(name)).click();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
         Selenide.sleep(3000);
         confirmation.getYes_btn().waitUntil(visible, 5000).click();

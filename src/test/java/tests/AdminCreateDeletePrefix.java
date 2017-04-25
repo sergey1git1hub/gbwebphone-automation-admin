@@ -1,12 +1,10 @@
 package tests;
 
 
+import com.automation.remarks.testng.VideoListener;
 import org.assertj.db.type.Request;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
@@ -28,6 +26,7 @@ import static utils.ConfigurationsExtentReport.extent;
 import static utils.ConfigurationsSelenide.openURL;
 import static utils.ConfigurationsSelenide.quitDriver;
 
+@Listeners(VideoListener.class)
 public class AdminCreateDeletePrefix {
 
     private Navigation navigation = new Navigation();

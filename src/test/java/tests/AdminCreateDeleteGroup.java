@@ -144,11 +144,4 @@ public class AdminCreateDeleteGroup {
                 .value("deleted").isEqualTo(true);
     }
 
-    @Test(description = "This is the DataBaseCleaner for Group", dependsOnMethods = "testGroupWasDeletedFromDataBase")
-    public void DataBaseCleaner() {
-        ConfigurationsExtentReport.test = extent.createTest("DataBaseCleaner", "This is the DataBaseCleaner for Group");
-
-        Request request = new Request(ConnectionDataBase.getSource(), "DELETE FROM wbp_group WHERE id=" + id);
-        assertThat(request).equals(true);
-    }
 }

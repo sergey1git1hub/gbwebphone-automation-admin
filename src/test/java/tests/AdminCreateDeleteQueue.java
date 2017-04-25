@@ -176,11 +176,4 @@ public class AdminCreateDeleteQueue {
                 .value("deleted").isEqualTo(false);
     }
 
-    @Test(description = "This is the DataBaseCleaner for Queue", dependsOnMethods = "testQueueWasDeletedFromDataBase")
-    public void DataBaseCleaner() {
-        ConfigurationsExtentReport.test = extent.createTest("DataBaseCleaner", "This is the DataBaseCleaner for Queue");
-
-        Request request = new Request(ConnectionDataBase.getSource(), "DELETE FROM wbp_queue WHERE id=" + id);
-        assertThat(request).equals(true);
-    }
 }

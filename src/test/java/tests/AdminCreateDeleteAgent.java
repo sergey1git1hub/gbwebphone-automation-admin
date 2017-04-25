@@ -128,12 +128,4 @@ public class AdminCreateDeleteAgent {
                 .value("deleted").isEqualTo(true);
     }
 
-    @Test(description = "This is the DataBaseCleaner for Agent", dependsOnMethods = "testAgentWasDeletedFromDataBase")
-    public void DataBaseCleaner() {
-        ConfigurationsExtentReport.test = extent.createTest("DataBaseCleaner", "This is the DataBaseCleaner for Agent");
-
-        Request request = new Request(ConnectionDataBase.getSource(), "DELETE FROM wbp_user WHERE id=" + id);
-        assertThat(request).equals(true);
-    }
-
 }

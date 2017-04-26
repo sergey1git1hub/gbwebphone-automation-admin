@@ -22,6 +22,7 @@ import java.io.IOException;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.$x;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
@@ -129,7 +130,7 @@ public class AdminCreateDeleteQueue {
         general.getLeaveWhenEmpty().first().click();  //must be known
 
         globalButtonsInsideForm.getSaveFooter_btn().click();
-
+//
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
@@ -156,7 +157,8 @@ public class AdminCreateDeleteQueue {
         anyElementInListGrid.findCollectionByColumn(2).find(text(name)).click();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
         Selenide.sleep(3000);
-        confirmation.getYes_btn().waitUntil(visible, 5000).click();
+//        confirmation.getYes_btn().waitUntil(visible, 5000).click();  //todo Duplicate of Element in HTML #5596
+        $$("#queueDialogForm\\3a btn_delete_yes").get(2).click();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
         navigation.clickLogout();
         loginPage.getConnect().waitUntil(visible, 10000);
@@ -174,7 +176,7 @@ public class AdminCreateDeleteQueue {
                 .value("announce").isEqualTo(announce)
                 .value("context").isEqualTo(context)
                 .value("member_macro").isEqualTo(memberMacro)
-                .value("deleted").isEqualTo(false);
+                .value("deleted").isEqualTo(true);
     }
 
 }

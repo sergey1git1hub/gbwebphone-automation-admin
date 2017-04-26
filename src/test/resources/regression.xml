@@ -7,7 +7,7 @@
             <class name="configs.BrowserConfig"/>
             <class name="tests.AdminCreateDeleteAgent"/>
             <class name="tests.AdminCreateDeleteGroup"/>
-            <!--<class name="tests.AdminCreateDeleteQueue"/>-->
+            <class name="tests.AdminCreateDeleteQueue"/>
             <class name="tests.AdminCreateDeletePrefix"/>
             <class name="tests.AdminCreateDeleteStatus"/>
         </classes>

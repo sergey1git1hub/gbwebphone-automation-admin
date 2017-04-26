@@ -396,4 +396,49 @@
         </testcase>
     </class>
 
+    <class name="AdminCreateDeleteNumber">
+        <testcase number="TC#00034">
+            <description title="This TC#00034 verifies that Admin can create a Number">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click Number list
+                    4. Click add button
+                    5. Fill in the General tab
+                    6. Click save button
+                    7. Verify "Saved successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00035">
+            <description title="This TC#00035 verifies that the Number was added to DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00036">
+            <description title="This TC#00036 verifies that Admin can delete the Number">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click Number list
+                    4. Fill sort list of Number
+                    5. Click on the searched Number
+                    6. Click delete button
+                    7. Verify "Deleted successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00037">
+            <description title="This TC#00037 verifies that the Number was deleted from DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+    </class>
+
 </suit>

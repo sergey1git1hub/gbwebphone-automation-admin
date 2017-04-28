@@ -12,7 +12,7 @@
         <!--Dependencies Version-->
         <selenium.version>3.4.0</selenium.version>
         <testng.version>6.11</testng.version>
-        <selenide.version>4.4.2</selenide.version>
+        <selenide.version>4.4.3</selenide.version>
         <webdrivermanager.version>1.6.2</webdrivermanager.version>
         <video-recorder-testng.version>LATEST</video-recorder-testng.version>
         <mssql-jdbc.version>6.1.0.jre8</mssql-jdbc.version>
@@ -61,11 +61,6 @@
             <artifactId>mssql-jdbc</artifactId>
             <version>${mssql-jdbc.version}</version>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>ru.yandex.qatools.allure</groupId>-->
-        <!--<artifactId>allure-testng-adaptor</artifactId>-->
-        <!--<version>1.5.2</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>

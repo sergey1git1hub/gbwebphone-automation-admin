@@ -25,6 +25,7 @@ import static utils.ConfigurationsExtentReport.extent;
 import static utils.ConfigurationsSelenide.openURL;
 import static utils.ConfigurationsSelenide.quitDriver;
 
+
 @Listeners(VideoListener.class)
 public class AdminCreateDeleteNumber {
 
@@ -62,7 +63,7 @@ public class AdminCreateDeleteNumber {
     }
 
 
-    @Test(description = "This TC#00034 verifies that Admin can create a Number")
+    @Test(description = "This TC#00034 verifies that Admin can create a Number")  //todo needs global fix
     public void testAdminCanCreateNumber() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateNumber", "This TC#00034 verifies that Admin can create a Number");
 
@@ -71,15 +72,16 @@ public class AdminCreateDeleteNumber {
         globalButtonsAddAndCountInLists.getAdd_btn().click();
 
         general.getName_inpt().setValue(nameOfNumber);
+//        general.getName_inpt().sendKeys(nameOfNumber);
         general.getNumber_inpt().setValue(number);
-        general.getType_slct_btn().click();
-        general.getTypes().get(0).click();  //must be known
-        general.getContext_inpt().setValue(context);
-        general.getApplication_slct_btn().click();
-        general.getApplications().get(2).click();  //must be known
-        general.getTenant_slct_btn().click();
-        general.getTenants().get(2).click();  //must be known
-        general.getEnabled_chbx().click();
+//        general.getType_slct_btn().click();
+//        general.getTypes().get(0).click();  //must be known
+//        general.getContext_inpt().setValue(context);
+//        general.getApplication_slct_btn().click();
+//        general.getApplications().get(2).click();  //must be known
+//        general.getTenant_slct_btn().click();
+//        general.getTenants().get(2).click();  //must be known
+//        general.getEnabled_chbx().click();
         general.getParameters_inpt().setValue(parameters);  //todo change position after fix #5625
 
         globalButtonsInsideForm.getSaveFooter_btn().click();
@@ -103,7 +105,7 @@ public class AdminCreateDeleteNumber {
     public void testAdminCanDeleteNumber() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteNumber", "This TC#00036 verifies that Admin can delete the Number");
 
-        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfNumber).pressEnter();
+        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).waitUntil(visible, 5000).setValue(nameOfNumber).pressEnter();
         anyElementInListGrid.findCollectionByColumn(1).find(text(nameOfNumber)).click();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
         confirmation.getYes_btn().waitUntil(visible, 5000).click();

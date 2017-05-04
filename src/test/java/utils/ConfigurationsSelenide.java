@@ -21,6 +21,7 @@ public class ConfigurationsSelenide {
         Configuration.browser = ChromeDriverProvider.class.getName();
         Configuration.reportsFolder = "build/reports/screenshots";
         Configuration.timeout = 15000;
+        Configuration.pageLoadStrategy = "normal";
         VideoRecorder.conf()
                 .withVideoFolder("build/reports/video")
                 .withRecordMode(RecordingMode.ALL)

@@ -49,10 +49,11 @@ public class General {
 
     private SelenideElement joinEmpty_slct_btn = $("[id$='joinEmpty'] span");
     private ElementsCollection joinEmpty = $$("[id$='joinEmpty_panel'] label"); //by name
+    private SelenideElement close_joinEmpty_btn = $("#queueDialogForm\\3a queueDialogTabView\\3a joinEmpty_panel a > span");
 
-    private SelenideElement leaveWhenEmpty_slct_btn = $("[id$='leaveWhenEmpty'] span");
-    private ElementsCollection leaveWhenEmpty = $$("[id$='leaveWhenEmpty_panel'] label"); //by name
-
+    private SelenideElement leaveWhenEmpty_slct_btn = $("#queueDialogForm\\3a queueDialogTabView\\3a leaveWhenEmpty span");
+    private ElementsCollection leaveWhenEmpty = $$("#queueDialogForm\\3a queueDialogTabView\\3a leaveWhenEmpty_panel label"); //by name
+    private SelenideElement close_leaveWhenEmpty_btn = $("#queueDialogForm\\3a queueDialogTabView\\3a leaveWhenEmpty_panel  a > span");
 
     //getters
     public SelenideElement getName_inpt() {
@@ -201,5 +202,13 @@ public class General {
 
     public ElementsCollection getLeaveWhenEmpty() {
         return leaveWhenEmpty;
+    }
+
+    public SelenideElement getClose_joinEmpty_btn() {
+        return close_joinEmpty_btn;
+    }
+
+    public SelenideElement getClose_leaveWhenEmpty_btn() {
+        return close_leaveWhenEmpty_btn;
     }
 }

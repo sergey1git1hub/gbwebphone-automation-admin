@@ -126,8 +126,10 @@ public class AdminCreateDeleteQueue {
         general.getResultCodeStatus().first().click();  //must be known
         general.getJoinEmpty_slct_btn().click();
         general.getJoinEmpty().first().click();  //must be known
+        general.getClose_joinEmpty_btn().click();
         general.getLeaveWhenEmpty_slct_btn().click();
         general.getLeaveWhenEmpty().first().click();  //must be known
+        general.getClose_leaveWhenEmpty_btn().click();  //must be known
 
         globalButtonsInsideForm.getSaveFooter_btn().click();
 //

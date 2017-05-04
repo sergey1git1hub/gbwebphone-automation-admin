@@ -2,8 +2,11 @@ package tests;
 
 
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.ConfigurationsExtentReport;
+import utils.ConfigurationsSelenide;
 import utils.UserData;
 import webpages.admin_mode.navigation.Navigation;
 import webpages.agent_mode.Controls;
@@ -29,6 +32,11 @@ public class LookingForBrokenLoginCase {
     private Controls controls = new Controls();
     private Status status = new Status();
 
+    @BeforeClass
+    public void set() {
+        ConfigurationsSelenide.configuration();
+        ConfigurationsExtentReport.startExtentReporting();
+    }
 
     @BeforeMethod
     public void openBrowser() {
@@ -40,8 +48,7 @@ public class LookingForBrokenLoginCase {
         closeDriver();
     }
 
-    @Test(description = "This TC#00001 uses loop (100 times) login for admin to verify there is no broken page (according to the issue #5154).",
-            enabled = false)
+    @Test(description = "This TC#00001 uses loop (100 times) login for admin to verify there is no broken page (according to the issue #5154).")
     public void testLoopLoginAsAdmin() {
         for (int i = 1; i < 100; i++) {
             loginPage.getPassword().waitUntil(visible, 10000);
@@ -49,6 +56,7 @@ public class LookingForBrokenLoginCase {
             loginPage.setUserData(userData.getUsernameAdminValid(), userData.getPasswordAdminValid());
             loginPage.getConnect().shouldBe(visible).click();
             selectModePage.getAdministratorPanelButton().shouldBe(visible).click();
+            navigation.getLogout().shouldBe(visible).hover().click();
             navigation.getLogout().shouldBe(visible).hover().click();
         }
     }

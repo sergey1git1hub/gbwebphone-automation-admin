@@ -441,4 +441,49 @@
         </testcase>
     </class>
 
+    <class name="AdminCreateDeleteResultCode">
+        <testcase number="TC#00038">
+            <description title="This TC#00038 verifies that Admin can create a ResultCode">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click ResultCode
+                    4. Click add button
+                    5. Fill in the General tab
+                    6. Click save button
+                    7. Verify "Saved successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00039">
+            <description title="This TC#00039 verifies that the ResultCode was added to DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00040">
+            <description title="This TC#00040 verifies that Admin can delete the ResultCode">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click ResultCode
+                    4. Fill sort list of ResultCode
+                    5. Click on the searched ResultCode
+                    6. Click delete button
+                    7. Verify "Deleted successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00041">
+            <description title="This TC#00041 verifies that the ResultCode was deleted from DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+    </class>
+
 </suit>

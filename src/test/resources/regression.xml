@@ -5,16 +5,16 @@
 
         <classes>
             <!--GlobalConfigs-->
-            <class name="configs.BrowserConfig"/>
+            <class name="configs.HighTierTestNGConfigForAdmin"/>
 
             <!--Tests-->
             <class name="tests.AdminCreateDeleteAgent"/>
             <class name="tests.AdminCreateDeleteGroup"/>
-            <class name="tests.AdminCreateDeleteQueue"/>
+            <!--<class name="tests.AdminCreateDeleteQueue"/>-->
             <class name="tests.AdminCreateDeleteDepartment"/>
             <class name="tests.AdminCreateDeletePrefix"/>
             <class name="tests.AdminCreateDeleteStatus"/>
-            <!--<class name="tests.AdminCreateDeleteNumber"/>-->
+            <class name="tests.AdminCreateDeleteNumber"/>
             <class name="tests.AdminCreateDeleteResultCode"/>
         </classes>
 

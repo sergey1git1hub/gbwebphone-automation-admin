@@ -2,6 +2,7 @@ package tests;
 
 import com.automation.remarks.testng.VideoListener;
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
@@ -22,8 +23,10 @@ import java.io.IOException;
 
 import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
+import static utils.ConfigurationsExtentReport.getResult;
 import static utils.ConfigurationsSelenide.openURL;
 import static utils.ConfigurationsSelenide.quitDriver;
 
@@ -51,8 +54,8 @@ public class AdminCreateDeleteAgent {
 
 
     @BeforeClass
-    public void openBrowser() {
-        openURL();
+    public void refresh() {
+        getWebDriver().navigate().refresh();
     }
 
     @AfterMethod
@@ -60,7 +63,7 @@ public class AdminCreateDeleteAgent {
         ConfigurationsExtentReport.getResult(result);
     }
 
-    @AfterClass
+//    @AfterClass
     public void closeBrowser() {
         quitDriver();
     }
@@ -70,7 +73,7 @@ public class AdminCreateDeleteAgent {
     public void testAdminCanCreateAgent() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateAgent", "This TC#00010 verifies that Admin can create Agent");
 
-        adminPage.getAdminPage();
+//        adminPage.getAdminPage();
         navigation.clickUserList();
         globalButtonsAddAndCountInLists.getAdd_btn().click();
         anyFormAndTab.findTab(anyFormAndTab.GENERAL).click();
@@ -112,8 +115,8 @@ public class AdminCreateDeleteAgent {
         globalButtonsInsideForm.getDeleteFooter_btn().click();
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(Condition.text("Deleted successfully!"));
-        navigation.clickLogout();
-        loginPage.getConnect().waitUntil(visible, 10000);
+//        navigation.clickLogout();
+//        loginPage.getConnect().waitUntil(visible, 10000);
     }
 
     @Test(description = "This TC#00013 verifies that the Agent was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteAgent")

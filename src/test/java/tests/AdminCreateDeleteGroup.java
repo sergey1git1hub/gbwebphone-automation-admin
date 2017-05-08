@@ -21,6 +21,7 @@ import java.io.IOException;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
 import static utils.ConfigurationsSelenide.openURL;
@@ -49,8 +50,8 @@ public class AdminCreateDeleteGroup {
 
 
     @BeforeClass
-    public void openBrowser() {
-        openURL();
+    public void refresh() {
+        getWebDriver().navigate().refresh();
     }
 
     @AfterMethod
@@ -58,7 +59,7 @@ public class AdminCreateDeleteGroup {
         ConfigurationsExtentReport.getResult(result);
     }
 
-    @AfterClass
+//    @AfterClass
     public void closeBrowser() {
         quitDriver();
     }
@@ -68,7 +69,7 @@ public class AdminCreateDeleteGroup {
     public void testAdminCanCreateGroup() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateGroup", "This TC#00014 verifies that Admin can create Group");
 
-        adminPage.getAdminPage();
+//        adminPage.getAdminPage();
         navigation.clickGroupList();
         globalButtonsAddAndCountInLists.getAdd_btn().click();
 
@@ -130,8 +131,8 @@ public class AdminCreateDeleteGroup {
         globalButtonsInsideForm.getDeleteFooter_btn().click();
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
-        navigation.clickLogout();
-        loginPage.getConnect().waitUntil(visible, 10000);
+//        navigation.clickLogout();
+//        loginPage.getConnect().waitUntil(visible, 10000);
     }
 
     @Test(description = "This TC#00017 verifies that the Group was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteGroup")

@@ -21,6 +21,7 @@ import java.io.IOException;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
 import static utils.ConfigurationsSelenide.openURL;
@@ -46,8 +47,8 @@ public class AdminCreateDeletePrefix {
 
 
     @BeforeClass
-    public void openBrowser() {
-        openURL();
+    public void refresh() {
+        getWebDriver().navigate().refresh();
     }
 
     @AfterMethod
@@ -55,7 +56,7 @@ public class AdminCreateDeletePrefix {
         ConfigurationsExtentReport.getResult(result);
     }
 
-    @AfterClass
+//    @AfterClass
     public void closeBrowser() {
         quitDriver();
     }
@@ -65,7 +66,7 @@ public class AdminCreateDeletePrefix {
     public void testAdminCanCreatePrefix() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreatePrefix", "This TC#00026 verifies that Admin can create a Prefix");
 
-        adminPage.getAdminPage();
+//        adminPage.getAdminPage();
         navigation.clickPrefixList();
         globalButtonsAddAndCountInLists.getAdd_btn().click();
 
@@ -99,8 +100,8 @@ public class AdminCreateDeletePrefix {
         globalButtonsInsideForm.getDeleteFooter_btn().click();
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
-        navigation.clickLogout();
-        loginPage.getConnect().waitUntil(visible, 10000);
+//        navigation.clickLogout();
+//        loginPage.getConnect().waitUntil(visible, 10000);
     }
 
     @Test(description = "This TC#00029 verifies that the Prefix was deleted from DataBase", dependsOnMethods = "testAdminCanDeletePrefix")

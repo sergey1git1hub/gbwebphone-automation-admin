@@ -20,6 +20,7 @@ import java.io.IOException;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
 import static utils.ConfigurationsSelenide.openURL;
@@ -44,8 +45,8 @@ public class AdminCreateDeleteStatus {
 
 
     @BeforeClass
-    public void openBrowser() {
-        openURL();
+    public void refresh() {
+        getWebDriver().navigate().refresh();
     }
 
     @AfterMethod
@@ -53,7 +54,7 @@ public class AdminCreateDeleteStatus {
         ConfigurationsExtentReport.getResult(result);
     }
 
-    @AfterClass
+    //    @AfterClass
     public void closeBrowser() {
         quitDriver();
     }
@@ -63,7 +64,7 @@ public class AdminCreateDeleteStatus {
     public void testAdminCanCreateStatus() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateStatus", "This TC#00030 verifies that Admin can create a Status");
 
-        adminPage.getAdminPage();
+//        adminPage.getAdminPage();
         navigation.clickStatusList();
         globalButtonsAddAndCountInLists.getAdd_btn().click();
 
@@ -99,8 +100,8 @@ public class AdminCreateDeleteStatus {
         globalButtonsInsideForm.getDeleteFooter_btn().click();
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
-        navigation.clickLogout();
-        loginPage.getConnect().waitUntil(visible, 10000);
+//        navigation.clickLogout();
+//        loginPage.getConnect().waitUntil(visible, 10000);
     }
 
     @Test(description = "This TC#00033 verifies that the Status was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteStatus")

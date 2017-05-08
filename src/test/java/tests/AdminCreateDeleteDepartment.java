@@ -20,6 +20,7 @@ import java.io.IOException;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
 import static utils.ConfigurationsSelenide.openURL;
@@ -45,8 +46,8 @@ public class AdminCreateDeleteDepartment {
 
 
     @BeforeClass
-    public void openBrowser() {
-        openURL();
+    public void refresh() {
+        getWebDriver().navigate().refresh();
     }
 
     @AfterMethod
@@ -54,7 +55,7 @@ public class AdminCreateDeleteDepartment {
         ConfigurationsExtentReport.getResult(result);
     }
 
-    @AfterClass
+//    @AfterClass
     public void closeBrowser() {
         quitDriver();
     }
@@ -64,7 +65,7 @@ public class AdminCreateDeleteDepartment {
     public void testAdminCanCreateDepartment() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateDepartment", "This TC#00022 verifies that Admin can create a Department");
 
-        adminPage.getAdminPage();
+//        adminPage.getAdminPage();
         navigation.clickDepartmentList();
         globalButtonsAddAndCountInLists.getAdd_btn().click();
 
@@ -100,8 +101,8 @@ public class AdminCreateDeleteDepartment {
         globalButtonsInsideForm.getDeleteFooter_btn().click();
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
-        navigation.clickLogout();
-        loginPage.getConnect().waitUntil(visible, 10000);
+//        navigation.clickLogout();
+//        loginPage.getConnect().waitUntil(visible, 10000);
     }
 
     @Test(description = "This TC#00025 verifies that the Department was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteDepartment")

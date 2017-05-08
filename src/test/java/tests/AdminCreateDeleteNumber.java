@@ -1,11 +1,14 @@
 package tests;
 
 import com.automation.remarks.testng.VideoListener;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
+import utils.ConfigurationsSelenide;
 import utils.ConnectionDataBase;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
@@ -18,8 +21,11 @@ import webpages.login.LoginPage;
 
 import java.io.IOException;
 
+import static com.codeborne.selenide.Condition.disappear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
 import static utils.ConfigurationsSelenide.openURL;
@@ -48,8 +54,8 @@ public class AdminCreateDeleteNumber {
 
 
     @BeforeClass
-    public void openBrowser() {
-        openURL();
+    public void refresh() {
+        getWebDriver().navigate().refresh();
     }
 
     @AfterMethod
@@ -57,32 +63,31 @@ public class AdminCreateDeleteNumber {
         ConfigurationsExtentReport.getResult(result);
     }
 
-    @AfterClass
+    //    @AfterClass
     public void closeBrowser() {
         quitDriver();
     }
 
 
-    @Test(description = "This TC#00034 verifies that Admin can create a Number")  //todo needs global fix
+    @Test(description = "This TC#00034 verifies that Admin can create a Number")
     public void testAdminCanCreateNumber() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateNumber", "This TC#00034 verifies that Admin can create a Number");
 
-        adminPage.getAdminPage();
+//        adminPage.getAdminPage();
         navigation.clickNumberList();
         globalButtonsAddAndCountInLists.getAdd_btn().click();
 
-        general.getName_inpt().setValue(nameOfNumber);
-//        general.getName_inpt().sendKeys(nameOfNumber);
-        general.getNumber_inpt().setValue(number);
+//        general.getEnabled_chbx().click();
+//        general.getTenant_slct_btn().click();
+//        general.getTenants().get(4).hover().click();  //must be known
+//        general.getApplication_slct_btn().click();
+//        general.getApplications().get(4).hover().click();  //must be known
+        general.getParameters_inpt().setValue(parameters);
+//        general.getContext_inpt().setValue(context);
 //        general.getType_slct_btn().click();
 //        general.getTypes().get(0).click();  //must be known
-//        general.getContext_inpt().setValue(context);
-//        general.getApplication_slct_btn().click();
-//        general.getApplications().get(2).click();  //must be known
-//        general.getTenant_slct_btn().click();
-//        general.getTenants().get(2).click();  //must be known
-//        general.getEnabled_chbx().click();
-        general.getParameters_inpt().setValue(parameters);  //todo change position after fix #5625
+        general.getNumber_inpt().setValue(number);
+        general.getName_inpt().setValue(nameOfNumber);
 
         globalButtonsInsideForm.getSaveFooter_btn().click();
 
@@ -105,13 +110,14 @@ public class AdminCreateDeleteNumber {
     public void testAdminCanDeleteNumber() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteNumber", "This TC#00036 verifies that Admin can delete the Number");
 
+        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).waitUntil(visible, 5000).setValue(nameOfNumber).pressEnter();  //strange behave on UI
         anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).waitUntil(visible, 5000).setValue(nameOfNumber).pressEnter();
         anyElementInListGrid.findCollectionByColumn(1).find(text(nameOfNumber)).click();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
-        navigation.clickLogout();
-        loginPage.getConnect().waitUntil(visible, 10000);
+//        navigation.clickLogout();
+//        loginPage.getConnect().waitUntil(visible, 10000);
     }
 
     @Test(description = "This TC#00037 verifies that the Number was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteNumber")
@@ -120,6 +126,7 @@ public class AdminCreateDeleteNumber {
 
         Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
         assertThat(request).row()
+                .value("id").isEqualTo(this.id)
                 .value("number_name").isEqualTo(nameOfNumber)
                 .value("number_digits").isEqualTo(number)
                 .value("deleted").isEqualTo(true);

@@ -24,6 +24,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
 import static utils.ConfigurationsSelenide.openURL;
@@ -60,8 +61,8 @@ public class AdminCreateDeleteQueue {
 
 
     @BeforeClass
-    public void openBrowser() {
-        openURL();
+    public void refresh() {
+        getWebDriver().navigate().refresh();
     }
 
     @AfterMethod
@@ -69,7 +70,7 @@ public class AdminCreateDeleteQueue {
         ConfigurationsExtentReport.getResult(result);
     }
 
-    @AfterClass
+//    @AfterClass
     public void closeBrowser() {
         quitDriver();
     }
@@ -79,7 +80,7 @@ public class AdminCreateDeleteQueue {
     public void testAdminCanCreateQueue() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateQueue", "This TC#00018 verifies that Admin can create Queue");
 
-        adminPage.getAdminPage();
+//        adminPage.getAdminPage();
         navigation.clickQueueList();
         globalButtonsAddAndCountInLists.getAdd_btn().click();
 
@@ -162,8 +163,8 @@ public class AdminCreateDeleteQueue {
 //        confirmation.getYes_btn().waitUntil(visible, 5000).click();  //todo Duplicate of Element in HTML #5596
         $$("#queueDialogForm\\3a btn_delete_yes").get(2).click();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
-        navigation.clickLogout();
-        loginPage.getConnect().waitUntil(visible, 10000);
+//        navigation.clickLogout();
+//        loginPage.getConnect().waitUntil(visible, 10000);
     }
 
     @Test(description = "This TC#00021 verifies that the Queue was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteQueue")

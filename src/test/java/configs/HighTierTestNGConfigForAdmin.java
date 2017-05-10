@@ -2,10 +2,12 @@ package configs;
 
 
 import com.codeborne.selenide.testng.GlobalTextReport;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 import utils.ConfigurationsExtentReport;
 import utils.ConfigurationsSelenide;
-import webpages.admin_mode.navigation.Navigation;
 
 @Test
 @Listeners(GlobalTextReport.class)
@@ -21,11 +23,8 @@ public class HighTierTestNGConfigForAdmin {
 
     @AfterTest
     public static void tearDown() {
-//        Navigation navigation = new Navigation();
-//        navigation.clickLogout();
         ConfigurationsExtentReport.endExtentReporting();
         ConfigurationsSelenide.closeDriver();
-//        ConfigurationsSelenide.quitDriver();
     }
 
 }

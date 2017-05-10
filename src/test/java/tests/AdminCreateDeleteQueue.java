@@ -5,7 +5,10 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.assertj.db.type.Request;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
@@ -22,12 +25,10 @@ import java.io.IOException;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
-import static utils.ConfigurationsSelenide.openURL;
 import static utils.ConfigurationsSelenide.quitDriver;
 
 @Listeners(VideoListener.class)
@@ -45,7 +46,7 @@ public class AdminCreateDeleteQueue {
 
     private SelenideElement attention = $x(".//span[text()='Attention']");
     private SelenideElement attentionMessage = $x(".//*[@id='queueDialogForm:queueDialogTabView:j_idt117']/div[2]");
-    private SelenideElement attentionClose = $x(".//*[@id='queueDialogForm:queueDialogTabView:j_idt117']/div[1]/a");
+    private SelenideElement attentionClose = $x("#queueDialogForm\\3a queueDialogTabView\\3a j_idt120 > div.ui-dialog-titlebar.ui-widget-header.ui-helper-clearfix.ui-corner-top > a");
     private String attentionMessageText = "After changing 'Strategy' field you have to contact your system administrator to reboot server for the changes to take effect.";
 
     private String name = "Name_of_Queue";
@@ -97,11 +98,11 @@ public class AdminCreateDeleteQueue {
         general.getMonitorType_slct_btn().click();
         general.getMonitorType().first().click();  //must be known
 
-        general.getStrategy_slct_btn().click();
-        general.getStrategy().first().click();  //must be known
-        attention.waitUntil(visible, 5000);
-        attentionMessage.shouldHave(text(attentionMessageText));
-        attentionClose.click();
+//        general.getStrategy_slct_btn().click();
+//        general.getStrategy().first().click();  //must be known
+//        attention.waitUntil(visible, 5000);
+//        attentionMessage.shouldHave(text(attentionMessageText));
+//        attentionClose.click();
 
 
         general.getMonitorFormat_slct_btn().click();
@@ -160,8 +161,7 @@ public class AdminCreateDeleteQueue {
         anyElementInListGrid.findCollectionByColumn(2).find(text(name)).click();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
         Selenide.sleep(3000);
-//        confirmation.getYes_btn().waitUntil(visible, 5000).click();  //todo Duplicate of Element in HTML #5596
-        $$("#queueDialogForm\\3a btn_delete_yes").get(2).click();
+        confirmation.getYes_btn().waitUntil(visible, 5000).click();  //todo Duplicate of Element in HTML #5596
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
 //        navigation.clickLogout();
 //        loginPage.getConnect().waitUntil(visible, 10000);

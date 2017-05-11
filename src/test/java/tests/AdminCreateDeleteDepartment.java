@@ -1,6 +1,7 @@
 package tests;
 
 import com.automation.remarks.testng.VideoListener;
+import com.automation.remarks.video.annotations.Video;
 import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -62,7 +63,7 @@ public class AdminCreateDeleteDepartment {
         quitDriver();
     }
 
-
+    @Video
     @Test(description = "This TC#00022 verifies that Admin can create a Department")
     public void testAdminCanCreateDepartment() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateDepartment", "This TC#00022 verifies that Admin can create a Department");
@@ -94,6 +95,7 @@ public class AdminCreateDeleteDepartment {
                 .value("deleted").isEqualTo(false);
     }
 
+    @Video
     @Test(description = "This TC#00024 verifies that Admin can delete the Department", dependsOnMethods = "testDepartmentWasAddedToDataBase")
     public void testAdminCanDeleteDepartment() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteDepartment", "This TC#00024 verifies that Admin can delete the Department");

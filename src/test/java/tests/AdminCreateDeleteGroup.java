@@ -2,6 +2,7 @@ package tests;
 
 
 import com.automation.remarks.testng.VideoListener;
+import com.automation.remarks.video.annotations.Video;
 import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -66,7 +67,7 @@ public class AdminCreateDeleteGroup {
         quitDriver();
     }
 
-
+    @Video
     @Test(description = "This TC#00014 verifies that Admin can create a Group")
     public void testAdminCanCreateGroup() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateGroup", "This TC#00014 verifies that Admin can create Group");
@@ -124,6 +125,7 @@ public class AdminCreateDeleteGroup {
                 .value("deleted").isEqualTo(false);
     }
 
+    @Video
     @Test(description = "This TC#00015 verifies that Admin can delete the Group", dependsOnMethods = "testGroupWasAddedToDataBase")
     public void testAdminCanDeleteGroup() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteGroup", "This TC#00015 verifies that Admin can delete the Group");

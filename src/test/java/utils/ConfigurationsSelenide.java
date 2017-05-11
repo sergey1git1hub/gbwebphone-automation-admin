@@ -8,6 +8,7 @@ import com.codeborne.selenide.Configuration;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.openqa.selenium.By;
 
+import static com.automation.remarks.video.enums.RecorderType.FFMPEG;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -23,8 +24,9 @@ public class ConfigurationsSelenide {
         Configuration.timeout = 15000;
         VideoRecorder.conf()
                 .withVideoFolder("build/reports/video")
-                .withRecordMode(RecordingMode.ALL)
-                .withVideoSaveMode(VideoSaveMode.ALL);
+                .withRecorderType(FFMPEG)
+                .withRecordMode(RecordingMode.ANNOTATED)
+                .withVideoSaveMode(VideoSaveMode.FAILED_ONLY);
     }
 
     public static void openURL() {

@@ -1,6 +1,7 @@
 package tests;
 
 import com.automation.remarks.testng.VideoListener;
+import com.automation.remarks.video.annotations.Video;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.assertj.db.type.Request;
@@ -76,7 +77,7 @@ public class AdminCreateDeleteQueue {
         quitDriver();
     }
 
-
+    @Video
     @Test(description = "This TC#00018 verifies that Admin can create a Queue")
     public void testAdminCanCreateQueue() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateQueue", "This TC#00018 verifies that Admin can create Queue");
@@ -153,6 +154,7 @@ public class AdminCreateDeleteQueue {
                 .value("deleted").isEqualTo(false);
     }
 
+    @Video
     @Test(description = "This TC#00020 verifies that Admin can delete the Queue", dependsOnMethods = "testQueueWasAddedToDataBase")
     public void testAdminCanDeleteQueue() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteQueue", "This TC#00020 verifies that Admin can delete the Queue");

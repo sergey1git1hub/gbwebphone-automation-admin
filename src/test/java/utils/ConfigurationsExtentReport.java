@@ -1,5 +1,6 @@
 package utils;
 
+import com.automation.remarks.video.recorder.VideoRecorder;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.markuputils.ExtentColor;
@@ -41,9 +42,9 @@ public class ConfigurationsExtentReport {
         if (result.getStatus() == ITestResult.FAILURE) {
             test.log(com.aventstack.extentreports.Status.FAIL, MarkupHelper.createLabel(result.getName() + " FAILED", ExtentColor.RED));
             test.fail(result.getThrowable());
+            //test.fail("Video name: " +test.addScreencastFromPath("screenshots/test.mp4"));  //bug of ExtentReport https://github.com/anshooarora/extentreports-java/issues/641
+            test.fail("<video width='320' height='240' controls> <source src='" + VideoRecorder.getLastRecording().toString().substring(14) + "' type='video/mp4'> </video>");
             test.fail("Screenshot name: " + Screenshots.getLastScreenshot().getName() + " :: " + test.addScreenCaptureFromPath("screenshots/" + Screenshots.getLastScreenshot().getName()));
-//            test.fail("Video name: " +test.addScreencastFromPath("screenshots/test.mp4"));
-//            test.fail("<video width='320' height='240' controls> <source src='test.mp4' type='video/mp4'> </video>");
         } else if (result.getStatus() == ITestResult.SUCCESS) {
             test.log(com.aventstack.extentreports.Status.PASS, MarkupHelper.createLabel(result.getName() + " PASSED", ExtentColor.GREEN));
         } else if (result.getStatus() == ITestResult.SKIP) {

@@ -1,6 +1,7 @@
 package tests;
 
 import com.automation.remarks.testng.VideoListener;
+import com.automation.remarks.video.annotations.Video;
 import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -61,7 +62,7 @@ public class AdminCreateDeleteStatus {
         quitDriver();
     }
 
-
+    @Video
     @Test(description = "This TC#00030 verifies that Admin can create a Status")
     public void testAdminCanCreateStatus() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateStatus", "This TC#00030 verifies that Admin can create a Status");
@@ -93,6 +94,7 @@ public class AdminCreateDeleteStatus {
                 .value("deleted").isEqualTo(false);
     }
 
+    @Video
     @Test(description = "This TC#00032 verifies that Admin can delete the Status", dependsOnMethods = "testStatusWasAddedToDataBase")
     public void testAdminCanDeleteStatus() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteStatus", "This TC#00032 verifies that Admin can delete the Status");

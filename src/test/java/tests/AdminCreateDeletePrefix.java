@@ -2,6 +2,7 @@ package tests;
 
 
 import com.automation.remarks.testng.VideoListener;
+import com.automation.remarks.video.annotations.Video;
 import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -63,7 +64,7 @@ public class AdminCreateDeletePrefix {
         quitDriver();
     }
 
-
+    @Video
     @Test(description = "This TC#00026 verifies that Admin can create a Prefix")
     public void testAdminCanCreatePrefix() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreatePrefix", "This TC#00026 verifies that Admin can create a Prefix");
@@ -93,6 +94,7 @@ public class AdminCreateDeletePrefix {
                 .value("deleted").isEqualTo(false);
     }
 
+    @Video
     @Test(description = "This TC#00028 verifies that Admin can delete the Prefix", dependsOnMethods = "testPrefixWasAddedToDataBase")
     public void testAdminCanDeletePrefix() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeletePrefix", "This TC#00028 verifies that Admin can delete the Prefix");

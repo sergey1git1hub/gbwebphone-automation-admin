@@ -2,6 +2,7 @@ package tests;
 
 
 import com.automation.remarks.testng.VideoListener;
+import com.automation.remarks.video.annotations.Video;
 import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -63,7 +64,7 @@ public class AdminCreateDeleteResultCode {
         quitDriver();
     }
 
-
+    @Video
     @Test(description = "This TC#00038 verifies that Admin can create a ResultCode")
     public void testAdminCanCreateResultCode() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateResultCode", "This TC#00038 verifies that Admin can create a ResultCode");
@@ -96,6 +97,7 @@ public class AdminCreateDeleteResultCode {
                 .value("deleted").isEqualTo(false);
     }
 
+    @Video
     @Test(description = "This TC#00040 verifies that Admin can delete the ResultCode", dependsOnMethods = "testResultCodeWasAddedToDataBase")
     public void testAdminCanDeleteResultCode() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteResultCode", "This TC#00040 verifies that Admin can delete the ResultCode");

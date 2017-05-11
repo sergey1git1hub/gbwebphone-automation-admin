@@ -1,6 +1,7 @@
 package tests;
 
 import com.automation.remarks.testng.VideoListener;
+import com.automation.remarks.video.annotations.Video;
 import com.codeborne.selenide.Condition;
 import org.assertj.db.type.Request;
 import org.testng.ITestResult;
@@ -68,7 +69,7 @@ public class AdminCreateDeleteAgent {
         quitDriver();
     }
 
-
+    @Video
     @Test(description = "This TC#00010 verifies that Admin can create a Agent")
     public void testAdminCanCreateAgent() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateAgent", "This TC#00010 verifies that Admin can create Agent");
@@ -104,6 +105,7 @@ public class AdminCreateDeleteAgent {
                 .value("deleted").isEqualTo(false);
     }
 
+    @Video
     @Test(description = "This TC#00011 verifies that Admin can delete the Agent", dependsOnMethods = "testAgentWasAddedToDataBase")
     public void testAdminCanDeleteAgent() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteAgent", "This TC#00011 verifies that Admin can delete Agent");

@@ -1,0 +1,15 @@
+
+# IntelliJ project files
+.idea
+*.iml
+out
+
+# Log file
+*.log
+
+
+/build/
+/src/test/java/xxx/
+/src/test/resources/xxx.xml
+/src/main/
+/target/

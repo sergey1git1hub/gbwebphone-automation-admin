@@ -486,4 +486,49 @@
         </testcase>
     </class>
 
+    <class name="AdminCreateDeleteTeamList">
+        <testcase number="TC#00042">
+            <description title="This TC#00042 verifies that Admin can create a TeamList">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click TeamList
+                    4. Click add button
+                    5. Fill in the General tab
+                    6. Click save button
+                    7. Verify "Saved successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00043">
+            <description title="This TC#00043 verifies that the TeamList was added to DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00044">
+            <description title="This TC#00044 verifies that Admin can delete the TeamList">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click ResultCode
+                    4. Fill sort list of ResultCode
+                    5. Click on the searched ResultCode
+                    6. Click delete button
+                    7. Verify "Deleted successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00045">
+            <description title="This TC#00045 verifies that the TeamList was deleted from DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+    </class>
+
 </suit>

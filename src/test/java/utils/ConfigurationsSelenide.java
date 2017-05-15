@@ -26,7 +26,7 @@ public class ConfigurationsSelenide {
                 .withVideoFolder("build/reports/video")
                 .withRecorderType(FFMPEG)
                 .withRecordMode(RecordingMode.ANNOTATED)
-                .withVideoSaveMode(VideoSaveMode.FAILED_ONLY);
+                .withVideoSaveMode(VideoSaveMode.ALL);
     }
 
     public static void openURL() {

@@ -27,11 +27,10 @@ public class AnyFormAndTab {
     public final String AVAILABLE_FOR_INBOUND_CALLS = "Available for inbound calls";
     public final String AVAILABLE_FOR_DAILER_CALLS = "Available for dialer calls";
     public final String AMI_Properties = "AMI Properties";
-    private SelenideElement elementForm;
+    private SelenideElement elementForm = $x(".//*[@aria-live='polite']");
     private SelenideElement elementTab;
 
     public SelenideElement findForm() {
-        this.elementForm = $x(".//*[@aria-live='polite']");
         return this.elementForm;
     }
 

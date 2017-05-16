@@ -11,7 +11,7 @@ public class SpinnerWaiter extends Waiter {
     private SelenideElement spinner = $("#ajaxStatusPanel_start");
 
     public void waitSpinner() {
-        super.wait(this.spinner, Condition.attribute("style", "display: none;"), 5000, 1000);
+        super.wait(this.spinner, Condition.attribute("style", "display: none;"), 6000, 2000);
 
     }
 

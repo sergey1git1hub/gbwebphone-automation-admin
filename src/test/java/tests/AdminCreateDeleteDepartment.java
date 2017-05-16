@@ -69,7 +69,7 @@ public class AdminCreateDeleteDepartment {
         spinnerWaiter.waitSpinner();
         departmentForm.getName_inpt().setValue(nameOfDepartment);
         spinnerWaiter.waitSpinner();
-        departmentForm.getDescription_inpt().setValue(description);
+        departmentForm.getDescription_inpt().sendKeys(description);
         spinnerWaiter.waitSpinner();
         departmentForm.getTenant_slct_btn().click();
         spinnerWaiter.waitSpinner();

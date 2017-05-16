@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
+import utils.SpinnerWaiter;
 import webpages.admin_mode.department_form.DepartmentForm;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
@@ -41,6 +42,7 @@ public class AdminCreateDeleteDepartment {
     private Confirmation confirmation = new Confirmation();
     private LoginPage loginPage = new LoginPage();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
+    private SpinnerWaiter spinnerWaiter = new SpinnerWaiter();
 
     private String nameOfDepartment = "Name_of_Department";
     private String description = "Description_of_Department";
@@ -69,17 +71,26 @@ public class AdminCreateDeleteDepartment {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateDepartment", "This TC#00022 verifies that Admin can create a Department");
 
 //        adminPage.getAdminPage();
+        spinnerWaiter.waitSpinner();
         navigation.clickDepartmentList();
+        spinnerWaiter.waitSpinner();
         globalButtonsAddAndCountInLists.getAdd_btn().click();
 
+        spinnerWaiter.waitSpinner();
         departmentForm.getName_inpt().setValue(nameOfDepartment);
+        spinnerWaiter.waitSpinner();
         departmentForm.getDescription_inpt().setValue(description);
+        spinnerWaiter.waitSpinner();
         departmentForm.getTenant_slct_btn().click();
+        spinnerWaiter.waitSpinner();
         departmentForm.getTenants().get(1).click();  //must be known
+        spinnerWaiter.waitSpinner();
         departmentForm.getEnabled_chbx().click();
 
+        spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getSaveFooter_btn().click();
 
+        spinnerWaiter.waitSpinner();
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
@@ -100,10 +111,15 @@ public class AdminCreateDeleteDepartment {
     public void testAdminCanDeleteDepartment() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteDepartment", "This TC#00024 verifies that Admin can delete the Department");
 
+        spinnerWaiter.waitSpinner();
         anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfDepartment).pressEnter();
+        spinnerWaiter.waitSpinner();
         anyElementInListGrid.findCollectionByColumn(2).find(text(nameOfDepartment)).click();
+        spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
+        spinnerWaiter.waitSpinner();
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
+        spinnerWaiter.waitSpinner();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
 //        navigation.clickLogout();
 //        loginPage.getConnect().waitUntil(visible, 10000);

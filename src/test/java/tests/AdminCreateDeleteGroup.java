@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
+import utils.SpinnerWaiter;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
@@ -42,6 +43,7 @@ public class AdminCreateDeleteGroup {
     private Confirmation confirmation = new Confirmation();
     private LoginPage loginPage = new LoginPage();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
+    private SpinnerWaiter spinnerWaiter = new SpinnerWaiter();
 
     private String nameOfGroup = "Name_of_Group";
     private String resultCodeTimer = "8";
@@ -62,7 +64,7 @@ public class AdminCreateDeleteGroup {
         ConfigurationsExtentReport.getResult(result);
     }
 
-//    @AfterClass
+    //    @AfterClass
     public void closeBrowser() {
         quitDriver();
     }
@@ -73,43 +75,76 @@ public class AdminCreateDeleteGroup {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateGroup", "This TC#00014 verifies that Admin can create Group");
 
 //        adminPage.getAdminPage();
+        spinnerWaiter.waitSpinner();
         navigation.clickGroupList();
+        spinnerWaiter.waitSpinner();
         globalButtonsAddAndCountInLists.getAdd_btn().click();
 
+        spinnerWaiter.waitSpinner();
         general.getName_inpt().setValue(nameOfGroup);
+        spinnerWaiter.waitSpinner();
         general.getTenant_slct_btn().click();
+        spinnerWaiter.waitSpinner();
         general.getTenants().get(1).click();  //must be known
+        spinnerWaiter.waitSpinner();
         general.getResultCodeTimer_inpt().setValue(resultCodeTimer);
+        spinnerWaiter.waitSpinner();
         general.getTransferToBusyUser_chbx().click();
+        spinnerWaiter.waitSpinner();
         general.getManualCall_chbx().click();
+        spinnerWaiter.waitSpinner();
         general.getMute_chbx().click();
+        spinnerWaiter.waitSpinner();
         general.getAssistance_chbx().click();
+        spinnerWaiter.waitSpinner();
         general.getSendFeedbackToEmail_chbx().click();
 
+        spinnerWaiter.waitSpinner();
         general.getDescription_inpt().setValue(description);
+        spinnerWaiter.waitSpinner();
         general.getInitialStatus_slct_btn().click();
+        spinnerWaiter.waitSpinner();
         general.getInitialStatuses().get(1).click();  //must be known
+        spinnerWaiter.waitSpinner();
         general.getArchivePeriod_inpt().setValue(archivePeriod);
+        spinnerWaiter.waitSpinner();
         general.getOutboundCallOnFirstLineOnly_chbx().click();
+        spinnerWaiter.waitSpinner();
         general.getConferenceCall_chbx().click();
+        spinnerWaiter.waitSpinner();
         general.getVideoRecord_chbx().click();
+        spinnerWaiter.waitSpinner();
         general.getHideInboundNumber_chbx().click();
+        spinnerWaiter.waitSpinner();
         general.getStatusReport_chbx().click();
+        spinnerWaiter.waitSpinner();
         general.getAllowEmptyResultCode_chbx().click();
 
+        spinnerWaiter.waitSpinner();
         general.getFeedbackEmail_inpt().setValue(email);
+        spinnerWaiter.waitSpinner();
         general.getResultCodeStatus_slct_btn().click();
+        spinnerWaiter.waitSpinner();
         general.getResultCodeStatuses().get(1).click();  //must be known
+        spinnerWaiter.waitSpinner();
         general.getTransferCall_chbx().click();
+        spinnerWaiter.waitSpinner();
         general.getChat_chbx().click();
+        spinnerWaiter.waitSpinner();
         general.getAutoAccept_chbx().click();
+        spinnerWaiter.waitSpinner();
         general.getHold_chbx().click();
+        spinnerWaiter.waitSpinner();
         general.getAudioSettings_chbx().click();
+        spinnerWaiter.waitSpinner();
         general.getLinearStrategy_chbx().click();
+        spinnerWaiter.waitSpinner();
         general.getEnabled_chbx().click();
 
+        spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getSaveFooter_btn().click();
 
+        spinnerWaiter.waitSpinner();
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
@@ -130,10 +165,15 @@ public class AdminCreateDeleteGroup {
     public void testAdminCanDeleteGroup() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteGroup", "This TC#00015 verifies that Admin can delete the Group");
 
+        spinnerWaiter.waitSpinner();
         anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfGroup).pressEnter();
+        spinnerWaiter.waitSpinner();
         anyElementInListGrid.findCollectionByColumn(2).find(text(nameOfGroup)).click();
+        spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
+        spinnerWaiter.waitSpinner();
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
+        spinnerWaiter.waitSpinner();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
 //        navigation.clickLogout();
 //        loginPage.getConnect().waitUntil(visible, 10000);

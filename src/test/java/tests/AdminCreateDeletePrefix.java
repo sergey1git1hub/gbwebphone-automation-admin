@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
+import utils.SpinnerWaiter;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
@@ -42,6 +43,7 @@ public class AdminCreateDeletePrefix {
     private Confirmation confirmation = new Confirmation();
     private LoginPage loginPage = new LoginPage();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
+    private SpinnerWaiter spinnerWaiter = new SpinnerWaiter();
 
     private String nameOfPrefix = "Name_of_Prefix";
     private String prefixNumber = "12345";
@@ -59,7 +61,7 @@ public class AdminCreateDeletePrefix {
         ConfigurationsExtentReport.getResult(result);
     }
 
-//    @AfterClass
+    //    @AfterClass
     public void closeBrowser() {
         quitDriver();
     }
@@ -70,15 +72,22 @@ public class AdminCreateDeletePrefix {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreatePrefix", "This TC#00026 verifies that Admin can create a Prefix");
 
 //        adminPage.getAdminPage();
+        spinnerWaiter.waitSpinner();
         navigation.clickPrefixList();
+        spinnerWaiter.waitSpinner();
         globalButtonsAddAndCountInLists.getAdd_btn().click();
 
+        spinnerWaiter.waitSpinner();
         general.getName_inpt().setValue(nameOfPrefix);
+        spinnerWaiter.waitSpinner();
         general.getPrefix_inpt().setValue(prefixNumber);
+        spinnerWaiter.waitSpinner();
         general.getEnabled_chbx().click();
 
+        spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getSaveFooter_btn().click();
 
+        spinnerWaiter.waitSpinner();
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
@@ -99,10 +108,15 @@ public class AdminCreateDeletePrefix {
     public void testAdminCanDeletePrefix() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeletePrefix", "This TC#00028 verifies that Admin can delete the Prefix");
 
+        spinnerWaiter.waitSpinner();
         anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfPrefix).pressEnter();
+        spinnerWaiter.waitSpinner();
         anyElementInListGrid.findCollectionByColumn(2).find(text(nameOfPrefix)).click();
+        spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
+        spinnerWaiter.waitSpinner();
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
+        spinnerWaiter.waitSpinner();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
 //        navigation.clickLogout();
 //        loginPage.getConnect().waitUntil(visible, 10000);

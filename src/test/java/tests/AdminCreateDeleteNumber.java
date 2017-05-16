@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
+import utils.SpinnerWaiter;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
@@ -42,6 +43,7 @@ public class AdminCreateDeleteNumber {
     private Confirmation confirmation = new Confirmation();
     private LoginPage loginPage = new LoginPage();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
+    private SpinnerWaiter spinnerWaiter = new SpinnerWaiter();
 
     private String nameOfNumber = "Name_of_Number";
     private String number = "12345";
@@ -72,7 +74,9 @@ public class AdminCreateDeleteNumber {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateNumber", "This TC#00034 verifies that Admin can create a Number");
 
 //        adminPage.getAdminPage();
+        spinnerWaiter.waitSpinner();
         navigation.clickNumberList();
+        spinnerWaiter.waitSpinner();
         globalButtonsAddAndCountInLists.getAdd_btn().click();
 
 //        general.getEnabled_chbx().click();
@@ -80,13 +84,17 @@ public class AdminCreateDeleteNumber {
 //        general.getTenants().get(4).hover().click();  //must be known
 //        general.getApplication_slct_btn().click();
 //        general.getApplications().get(4).hover().click();  //must be known
+        spinnerWaiter.waitSpinner();
         general.getParameters_inpt().setValue(parameters);
 //        general.getContext_inpt().setValue(context);
 //        general.getType_slct_btn().click();
 //        general.getTypes().get(0).click();  //must be known
+        spinnerWaiter.waitSpinner();
         general.getNumber_inpt().setValue(number);
+        spinnerWaiter.waitSpinner();
         general.getName_inpt().setValue(nameOfNumber);
 
+        spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getSaveFooter_btn().click();
 
 //        adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));  //todo enable after fix #5625
@@ -109,11 +117,17 @@ public class AdminCreateDeleteNumber {
     public void testAdminCanDeleteNumber() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteNumber", "This TC#00036 verifies that Admin can delete the Number");
 
+        spinnerWaiter.waitSpinner();
         anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).waitUntil(visible, 5000).setValue(nameOfNumber).pressEnter();  //strange behave on UI
+        spinnerWaiter.waitSpinner();
         anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).waitUntil(visible, 5000).setValue(nameOfNumber).pressEnter();
+        spinnerWaiter.waitSpinner();
         anyElementInListGrid.findCollectionByColumn(1).find(text(nameOfNumber)).click();
+        spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
+        spinnerWaiter.waitSpinner();
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
+        spinnerWaiter.waitSpinner();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
 //        navigation.clickLogout();
 //        loginPage.getConnect().waitUntil(visible, 10000);

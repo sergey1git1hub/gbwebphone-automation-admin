@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
+import utils.SpinnerWaiter;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
@@ -44,6 +45,7 @@ public class AdminCreateDeleteQueue {
     private Confirmation confirmation = new Confirmation();
     private LoginPage loginPage = new LoginPage();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
+    private SpinnerWaiter spinnerWaiter = new SpinnerWaiter();
 
     private SelenideElement attention = $x(".//span[text()='Attention']");
     private SelenideElement attentionMessage = $x(".//*[@id='queueDialogForm:queueDialogTabView:j_idt117']/div[2]");
@@ -83,20 +85,33 @@ public class AdminCreateDeleteQueue {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateQueue", "This TC#00018 verifies that Admin can create Queue");
 
 //        adminPage.getAdminPage();
+        spinnerWaiter.waitSpinner();
         navigation.clickQueueList();
+        spinnerWaiter.waitSpinner();
         globalButtonsAddAndCountInLists.getAdd_btn().click();
 
+        spinnerWaiter.waitSpinner();
         general.getName_inpt().setValue(name);
+        spinnerWaiter.waitSpinner();
         general.getDescription_inpt().setValue(description);
+        spinnerWaiter.waitSpinner();
         general.getContext_inpt().setValue(context);
+        spinnerWaiter.waitSpinner();
         general.getMusicClass_inpt().setValue(musicClass);
+        spinnerWaiter.waitSpinner();
         general.getAnnounce_inpt().setValue(announce);
+        spinnerWaiter.waitSpinner();
         general.getMemberMacro_inpt().setValue(memberMacro);
+        spinnerWaiter.waitSpinner();
 
+        spinnerWaiter.waitSpinner();
         general.getTenant_slct_btn().click();
+        spinnerWaiter.waitSpinner();
         general.getTenant().first().click();  //must be known
 
+        spinnerWaiter.waitSpinner();
         general.getMonitorType_slct_btn().click();
+        spinnerWaiter.waitSpinner();
         general.getMonitorType().first().click();  //must be known
 
 //        general.getStrategy_slct_btn().click();
@@ -106,36 +121,61 @@ public class AdminCreateDeleteQueue {
 //        attentionClose.click();
 
 
+        spinnerWaiter.waitSpinner();
         general.getMonitorFormat_slct_btn().click();
+        spinnerWaiter.waitSpinner();
         general.getMonitorFormat().first().click();  //must be known
 
+        spinnerWaiter.waitSpinner();
         general.getAutofill_chbx().click();
+        spinnerWaiter.waitSpinner();
         general.getReportHoldtime_chbx().click();
+        spinnerWaiter.waitSpinner();
         general.getEnabled_chbx().click();
 
 
+        spinnerWaiter.waitSpinner();
         general.getArchivePeriod_inpt().setValue(oneForAll);
+        spinnerWaiter.waitSpinner();
         general.getDeletePeriod_inpt().setValue(oneForAll);
+        spinnerWaiter.waitSpinner();
         general.getTargetService_inpt().setValue(oneForAll);
+        spinnerWaiter.waitSpinner();
         general.getTargetServiceLevelThreshold_inpt().setValue(oneForAll);
+        spinnerWaiter.waitSpinner();
         general.getShortAbandonedThreshold_inpt().setValue(oneForAll);
+        spinnerWaiter.waitSpinner();
         general.getTimeout_inpt().setValue(oneForAll);
+        spinnerWaiter.waitSpinner();
         general.getMaximumLength_inpt().setValue(oneForAll);
+        spinnerWaiter.waitSpinner();
         general.getMemberDelay_inpt().setValue(oneForAll);
+        spinnerWaiter.waitSpinner();
         general.getWeight_inpt().setValue(oneForAll);
+        spinnerWaiter.waitSpinner();
         general.getResultCodeTimer_inpt().setValue(oneForAll);
 
+        spinnerWaiter.waitSpinner();
         general.getResultCodeStatus_slct_btn().click();
+        spinnerWaiter.waitSpinner();
         general.getResultCodeStatus().first().click();  //must be known
+        spinnerWaiter.waitSpinner();
         general.getJoinEmpty_slct_btn().click();
+        spinnerWaiter.waitSpinner();
         general.getJoinEmpty().first().click();  //must be known
+        spinnerWaiter.waitSpinner();
         general.getClose_joinEmpty_btn().click();
+        spinnerWaiter.waitSpinner();
         general.getLeaveWhenEmpty_slct_btn().click();
+        spinnerWaiter.waitSpinner();
         general.getLeaveWhenEmpty().first().click();  //must be known
+        spinnerWaiter.waitSpinner();
         general.getClose_leaveWhenEmpty_btn().click();  //must be known
 
+        spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getSaveFooter_btn().click();
-//
+
+        spinnerWaiter.waitSpinner();
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
@@ -159,11 +199,16 @@ public class AdminCreateDeleteQueue {
     public void testAdminCanDeleteQueue() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteQueue", "This TC#00020 verifies that Admin can delete the Queue");
 
+        spinnerWaiter.waitSpinner();
         anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(name).pressEnter();
+        spinnerWaiter.waitSpinner();
         anyElementInListGrid.findCollectionByColumn(2).find(text(name)).click();
+        spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
-        Selenide.sleep(3000);
+        spinnerWaiter.waitSpinner();
         confirmation.getYes_btn().waitUntil(visible, 5000).click();  //todo Duplicate of Element in HTML #5596
+
+        spinnerWaiter.waitSpinner();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
 //        navigation.clickLogout();
 //        loginPage.getConnect().waitUntil(visible, 10000);

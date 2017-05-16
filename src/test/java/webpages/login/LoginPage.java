@@ -1,6 +1,7 @@
 package webpages.login;
 
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
@@ -35,9 +36,7 @@ public class LoginPage {
     }
 
     public void setUserData(String name, String pass) {
-        username.clear();
         username.setValue(name);
-        password.clear();
         password.setValue(pass);
     }
 

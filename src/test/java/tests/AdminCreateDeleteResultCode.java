@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
+import utils.SpinnerWaiter;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
@@ -42,6 +43,7 @@ public class AdminCreateDeleteResultCode {
     private Confirmation confirmation = new Confirmation();
     private LoginPage loginPage = new LoginPage();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
+    private SpinnerWaiter spinnerWaiter = new SpinnerWaiter();
 
     private String nameOfResultCode = "Name_of_ResultCode ";
     private String description = "Description_of_ResultCode";
@@ -59,7 +61,7 @@ public class AdminCreateDeleteResultCode {
         ConfigurationsExtentReport.getResult(result);
     }
 
-//    @AfterClass
+    //    @AfterClass
     public void closeBrowser() {
         quitDriver();
     }
@@ -70,16 +72,25 @@ public class AdminCreateDeleteResultCode {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateResultCode", "This TC#00038 verifies that Admin can create a ResultCode");
 
 //        adminPage.getAdminPage();
+        spinnerWaiter.waitSpinner();
         navigation.clickResultCodeList();
+        spinnerWaiter.waitSpinner();
         globalButtonsAddAndCountInLists.getAdd_btn().click();
 
+        spinnerWaiter.waitSpinner();
         resultCodeForm.getName_inpt().setValue(nameOfResultCode);
+        spinnerWaiter.waitSpinner();
         resultCodeForm.getDescription_inpt().setValue(description);
+        spinnerWaiter.waitSpinner();
         resultCodeForm.getTenant_slct_btn().click();
+        spinnerWaiter.waitSpinner();
         resultCodeForm.getTenants().get(1).click();  //must be known
+        spinnerWaiter.waitSpinner();
         resultCodeForm.getFinal_chbx().click();
+        spinnerWaiter.waitSpinner();
         resultCodeForm.getProvisional_chbx().click();
 
+        spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getSaveFooter_btn().click();
 
 //        adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));   //todo enable after fix
@@ -102,10 +113,15 @@ public class AdminCreateDeleteResultCode {
     public void testAdminCanDeleteResultCode() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteResultCode", "This TC#00040 verifies that Admin can delete the ResultCode");
 
+        spinnerWaiter.waitSpinner();
         anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfResultCode).pressEnter();
+        spinnerWaiter.waitSpinner();
         anyElementInListGrid.findCollectionByColumn(2).find(text(nameOfResultCode)).click();
+        spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
+        spinnerWaiter.waitSpinner();
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
+//        spinnerWaiter.waitSpinner();
 //        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));  //todo enable after fix
 //        navigation.clickLogout();
 //        loginPage.getConnect().waitUntil(visible, 10000);

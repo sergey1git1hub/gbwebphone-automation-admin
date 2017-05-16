@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
+import utils.SpinnerWaiter;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.AnyFormAndTab;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
@@ -44,6 +45,7 @@ public class AdminCreateDeleteAgent {
     private AnyElementInListGrid anyElementByText = new AnyElementInListGrid();
     private AnyFormAndTab anyFormAndTab = new AnyFormAndTab();
     private GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
+    private SpinnerWaiter spinnerWaiter = new SpinnerWaiter();
 
     private String usernameNew = "81600";
     private String firstName = "QA";
@@ -75,19 +77,33 @@ public class AdminCreateDeleteAgent {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateAgent", "This TC#00010 verifies that Admin can create Agent");
 
 //        adminPage.getAdminPage();
+        spinnerWaiter.waitSpinner();
         navigation.clickUserList();
+        spinnerWaiter.waitSpinner();
         globalButtonsAddAndCountInLists.getAdd_btn().click();
+        spinnerWaiter.waitSpinner();
         anyFormAndTab.findTab(anyFormAndTab.GENERAL).click();
+        spinnerWaiter.waitSpinner();
         general.getUsername_inpt().click();
+        spinnerWaiter.waitSpinner();
         general.getEnabled_chbx().waitUntil(enabled, 5000);
+        spinnerWaiter.waitSpinner();
         general.getUsername_inpt().setValue(usernameNew); //must be paused, but didn't find the way out
+        spinnerWaiter.waitSpinner();
         general.getUsername_inpt().setValue(usernameNew);
+        spinnerWaiter.waitSpinner();
         general.getFirstname_inpt().setValue(firstName);
+        spinnerWaiter.waitSpinner();
         general.getLastname_inpt().setValue(lastName);
+        spinnerWaiter.waitSpinner();
         general.getPassword_inpt().setValue(password);
+        spinnerWaiter.waitSpinner();
         general.getEmail_inpt().setValue(email);
+        spinnerWaiter.waitSpinner();
         general.getRoles_slct().find(Condition.text("ROLE_USER")).click();
+        spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getSaveFooter_btn().click();
+        spinnerWaiter.waitSpinner();
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(Condition.text("Saved successfully!"));
     }
 
@@ -110,12 +126,19 @@ public class AdminCreateDeleteAgent {
     public void testAdminCanDeleteAgent() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteAgent", "This TC#00011 verifies that Admin can delete Agent");
 
+        spinnerWaiter.waitSpinner();
         navigation.clickUserList();
+        spinnerWaiter.waitSpinner();
         anyElementByText.findUpperInput(anyElementByText.USERNAME).setValue(usernameNew).pressEnter();
+        spinnerWaiter.waitSpinner();
         anyElementByText.findCollectionByColumn(2).find(Condition.text(usernameNew)).click();
+        spinnerWaiter.waitSpinner();
         anyFormAndTab.findTab(anyFormAndTab.GENERAL).click();
+        spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
+        spinnerWaiter.waitSpinner();
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
+        spinnerWaiter.waitSpinner();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(Condition.text("Deleted successfully!"));
 //        navigation.clickLogout();
 //        loginPage.getConnect().waitUntil(visible, 10000);

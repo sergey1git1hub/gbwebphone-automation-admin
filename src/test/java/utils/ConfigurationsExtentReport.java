@@ -44,10 +44,13 @@ public class ConfigurationsExtentReport {
             test.fail(result.getThrowable());
             //test.fail("Video name: " +test.addScreencastFromPath("screenshots/test.mp4"));  //bug of ExtentReport https://github.com/anshooarora/extentreports-java/issues/641
             test.fail("<video width='320' height='240' controls> <source src='" + VideoRecorder.getLastRecording().toString().substring(14) + "' type='video/mp4'> </video>");
-            test.fail("Screenshot name: " + Screenshots.getLastScreenshot().getName() + " :: " + test.addScreenCaptureFromPath("screenshots/" + Screenshots.getLastScreenshot().getName()));
+            test.fail("Video name is - " + VideoRecorder.getLastRecording().getName());
+            test.fail("Screenshot name is - " + Screenshots.getLastScreenshot().getName());
+            test.addScreenCaptureFromPath("screenshots/" + Screenshots.getLastScreenshot().getName());
         } else if (result.getStatus() == ITestResult.SUCCESS) {
             test.log(com.aventstack.extentreports.Status.PASS, MarkupHelper.createLabel(result.getName() + " PASSED", ExtentColor.GREEN));
-            test.pass("<video width='320' height='240' controls> <source src='" + VideoRecorder.getLastRecording().toString().substring(14) + "' type='video/mp4'> </video>");
+//            test.pass("<video width='320' height='240' controls> <source src='" + VideoRecorder.getLastRecording().toString().substring(14) + "' type='video/mp4'> </video>");
+//            test.pass("Video name is - " + VideoRecorder.getLastRecording().getName());
         } else if (result.getStatus() == ITestResult.SKIP) {
             test.log(com.aventstack.extentreports.Status.SKIP, MarkupHelper.createLabel(result.getName() + " SKIPPED", ExtentColor.ORANGE));
             test.skip(result.getThrowable());

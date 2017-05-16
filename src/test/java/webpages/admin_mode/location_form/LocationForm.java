@@ -9,11 +9,11 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class LocationForm {
 
-    private SelenideElement name_inpt = $("");
-    private SelenideElement description_inpt = $("");
-    private SelenideElement tenant_slct_btn = $("");
-    private ElementsCollection tenants = $$("");
-    private SelenideElement enabled_chbx = $("");
+    private SelenideElement name_inpt = $("#locationDialogForm\\3a tabs\\3a locationName_input");
+    private SelenideElement description_inpt = $("#locationDialogForm\\3a tabs\\3a locationdesc_input");
+    private SelenideElement tenant_slct_btn = $("#locationDialogForm\\3a tabs\\3a tenant_input span");
+    private ElementsCollection tenants = $$("#locationDialogForm\\3a tabs\\3a tenant_input_panel li");
+    private SelenideElement enabled_chbx = $("#locationDialogForm\\3a tabs\\3a enabled span");
 
 
     //getters

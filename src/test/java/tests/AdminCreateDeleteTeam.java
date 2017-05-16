@@ -9,7 +9,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
 import utils.SpinnerWaiter;
@@ -20,7 +19,6 @@ import webpages.admin_mode.navigation.Navigation;
 import webpages.admin_mode.team_form.General;
 import webpages.alerts.AdminMode;
 import webpages.alerts.Confirmation;
-import webpages.login.LoginPage;
 
 import java.io.IOException;
 
@@ -29,19 +27,16 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
-import static utils.ConfigurationsSelenide.quitDriver;
 
 @Listeners(VideoListener.class)
 public class AdminCreateDeleteTeam {
 
     private Navigation navigation = new Navigation();
-    private AdminPage adminPage = new AdminPage();
     private General general = new General();
     private GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
     private AdminMode adminMode = new AdminMode();
     private AnyElementInListGrid anyElementInListGrid = new AnyElementInListGrid();
     private Confirmation confirmation = new Confirmation();
-    private LoginPage loginPage = new LoginPage();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
     private SpinnerWaiter spinnerWaiter = new SpinnerWaiter();
 
@@ -61,17 +56,12 @@ public class AdminCreateDeleteTeam {
         ConfigurationsExtentReport.getResult(result);
     }
 
-    //    @AfterClass
-    public void closeBrowser() {
-        quitDriver();
-    }
 
     @Video
     @Test(description = "This TC#00042 verifies that Admin can create a TeamList")
     public void testAdminCanCreateTeamList() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateTeamList", "This TC#00042 verifies that Admin can create a TeamList");
 
-//        adminPage.getAdminPage();
         spinnerWaiter.waitSpinner();
         navigation.clickTeamList();
         spinnerWaiter.waitSpinner();
@@ -122,8 +112,6 @@ public class AdminCreateDeleteTeam {
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
         spinnerWaiter.waitSpinner();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
-//        navigation.clickLogout();
-//        loginPage.getConnect().waitUntil(visible, 10000);
     }
 
     @Test(description = "This TC#00045 verifies that the TeamList was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteTeamList")

@@ -9,7 +9,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
 import utils.SpinnerWaiter;
@@ -21,7 +20,6 @@ import webpages.admin_mode.navigation.Navigation;
 import webpages.admin_mode.user_form.General;
 import webpages.alerts.AdminMode;
 import webpages.alerts.Confirmation;
-import webpages.login.LoginPage;
 
 import java.io.IOException;
 
@@ -30,17 +28,14 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
-import static utils.ConfigurationsSelenide.quitDriver;
 
 @Listeners(VideoListener.class)
 public class AdminCreateDeleteAgent {
 
-    private LoginPage loginPage = new LoginPage();
     private General general = new General();
     private Navigation navigation = new Navigation();
     private Confirmation confirmation = new Confirmation();
     private AdminMode adminMode = new AdminMode();
-    private AdminPage adminPage = new AdminPage();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
     private AnyElementInListGrid anyElementByText = new AnyElementInListGrid();
     private AnyFormAndTab anyFormAndTab = new AnyFormAndTab();
@@ -66,17 +61,12 @@ public class AdminCreateDeleteAgent {
         ConfigurationsExtentReport.getResult(result);
     }
 
-//    @AfterClass
-    public void closeBrowser() {
-        quitDriver();
-    }
 
     @Video
     @Test(description = "This TC#00010 verifies that Admin can create a Agent")
     public void testAdminCanCreateAgent() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateAgent", "This TC#00010 verifies that Admin can create Agent");
 
-//        adminPage.getAdminPage();
         spinnerWaiter.waitSpinner();
         navigation.clickUserList();
         spinnerWaiter.waitSpinner();
@@ -140,8 +130,6 @@ public class AdminCreateDeleteAgent {
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
         spinnerWaiter.waitSpinner();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(Condition.text("Deleted successfully!"));
-//        navigation.clickLogout();
-//        loginPage.getConnect().waitUntil(visible, 10000);
     }
 
     @Test(description = "This TC#00013 verifies that the Agent was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteAgent")

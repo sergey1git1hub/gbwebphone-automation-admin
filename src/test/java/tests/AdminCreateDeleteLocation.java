@@ -7,11 +7,9 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
 import utils.SpinnerWaiter;
-import webpages.admin_mode.department_form.DepartmentForm;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
@@ -19,7 +17,6 @@ import webpages.admin_mode.location_form.LocationForm;
 import webpages.admin_mode.navigation.Navigation;
 import webpages.alerts.AdminMode;
 import webpages.alerts.Confirmation;
-import webpages.login.LoginPage;
 
 import java.io.IOException;
 
@@ -28,18 +25,14 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
-import static utils.ConfigurationsSelenide.quitDriver;
 
 public class AdminCreateDeleteLocation {
 
     private Navigation navigation = new Navigation();
-    private AdminPage adminPage = new AdminPage();
-    private DepartmentForm departmentForm = new DepartmentForm();
     private GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
     private AdminMode adminMode = new AdminMode();
     private AnyElementInListGrid anyElementInListGrid = new AnyElementInListGrid();
     private Confirmation confirmation = new Confirmation();
-    private LoginPage loginPage = new LoginPage();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
     private LocationForm locationForm = new LocationForm();
     private SpinnerWaiter spinnerWaiter = new SpinnerWaiter();
@@ -60,17 +53,12 @@ public class AdminCreateDeleteLocation {
         ConfigurationsExtentReport.getResult(result);
     }
 
-    //    @AfterClass
-    public void closeBrowser() {
-        quitDriver();
-    }
 
     @Video
     @Test(description = "This TC#000?? verifies that Admin can create a Location")
     public void testAdminCanCreateLocation() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateLocation", "This TC#000?? verifies that Admin can create a Location");
 
-//        adminPage.getAdminPage();
         spinnerWaiter.waitSpinner();
         navigation.clickLocationList();
         spinnerWaiter.waitSpinner();
@@ -121,8 +109,6 @@ public class AdminCreateDeleteLocation {
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
         spinnerWaiter.waitSpinner();
 //        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));  //todo enable after fix
-//        navigation.clickLogout();
-//        loginPage.getConnect().waitUntil(visible, 10000);
     }
 
     @Test(description = "This TC#000?? verifies that the Location was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteLocation")

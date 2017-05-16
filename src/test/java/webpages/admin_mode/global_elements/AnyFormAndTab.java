@@ -26,15 +26,18 @@ public class AnyFormAndTab {
     public final String PAID = "Paid";
     public final String AVAILABLE_FOR_INBOUND_CALLS = "Available for inbound calls";
     public final String AVAILABLE_FOR_DAILER_CALLS = "Available for dialer calls";
+    public final String AMI_Properties = "AMI Properties";
+    private SelenideElement elementForm;
+    private SelenideElement elementTab;
 
     public SelenideElement findForm() {
-        SelenideElement element = $x(".//*[@aria-live='polite']");
-        return element;
+        this.elementForm = $x(".//*[@aria-live='polite']");
+        return this.elementForm;
     }
 
     public SelenideElement findTab(String finalStringNameFromClass) {
-        SelenideElement element = $x(".//*[@aria-live='polite']//li/a[text()='" + finalStringNameFromClass + "']");
-        return element;
+        this.elementTab = $x(".//*[@aria-live='polite']//li/a[text()='" + finalStringNameFromClass + "']");
+        return this.elementTab;
     }
 
 }

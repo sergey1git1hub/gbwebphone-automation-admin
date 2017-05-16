@@ -18,6 +18,7 @@
             <class name="tests.AdminCreateDeleteResultCode"/>
             <class name="tests.AdminCreateDeleteTeam"/>
             <class name="tests.AdminCreateDeleteLocation"/>
+            <class name="tests.AdminCreateDeleteServer"/>
         </classes>
 
     </test>

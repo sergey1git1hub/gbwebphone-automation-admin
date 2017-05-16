@@ -2,7 +2,6 @@ package tests;
 
 import com.automation.remarks.testng.VideoListener;
 import com.automation.remarks.video.annotations.Video;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.assertj.db.type.Request;
 import org.testng.ITestResult;
@@ -10,7 +9,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import utils.AdminPage;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
 import utils.SpinnerWaiter;
@@ -21,7 +19,6 @@ import webpages.admin_mode.navigation.Navigation;
 import webpages.admin_mode.queue_form.General;
 import webpages.alerts.AdminMode;
 import webpages.alerts.Confirmation;
-import webpages.login.LoginPage;
 
 import java.io.IOException;
 
@@ -31,19 +28,16 @@ import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
-import static utils.ConfigurationsSelenide.quitDriver;
 
 @Listeners(VideoListener.class)
 public class AdminCreateDeleteQueue {
 
     private Navigation navigation = new Navigation();
-    private AdminPage adminPage = new AdminPage();
     private General general = new General();
     private GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
     private AdminMode adminMode = new AdminMode();
     private AnyElementInListGrid anyElementInListGrid = new AnyElementInListGrid();
     private Confirmation confirmation = new Confirmation();
-    private LoginPage loginPage = new LoginPage();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
     private SpinnerWaiter spinnerWaiter = new SpinnerWaiter();
 
@@ -74,17 +68,12 @@ public class AdminCreateDeleteQueue {
         ConfigurationsExtentReport.getResult(result);
     }
 
-//    @AfterClass
-    public void closeBrowser() {
-        quitDriver();
-    }
 
     @Video
     @Test(description = "This TC#00018 verifies that Admin can create a Queue")
     public void testAdminCanCreateQueue() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateQueue", "This TC#00018 verifies that Admin can create Queue");
 
-//        adminPage.getAdminPage();
         spinnerWaiter.waitSpinner();
         navigation.clickQueueList();
         spinnerWaiter.waitSpinner();
@@ -206,12 +195,10 @@ public class AdminCreateDeleteQueue {
         spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
         spinnerWaiter.waitSpinner();
-        confirmation.getYes_btn().waitUntil(visible, 5000).click();  //todo Duplicate of Element in HTML #5596
+        confirmation.getYes_btn().waitUntil(visible, 5000).click();
 
         spinnerWaiter.waitSpinner();
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
-//        navigation.clickLogout();
-//        loginPage.getConnect().waitUntil(visible, 10000);
     }
 
     @Test(description = "This TC#00021 verifies that the Queue was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteQueue")

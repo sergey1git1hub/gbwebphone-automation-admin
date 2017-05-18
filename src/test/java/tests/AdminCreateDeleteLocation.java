@@ -55,9 +55,9 @@ public class AdminCreateDeleteLocation {
 
 
     @Video
-    @Test(description = "This TC#000?? verifies that Admin can create a Location")
+    @Test(description = "This TC#00046 verifies that Admin can create a Location")
     public void testAdminCanCreateLocation() {
-        ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateLocation", "This TC#000?? verifies that Admin can create a Location");
+        ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateLocation", "This TC#00046 verifies that Admin can create a Location");
 
         spinnerWaiter.waitSpinner();
         navigation.clickLocationList();
@@ -82,9 +82,9 @@ public class AdminCreateDeleteLocation {
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
-    @Test(description = "This TC#000?? verifies that the Location was added to DataBase", dependsOnMethods = "testAdminCanCreateLocation")
+    @Test(description = "This TC#00047 verifies that the Location was added to DataBase", dependsOnMethods = "testAdminCanCreateLocation")
     public void testLocationWasAddedToDataBase() {
-        ConfigurationsExtentReport.test = extent.createTest("testLocationWasAddedToDataBase", "This TC#000?? verifies that the Location was added to DataBase");
+        ConfigurationsExtentReport.test = extent.createTest("testLocationWasAddedToDataBase", "This TC#00047 verifies that the Location was added to DataBase");
 
         Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
         this.id = request.getRow(0).getColumnValue("id").getValue().toString();
@@ -95,9 +95,9 @@ public class AdminCreateDeleteLocation {
     }
 
     @Video
-    @Test(description = "This TC#000?? verifies that Admin can delete the Location", dependsOnMethods = "testLocationWasAddedToDataBase")
+    @Test(description = "This TC#00048 verifies that Admin can delete the Location", dependsOnMethods = "testLocationWasAddedToDataBase")
     public void testAdminCanDeleteLocation() {
-        ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteLocation", "This TC#000?? verifies that Admin can delete the Location");
+        ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteLocation", "This TC#00048 verifies that Admin can delete the Location");
 
         spinnerWaiter.waitSpinner();
         anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfLocation).pressEnter();
@@ -111,9 +111,9 @@ public class AdminCreateDeleteLocation {
 //        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));  //todo enable after fix
     }
 
-    @Test(description = "This TC#000?? verifies that the Location was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteLocation")
+    @Test(description = "This TC#00049 verifies that the Location was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteLocation")
     public void testLocationWasDeletedFromDataBase() {
-        ConfigurationsExtentReport.test = extent.createTest("testLocationWasDeletedFromDataBase", "This TC#000?? verifies that the Location was deleted from DataBase");
+        ConfigurationsExtentReport.test = extent.createTest("testLocationWasDeletedFromDataBase", "This TC#00049 verifies that the Location was deleted from DataBase");
 
         Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
         assertThat(request).row()

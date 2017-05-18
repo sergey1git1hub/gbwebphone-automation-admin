@@ -66,9 +66,9 @@ public class AdminCreateDeleteServer {
 
 
     @Video
-    @Test(description = "This TC#000?? verifies that Admin can create a Server")
+    @Test(description = "This TC#00050 verifies that Admin can create a Server")
     public void testAdminCanCreateServer() {
-        ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateServer", "This TC#000?? verifies that Admin can create a Server");
+        ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateServer", "This TC#00050 verifies that Admin can create a Server");
 
         spinnerWaiter.waitSpinner();
         navigation.clickServerList();
@@ -117,9 +117,9 @@ public class AdminCreateDeleteServer {
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
-    @Test(description = "This TC#000?? verifies that the Server was added to DataBase", dependsOnMethods = "testAdminCanCreateServer")
+    @Test(description = "This TC#00051 verifies that the Server was added to DataBase", dependsOnMethods = "testAdminCanCreateServer")
     public void testServerWasAddedToDataBase() {
-        ConfigurationsExtentReport.test = extent.createTest("testServerWasAddedToDataBase", "This TC#000?? verifies that the Server was added to DataBase");
+        ConfigurationsExtentReport.test = extent.createTest("testServerWasAddedToDataBase", "This TC#00051 verifies that the Server was added to DataBase");
 
         Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
         this.id = request.getRow(0).getColumnValue("id").getValue().toString();
@@ -131,9 +131,9 @@ public class AdminCreateDeleteServer {
     }
 
     @Video
-    @Test(description = "This TC#000?? verifies that Admin can delete the Server", dependsOnMethods = "testServerWasAddedToDataBase")
+    @Test(description = "This TC#00052 verifies that Admin can delete the Server", dependsOnMethods = "testServerWasAddedToDataBase")
     public void testAdminCanDeleteServer() {
-        ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteServer", "This TC#000?? verifies that Admin can delete the Server");
+        ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteServer", "This TC#00052 verifies that Admin can delete the Server");
 
         spinnerWaiter.waitSpinner();
         anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(name).pressEnter();
@@ -148,9 +148,9 @@ public class AdminCreateDeleteServer {
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
     }
 
-    @Test(description = "This TC#000?? verifies that the Server was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteServer")
+    @Test(description = "This TC#00053 verifies that the Server was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteServer")
     public void testServerWasDeletedFromDataBase() {
-        ConfigurationsExtentReport.test = extent.createTest("testServerWasDeletedFromDataBase", "This TC#000?? verifies that the Server was deleted from DataBase");
+        ConfigurationsExtentReport.test = extent.createTest("testServerWasDeletedFromDataBase", "This TC#00053 verifies that the Server was deleted from DataBase");
 
         Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
         assertThat(request).row()

@@ -19,6 +19,7 @@
             <class name="tests.AdminCreateDeleteTeam"/>
             <class name="tests.AdminCreateDeleteLocation"/>
             <class name="tests.AdminCreateDeleteServer"/>
+            <class name="tests.AdminCreateDeleteTenant"/>
         </classes>
 
     </test>

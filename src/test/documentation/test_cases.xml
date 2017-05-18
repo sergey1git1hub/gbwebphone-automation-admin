@@ -351,7 +351,7 @@
         </testcase>
     </class>
 
-    <class name="AdminCreateDeletePrefix">
+    <class name="AdminCreateDeleteStatus">
         <testcase number="TC#00030">
             <description title="This TC#00030 verifies that Admin can create a Status">
                 <steps>
@@ -447,7 +447,7 @@
                 <steps>
                     1. Admin login
                     2. Click adminPanel
-                    3. Click ResultCode
+                    3. Click ResultCode list
                     4. Click add button
                     5. Fill in the General tab
                     6. Click save button
@@ -468,7 +468,7 @@
                 <steps>
                     1. Admin login
                     2. Click adminPanel
-                    3. Click ResultCode
+                    3. Click ResultCode list
                     4. Fill sort list of ResultCode
                     5. Click on the searched ResultCode
                     6. Click delete button
@@ -492,7 +492,7 @@
                 <steps>
                     1. Admin login
                     2. Click adminPanel
-                    3. Click TeamList
+                    3. Click Team list
                     4. Click add button
                     5. Fill in the General tab
                     6. Click save button
@@ -513,9 +513,9 @@
                 <steps>
                     1. Admin login
                     2. Click adminPanel
-                    3. Click ResultCode
-                    4. Fill sort list of ResultCode
-                    5. Click on the searched ResultCode
+                    3. Click Team list
+                    4. Fill sort list of Team
+                    5. Click on the searched Team
                     6. Click delete button
                     7. Verify "Deleted successfully!" message is shown
                 </steps>
@@ -523,6 +523,141 @@
         </testcase>
         <testcase number="TC#00045">
             <description title="This TC#00045 verifies that the TeamList was deleted from DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+    </class>
+
+    <class name="AdminCreateDeleteLocation">
+        <testcase number="TC#00046">
+            <description title="This TC#00046 verifies that Admin can create a Location">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click Location list
+                    4. Click add button
+                    5. Fill in the General tab
+                    6. Click save button
+                    7. Verify "Saved successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00047">
+            <description title="This TC#00047 verifies that the Location was added to DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00048">
+            <description title="This TC#00048 verifies that Admin can delete the Location">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click Location list
+                    4. Fill sort list of Location
+                    5. Click on the searched Location
+                    6. Click delete button
+                    7. Verify "Deleted successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00049">
+            <description title="This TC#00049 verifies that the Location was deleted from DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+    </class>
+
+    <class name="AdminCreateDeleteServer">
+        <testcase number="TC#00050">
+            <description title="This TC#00050 verifies that Admin can create a Server">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click Server list
+                    4. Click add button
+                    5. Fill in the General tab
+                    6. Click save button
+                    7. Verify "Saved successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00051">
+            <description title="This TC#00051 verifies that the Server was added to DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00052">
+            <description title="This TC#00052 verifies that Admin can delete the Server">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click Server list
+                    4. Fill sort list of Server
+                    5. Click on the searched Server
+                    6. Click delete button
+                    7. Verify "Deleted successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00053">
+            <description title="This TC#00053 verifies that the Server was deleted from DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+    </class>
+
+    <class name="AdminCreateDeleteTenant">
+        <testcase number="TC#00054">
+            <description title="This TC#00054 verifies that Admin can create a Tenant">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click Tenant list
+                    4. Click add button
+                    5. Fill in the General tab
+                    6. Click save button
+                    7. Verify "Saved successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00055">
+            <description title="This TC#00055 verifies that the Tenant was added to DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00056">
+            <description title="This TC#00056 verifies that Admin can delete the Tenant">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click Tenant list
+                    4. Fill sort list of Tenant
+                    5. Click on the searched Tenant
+                    6. Click delete button
+                    7. Verify "Deleted successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00057">
+            <description title="This TC#00057 verifies that the Tenant was deleted from DataBase">
                 <steps>
                     1. Request to DB
                     2. Verify fields

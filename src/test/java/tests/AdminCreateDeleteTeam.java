@@ -11,6 +11,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
+import utils.AdminDeleteEntity;
 import utils.SpinnerWaiter;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
@@ -102,7 +103,9 @@ public class AdminCreateDeleteTeam {
     public void testAdminCanDeleteTeamList() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteTeamList", "This TC#00044 verifies that Admin can delete the TeamList");
 
-        spinnerWaiter.waitSpinner();
+        AdminDeleteEntity.deleteEntity(2, nameOfTeamList);
+
+        /*spinnerWaiter.waitSpinner();
         anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfTeamList).pressEnter();
         spinnerWaiter.waitSpinner();
         anyElementInListGrid.findCollectionByColumn(2).find(text(nameOfTeamList)).click();
@@ -111,7 +114,7 @@ public class AdminCreateDeleteTeam {
         spinnerWaiter.waitSpinner();
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
         spinnerWaiter.waitSpinner();
-        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
+        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));*/
     }
 
     @Test(description = "This TC#00045 verifies that the TeamList was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteTeamList")

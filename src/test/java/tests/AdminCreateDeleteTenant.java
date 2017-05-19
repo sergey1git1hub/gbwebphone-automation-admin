@@ -11,6 +11,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
+import utils.AdminDeleteEntity;
 import utils.SpinnerWaiter;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
@@ -127,16 +128,18 @@ public class AdminCreateDeleteTenant {
     public void testAdminCanDeleteTenant() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteTenant", "This TC#00056 verifies that Admin can delete the Tenant");
 
-        spinnerWaiter.waitSpinner();
-        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfTenant).pressEnter();
-        spinnerWaiter.waitSpinner();
-        anyElementInListGrid.findCollectionByColumn(2).find(text(nameOfTenant)).click();
-        spinnerWaiter.waitSpinner();
-        globalButtonsInsideForm.getDeleteFooter_btn().click();
-        spinnerWaiter.waitSpinner();
-        confirmation.getYes_btn().waitUntil(visible, 5000).click();
-        spinnerWaiter.waitSpinner();
-        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
+        AdminDeleteEntity.deleteEntity(2,nameOfTenant);
+
+//        spinnerWaiter.waitSpinner();
+//        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfTenant).pressEnter();
+//        spinnerWaiter.waitSpinner();
+//        anyElementInListGrid.findCollectionByColumn(2).find(text(nameOfTenant)).click();
+//        spinnerWaiter.waitSpinner();
+//        globalButtonsInsideForm.getDeleteFooter_btn().click();
+//        spinnerWaiter.waitSpinner();
+//        confirmation.getYes_btn().waitUntil(visible, 5000).click();
+//        spinnerWaiter.waitSpinner();
+//        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
     }
 
     @Test(description = "This TC#00057 verifies that the Tenant was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteTenant")

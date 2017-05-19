@@ -10,6 +10,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
+import utils.AdminDeleteEntity;
 import utils.SpinnerWaiter;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
@@ -21,8 +22,6 @@ import webpages.alerts.Confirmation;
 
 import java.io.IOException;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
@@ -107,18 +106,20 @@ public class AdminCreateDeleteNumber {
     public void testAdminCanDeleteNumber() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteNumber", "This TC#00036 verifies that Admin can delete the Number");
 
-        spinnerWaiter.waitSpinner();
-        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).waitUntil(visible, 5000).setValue(nameOfNumber).pressEnter();  //strange behave on UI
-        spinnerWaiter.waitSpinner();
-        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).waitUntil(visible, 5000).setValue(nameOfNumber).pressEnter();
-        spinnerWaiter.waitSpinner();
-        anyElementInListGrid.findCollectionByColumn(1).find(text(nameOfNumber)).click();
-        spinnerWaiter.waitSpinner();
-        globalButtonsInsideForm.getDeleteFooter_btn().click();
-        spinnerWaiter.waitSpinner();
-        confirmation.getYes_btn().waitUntil(visible, 5000).click();
-        spinnerWaiter.waitSpinner();
-        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
+        AdminDeleteEntity.deleteEntity(1,nameOfNumber);
+
+//        spinnerWaiter.waitSpinner();
+//        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).waitUntil(visible, 5000).setValue(nameOfNumber).pressEnter();  //strange behave on UI
+//        spinnerWaiter.waitSpinner();
+//        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).waitUntil(visible, 5000).setValue(nameOfNumber).pressEnter();
+//        spinnerWaiter.waitSpinner();
+//        anyElementInListGrid.findCollectionByColumn(1).find(text(nameOfNumber)).click();
+//        spinnerWaiter.waitSpinner();
+//        globalButtonsInsideForm.getDeleteFooter_btn().click();
+//        spinnerWaiter.waitSpinner();
+//        confirmation.getYes_btn().waitUntil(visible, 5000).click();
+//        spinnerWaiter.waitSpinner();
+//        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
     }
 
     @Test(description = "This TC#00037 verifies that the Number was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteNumber")

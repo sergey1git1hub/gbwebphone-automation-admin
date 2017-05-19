@@ -11,6 +11,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
+import utils.AdminDeleteEntity;
 import utils.SpinnerWaiter;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
@@ -98,16 +99,18 @@ public class AdminCreateDeletePrefix {
     public void testAdminCanDeletePrefix() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeletePrefix", "This TC#00028 verifies that Admin can delete the Prefix");
 
-        spinnerWaiter.waitSpinner();
-        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfPrefix).pressEnter();
-        spinnerWaiter.waitSpinner();
-        anyElementInListGrid.findCollectionByColumn(2).find(text(nameOfPrefix)).click();
-        spinnerWaiter.waitSpinner();
-        globalButtonsInsideForm.getDeleteFooter_btn().click();
-        spinnerWaiter.waitSpinner();
-        confirmation.getYes_btn().waitUntil(visible, 5000).click();
-        spinnerWaiter.waitSpinner();
-        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
+        AdminDeleteEntity.deleteEntity(2,nameOfPrefix);
+
+//        spinnerWaiter.waitSpinner();
+//        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfPrefix).pressEnter();
+//        spinnerWaiter.waitSpinner();
+//        anyElementInListGrid.findCollectionByColumn(2).find(text(nameOfPrefix)).click();
+//        spinnerWaiter.waitSpinner();
+//        globalButtonsInsideForm.getDeleteFooter_btn().click();
+//        spinnerWaiter.waitSpinner();
+//        confirmation.getYes_btn().waitUntil(visible, 5000).click();
+//        spinnerWaiter.waitSpinner();
+//        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
     }
 
     @Test(description = "This TC#00029 verifies that the Prefix was deleted from DataBase", dependsOnMethods = "testAdminCanDeletePrefix")

@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
+import utils.AdminDeleteEntity;
 import utils.SpinnerWaiter;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
@@ -98,16 +99,18 @@ public class AdminCreateDeleteSkill {
     public void testAdminCanDeleteSkill() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteSkill", "This TC#000?? verifies that Admin can delete the Skill");
 
-        spinnerWaiter.waitSpinner();
-        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(name).pressEnter();
-        spinnerWaiter.waitSpinner();
-        anyElementInListGrid.findCollectionByColumn(2).find(text(name)).click();
-        spinnerWaiter.waitSpinner();
-        globalButtonsInsideForm.getDeleteFooter_btn().click();
-        spinnerWaiter.waitSpinner();
-        confirmation.getYes_btn().waitUntil(visible, 5000).click();
-        spinnerWaiter.waitSpinner();
-        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
+        AdminDeleteEntity.deleteEntity(2,name);
+
+//        spinnerWaiter.waitSpinner();
+//        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(name).pressEnter();
+//        spinnerWaiter.waitSpinner();
+//        anyElementInListGrid.findCollectionByColumn(2).find(text(name)).click();
+//        spinnerWaiter.waitSpinner();
+//        globalButtonsInsideForm.getDeleteFooter_btn().click();
+//        spinnerWaiter.waitSpinner();
+//        confirmation.getYes_btn().waitUntil(visible, 5000).click();
+//        spinnerWaiter.waitSpinner();
+//        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
     }
 
     @Test(description = "This TC#000?? verifies that the Skill was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteSkill")

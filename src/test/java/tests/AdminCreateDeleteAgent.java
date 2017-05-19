@@ -117,13 +117,9 @@ public class AdminCreateDeleteAgent {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteAgent", "This TC#00011 verifies that Admin can delete Agent");
 
         spinnerWaiter.waitSpinner();
-        navigation.clickUserList();
-        spinnerWaiter.waitSpinner();
         anyElementByText.findUpperInput(anyElementByText.USERNAME).setValue(usernameNew).pressEnter();
         spinnerWaiter.waitSpinner();
         anyElementByText.findCollectionByColumn(2).find(Condition.text(usernameNew)).click();
-        spinnerWaiter.waitSpinner();
-        anyFormAndTab.findTab(anyFormAndTab.GENERAL).click();
         spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
         spinnerWaiter.waitSpinner();

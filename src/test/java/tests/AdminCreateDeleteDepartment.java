@@ -10,6 +10,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
+import utils.AdminDeleteEntity;
 import utils.SpinnerWaiter;
 import webpages.admin_mode.department_form.DepartmentForm;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
@@ -101,7 +102,8 @@ public class AdminCreateDeleteDepartment {
     public void testAdminCanDeleteDepartment() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteDepartment", "This TC#00024 verifies that Admin can delete the Department");
 
-        spinnerWaiter.waitSpinner();
+        AdminDeleteEntity.deleteEntity(2,nameOfDepartment);
+        /*spinnerWaiter.waitSpinner();
         anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfDepartment).pressEnter();
         spinnerWaiter.waitSpinner();
         anyElementInListGrid.findCollectionByColumn(2).find(text(nameOfDepartment)).click();
@@ -110,7 +112,7 @@ public class AdminCreateDeleteDepartment {
         spinnerWaiter.waitSpinner();
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
         spinnerWaiter.waitSpinner();
-        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
+        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));*/
     }
 
     @Test(description = "This TC#00025 verifies that the Department was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteDepartment")

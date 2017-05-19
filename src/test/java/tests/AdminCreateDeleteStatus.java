@@ -10,6 +10,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
+import utils.AdminDeleteEntity;
 import utils.SpinnerWaiter;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
@@ -102,16 +103,18 @@ public class AdminCreateDeleteStatus {
     public void testAdminCanDeleteStatus() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteStatus", "This TC#00032 verifies that Admin can delete the Status");
 
-        spinnerWaiter.waitSpinner();
-        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfStatus).pressEnter();
-        spinnerWaiter.waitSpinner();
-        anyElementInListGrid.findCollectionByColumn(2).find(text(nameOfStatus)).click();
-        spinnerWaiter.waitSpinner();
-        globalButtonsInsideForm.getDeleteFooter_btn().click();
-        spinnerWaiter.waitSpinner();
-        confirmation.getYes_btn().waitUntil(visible, 5000).click();
-        spinnerWaiter.waitSpinner();
-        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
+        AdminDeleteEntity.deleteEntity(2,nameOfStatus);
+
+//        spinnerWaiter.waitSpinner();
+//        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfStatus).pressEnter();
+//        spinnerWaiter.waitSpinner();
+//        anyElementInListGrid.findCollectionByColumn(2).find(text(nameOfStatus)).click();
+//        spinnerWaiter.waitSpinner();
+//        globalButtonsInsideForm.getDeleteFooter_btn().click();
+//        spinnerWaiter.waitSpinner();
+//        confirmation.getYes_btn().waitUntil(visible, 5000).click();
+//        spinnerWaiter.waitSpinner();
+//        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
     }
 
     @Test(description = "This TC#00033 verifies that the Status was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteStatus")

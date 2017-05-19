@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
+import utils.AdminDeleteEntity;
 import utils.SpinnerWaiter;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.AnyFormAndTab;
@@ -135,7 +136,9 @@ public class AdminCreateDeleteServer {
     public void testAdminCanDeleteServer() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteServer", "This TC#00052 verifies that Admin can delete the Server");
 
-        spinnerWaiter.waitSpinner();
+        AdminDeleteEntity.deleteEntity(2,name);
+
+       /* spinnerWaiter.waitSpinner();
         anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(name).pressEnter();
         spinnerWaiter.waitSpinner();
         anyElementInListGrid.findCollectionByColumn(2).find(text(name)).click();
@@ -145,7 +148,7 @@ public class AdminCreateDeleteServer {
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
 
         spinnerWaiter.waitSpinner();
-        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
+        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));*/
     }
 
     @Test(description = "This TC#00053 verifies that the Server was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteServer")

@@ -17,7 +17,7 @@ import static utils.Constants.*;
 
 public class ConfigurationsSelenide {
 
-    public static void configuration() {
+    public static void setConfiguration() {
         ChromeDriverManager.getInstance().proxy(PROXY).setup();
         Configuration.browser = ChromeDriverProvider.class.getName();
         Configuration.reportsFolder = "build/reports/screenshots";

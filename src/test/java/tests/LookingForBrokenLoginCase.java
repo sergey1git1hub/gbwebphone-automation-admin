@@ -34,7 +34,7 @@ public class LookingForBrokenLoginCase {
 
     @BeforeClass
     public void set() {
-        ConfigurationsSelenide.configuration();
+        ConfigurationsSelenide.setConfiguration();
         ConfigurationsExtentReport.startExtentReporting();
     }
 

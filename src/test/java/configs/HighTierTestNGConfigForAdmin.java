@@ -16,7 +16,7 @@ public class HighTierTestNGConfigForAdmin {
 
     @BeforeTest
     public static void setUp() {
-        ConfigurationsSelenide.configuration();
+        ConfigurationsSelenide.setConfiguration();
         ConfigurationsExtentReport.startExtentReporting();
         ConfigurationsSelenide.openURLasAdmin();
     }

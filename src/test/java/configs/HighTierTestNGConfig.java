@@ -1,6 +1,5 @@
 package configs;
 
-
 import com.codeborne.selenide.testng.GlobalTextReport;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -11,14 +10,13 @@ import utils.ConfigurationsSelenide;
 
 @Test
 @Listeners(GlobalTextReport.class)
-public class HighTierTestNGConfigForAdmin {
-
+public class HighTierTestNGConfig {
 
     @BeforeTest
     public static void setUp() {
         ConfigurationsSelenide.setConfiguration();
         ConfigurationsExtentReport.startExtentReporting();
-        ConfigurationsSelenide.openURLasAdmin();
+        ConfigurationsSelenide.openURL();
     }
 
     @AfterTest

@@ -1,4 +1,4 @@
-package tests;
+package tests.admin_side;
 
 
 import com.automation.remarks.video.annotations.Video;
@@ -7,11 +7,10 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import utils.AdminDeleteEntity;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
-import utils.AdminDeleteEntity;
 import utils.SpinnerWaiter;
-import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.AnyFormAndTab;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
@@ -19,7 +18,6 @@ import webpages.admin_mode.navigation.Navigation;
 import webpages.admin_mode.server_form.AMIProperties;
 import webpages.admin_mode.server_form.General;
 import webpages.alerts.AdminMode;
-import webpages.alerts.Confirmation;
 
 import java.io.IOException;
 
@@ -35,8 +33,6 @@ public class AdminCreateDeleteServer {
     private General general = new General();
     private GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
     private AdminMode adminMode = new AdminMode();
-    private AnyElementInListGrid anyElementInListGrid = new AnyElementInListGrid();
-    private Confirmation confirmation = new Confirmation();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
     private SpinnerWaiter spinnerWaiter = new SpinnerWaiter();
     private AnyFormAndTab anyFormAndTab = new AnyFormAndTab();
@@ -136,7 +132,7 @@ public class AdminCreateDeleteServer {
     public void testAdminCanDeleteServer() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteServer", "This TC#00052 verifies that Admin can delete the Server");
 
-        AdminDeleteEntity.deleteEntity(2,name);
+        AdminDeleteEntity.deleteEntity(2, name);
 
        /* spinnerWaiter.waitSpinner();
         anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(name).pressEnter();

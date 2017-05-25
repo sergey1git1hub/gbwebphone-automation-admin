@@ -1,4 +1,4 @@
-package tests;
+package tests.particular;
 
 
 import org.testng.annotations.AfterClass;
@@ -22,7 +22,6 @@ import static utils.ConfigurationsSelenide.closeDriver;
 import static utils.ConfigurationsSelenide.openURL;
 
 
-//@Listeners(VideoListener.class)
 public class LookingForBrokenLoginCase {
 
     private LoginPage loginPage = new LoginPage();
@@ -79,10 +78,4 @@ public class LookingForBrokenLoginCase {
             loginPage.getConnect().shouldBe(visible);
         }
     }
-
-//            JavascriptExecutor exe = (JavascriptExecutor) getWebDriver();
-//            Integer numberOfFrames = Integer.parseInt(exe.executeScript("return window.length").toString());
-//            System.out.println("Number of iframes on the page are " + numberOfFrames);
-
-
 }

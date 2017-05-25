@@ -1,4 +1,4 @@
-package tests;
+package tests.admin_side;
 
 
 import com.automation.remarks.testng.VideoListener;
@@ -9,17 +9,15 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import utils.AdminDeleteEntity;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
-import utils.AdminDeleteEntity;
 import utils.SpinnerWaiter;
-import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
 import webpages.admin_mode.group_form.General;
 import webpages.admin_mode.navigation.Navigation;
 import webpages.alerts.AdminMode;
-import webpages.alerts.Confirmation;
 
 import java.io.IOException;
 
@@ -36,8 +34,6 @@ public class AdminCreateDeleteGroup {
     private General general = new General();
     private GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
     private AdminMode adminMode = new AdminMode();
-    private AnyElementInListGrid anyElementInListGrid = new AnyElementInListGrid();
-    private Confirmation confirmation = new Confirmation();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
     private SpinnerWaiter spinnerWaiter = new SpinnerWaiter();
 
@@ -156,7 +152,7 @@ public class AdminCreateDeleteGroup {
     public void testAdminCanDeleteGroup() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteGroup", "This TC#00015 verifies that Admin can delete the Group");
 
-        AdminDeleteEntity.deleteEntity(2,nameOfGroup);
+        AdminDeleteEntity.deleteEntity(2, nameOfGroup);
 //        spinnerWaiter.waitSpinner();
 //        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfGroup).pressEnter();
 //        spinnerWaiter.waitSpinner();

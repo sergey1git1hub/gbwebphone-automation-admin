@@ -1,4 +1,4 @@
-package tests;
+package tests.admin_side;
 
 
 import com.automation.remarks.testng.VideoListener;
@@ -89,6 +89,7 @@ public class AdminCreateDeleteTrunk {
         trunkForm.getFromDomain_inpt().setValue(fromDomain);
         spinnerWaiter.waitSpinner();
         trunkForm.getDisallow_inpt().setValue(disallow);
+        spinnerWaiter.waitSpinner();
         spinnerWaiter.waitSpinner();
         trunkForm.getAllow_inpt().setValue(allow);
         spinnerWaiter.waitSpinner();

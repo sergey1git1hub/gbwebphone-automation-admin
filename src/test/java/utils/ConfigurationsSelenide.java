@@ -34,12 +34,12 @@ public class ConfigurationsSelenide {
         $(By.className("logo")).waitUntil(visible, 30000);
     }
 
-    public static void openURLasAdmin() {
-        AdminPage adminPage = new AdminPage();
-        open(WEBPHONE_URL);
-        $(By.className("logo")).waitUntil(visible, 30000);
-        adminPage.getAdminPage();
-    }
+//    public static void openURLasAdmin() {
+//        AdminPage adminPage = new AdminPage();
+//        open(WEBPHONE_URL);
+//        $(By.className("logo")).waitUntil(visible, 30000);
+//        adminPage.getAdminPage();
+//    }
 
     public static void closeDriver() {
         if (getWebDriver() != null) {

@@ -18,6 +18,7 @@ public class Status {
     private SelenideElement phoneNumber = $("#PhoneNumber");
     private SelenideElement myNumber = $("#credit");
     private SelenideElement callStatus = $("#status");
+    private SelenideElement displayEvent = $("#displayEvent");
 
 
     //actions
@@ -66,5 +67,9 @@ public class Status {
 
     public SelenideElement getCallStatus() {
         return callStatus;
+    }
+
+    public SelenideElement getDisplayEvent() {
+        return displayEvent;
     }
 }

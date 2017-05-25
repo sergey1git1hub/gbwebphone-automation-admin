@@ -1,5 +1,4 @@
-package tests;
-
+package tests.admin_side;
 
 import com.automation.remarks.testng.VideoListener;
 import com.automation.remarks.video.annotations.Video;
@@ -9,17 +8,15 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import utils.AdminDeleteEntity;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
-import utils.AdminDeleteEntity;
 import utils.SpinnerWaiter;
-import webpages.admin_mode.global_elements.AnyElementInListGrid;
+import webpages.admin_mode.department_form.DepartmentForm;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
 import webpages.admin_mode.navigation.Navigation;
-import webpages.admin_mode.team_form.General;
 import webpages.alerts.AdminMode;
-import webpages.alerts.Confirmation;
 
 import java.io.IOException;
 
@@ -30,20 +27,18 @@ import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
 
 @Listeners(VideoListener.class)
-public class AdminCreateDeleteTeam {
+public class AdminCreateDeleteDepartment {
 
     private Navigation navigation = new Navigation();
-    private General general = new General();
+    private DepartmentForm departmentForm = new DepartmentForm();
     private GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
     private AdminMode adminMode = new AdminMode();
-    private AnyElementInListGrid anyElementInListGrid = new AnyElementInListGrid();
-    private Confirmation confirmation = new Confirmation();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
     private SpinnerWaiter spinnerWaiter = new SpinnerWaiter();
 
-    private String nameOfTeamList = "Name_of_TeamList";
-    private String descriptionOfTeamList = "Description_of_TeamList";
-    private String sqlRequest = "SELECT * FROM wbp_team WHERE team_name = " + "\'" + nameOfTeamList + "\'" + " AND id = (SELECT max(id)FROM wbp_team)";
+    private String nameOfDepartment = "Name_of_Department";
+    private String description = "Description_of_Department";
+    private String sqlRequest = "SELECT * FROM wbp_department WHERE department_name = " + "\'" + nameOfDepartment + "\'" + " AND id = (SELECT max(id)FROM wbp_department)";
     private String id;
 
 
@@ -59,25 +54,25 @@ public class AdminCreateDeleteTeam {
 
 
     @Video
-    @Test(description = "This TC#00042 verifies that Admin can create a TeamList")
-    public void testAdminCanCreateTeamList() {
-        ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateTeamList", "This TC#00042 verifies that Admin can create a TeamList");
+    @Test(description = "This TC#00022 verifies that Admin can create a Department")
+    public void testAdminCanCreateDepartment() {
+        ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateDepartment", "This TC#00022 verifies that Admin can create a Department");
 
         spinnerWaiter.waitSpinner();
-        navigation.clickTeamList();
+        navigation.clickDepartmentList();
         spinnerWaiter.waitSpinner();
         globalButtonsAddAndCountInLists.getAdd_btn().click();
 
         spinnerWaiter.waitSpinner();
-        general.getName_inpt().setValue(nameOfTeamList);
+        departmentForm.getName_inpt().setValue(nameOfDepartment);
         spinnerWaiter.waitSpinner();
-        general.getDescription_inpt().setValue(descriptionOfTeamList);
+        departmentForm.getDescription_inpt().sendKeys(description);
         spinnerWaiter.waitSpinner();
-        general.getTenant_slct_btn().click();
+        departmentForm.getTenant_slct_btn().click();
         spinnerWaiter.waitSpinner();
-        general.getTenants().get(2).click();
+        departmentForm.getTenants().get(1).click();  //must be known
         spinnerWaiter.waitSpinner();
-        general.getEnabled_chbx().click();
+        departmentForm.getEnabled_chbx().click();
 
         spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getSaveFooter_btn().click();
@@ -86,29 +81,28 @@ public class AdminCreateDeleteTeam {
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
-    @Test(description = "This TC#00043 verifies that the TeamList was added to DataBase", dependsOnMethods = "testAdminCanCreateTeamList")
-    public void testTeamListWasAddedToDataBase() {
-        ConfigurationsExtentReport.test = extent.createTest("testTeamListWasAddedToDataBase", "This TC#00043 verifies that the TeamList was added to DataBase");
+    @Test(description = "This TC#00023 verifies that the Department was added to DataBase", dependsOnMethods = "testAdminCanCreateDepartment")
+    public void testDepartmentWasAddedToDataBase() {
+        ConfigurationsExtentReport.test = extent.createTest("testDepartmentWasAddedToDataBase", "This TC#00023 verifies that the Department was added to DataBase");
 
         Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
         this.id = request.getRow(0).getColumnValue("id").getValue().toString();
         assertThat(request).row()
-                .value("team_name").isEqualTo(nameOfTeamList)
-                .value("team_description").isEqualTo(descriptionOfTeamList)
+                .value("department_name").isEqualTo(nameOfDepartment)
+                .value("department_description").isEqualTo(description)
                 .value("deleted").isEqualTo(false);
     }
 
     @Video
-    @Test(description = "This TC#00044 verifies that Admin can delete the TeamList", dependsOnMethods = "testTeamListWasAddedToDataBase")
-    public void testAdminCanDeleteTeamList() {
-        ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteTeamList", "This TC#00044 verifies that Admin can delete the TeamList");
+    @Test(description = "This TC#00024 verifies that Admin can delete the Department", dependsOnMethods = "testDepartmentWasAddedToDataBase")
+    public void testAdminCanDeleteDepartment() {
+        ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteDepartment", "This TC#00024 verifies that Admin can delete the Department");
 
-        AdminDeleteEntity.deleteEntity(2, nameOfTeamList);
-
+        AdminDeleteEntity.deleteEntity(2, nameOfDepartment);
         /*spinnerWaiter.waitSpinner();
-        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfTeamList).pressEnter();
+        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfDepartment).pressEnter();
         spinnerWaiter.waitSpinner();
-        anyElementInListGrid.findCollectionByColumn(2).find(text(nameOfTeamList)).click();
+        anyElementInListGrid.findCollectionByColumn(2).find(text(nameOfDepartment)).click();
         spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getDeleteFooter_btn().click();
         spinnerWaiter.waitSpinner();
@@ -117,15 +111,15 @@ public class AdminCreateDeleteTeam {
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));*/
     }
 
-    @Test(description = "This TC#00045 verifies that the TeamList was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteTeamList")
-    public void testTeamListWasDeletedFromDataBase() {
-        ConfigurationsExtentReport.test = extent.createTest("testTeamListWasDeletedFromDataBase", "This TC#00045 verifies that the TeamList was deleted from DataBase");
+    @Test(description = "This TC#00025 verifies that the Department was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteDepartment")
+    public void testDepartmentWasDeletedFromDataBase() {
+        ConfigurationsExtentReport.test = extent.createTest("testDepartmentWasDeletedFromDataBase", "This TC#00025 verifies that the Department was deleted from DataBase");
 
         Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
         assertThat(request).row()
                 .value("id").isEqualTo(this.id)
-                .value("team_name").isEqualTo(nameOfTeamList)
-                .value("team_description").isEqualTo(descriptionOfTeamList)
+                .value("department_name").isEqualTo(nameOfDepartment)
+                .value("department_description").isEqualTo(description)
                 .value("deleted").isEqualTo(true);
     }
 

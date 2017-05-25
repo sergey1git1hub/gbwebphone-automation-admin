@@ -1,5 +1,4 @@
-package tests;
-
+package tests.admin_side;
 
 import com.automation.remarks.testng.VideoListener;
 import com.automation.remarks.video.annotations.Video;
@@ -9,17 +8,15 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import utils.AdminDeleteEntity;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
-import utils.AdminDeleteEntity;
 import utils.SpinnerWaiter;
-import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
 import webpages.admin_mode.navigation.Navigation;
-import webpages.admin_mode.prefix.General;
+import webpages.admin_mode.status_form.General;
 import webpages.alerts.AdminMode;
-import webpages.alerts.Confirmation;
 
 import java.io.IOException;
 
@@ -30,20 +27,17 @@ import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
 
 @Listeners(VideoListener.class)
-public class AdminCreateDeletePrefix {
+public class AdminCreateDeleteStatus {
 
     private Navigation navigation = new Navigation();
     private General general = new General();
     private GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
     private AdminMode adminMode = new AdminMode();
-    private AnyElementInListGrid anyElementInListGrid = new AnyElementInListGrid();
-    private Confirmation confirmation = new Confirmation();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
     private SpinnerWaiter spinnerWaiter = new SpinnerWaiter();
 
-    private String nameOfPrefix = "Name_of_Prefix";
-    private String prefixNumber = "12345";
-    private String sqlRequest = "SELECT * FROM wbp_prefix WHERE prefix_name = " + "\'" + nameOfPrefix + "\'" + " AND id = (SELECT max(id)FROM wbp_prefix)";
+    private String nameOfStatus = "Name_of_Status";
+    private String sqlRequest = "SELECT * FROM wbp_status WHERE status_text = " + "\'" + nameOfStatus + "\'" + " AND id = (SELECT max(id)FROM wbp_status)";
     private String id;
 
 
@@ -59,21 +53,28 @@ public class AdminCreateDeletePrefix {
 
 
     @Video
-    @Test(description = "This TC#00026 verifies that Admin can create a Prefix")
-    public void testAdminCanCreatePrefix() {
-        ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreatePrefix", "This TC#00026 verifies that Admin can create a Prefix");
+    @Test(description = "This TC#00030 verifies that Admin can create a Status")
+    public void testAdminCanCreateStatus() {
+        ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateStatus", "This TC#00030 verifies that Admin can create a Status");
 
         spinnerWaiter.waitSpinner();
-        navigation.clickPrefixList();
+        navigation.clickStatusList();
         spinnerWaiter.waitSpinner();
         globalButtonsAddAndCountInLists.getAdd_btn().click();
 
         spinnerWaiter.waitSpinner();
-        general.getName_inpt().setValue(nameOfPrefix);
+        general.getName_inpt().setValue(nameOfStatus);
         spinnerWaiter.waitSpinner();
-        general.getPrefix_inpt().setValue(prefixNumber);
+        general.getCode_slct_btn().click();
         spinnerWaiter.waitSpinner();
-        general.getEnabled_chbx().click();
+        general.getCodes().get(5).click();  //must be known
+        spinnerWaiter.waitSpinner();
+        general.getPaid_chbx().click();
+        spinnerWaiter.waitSpinner();
+        general.getAvailableForInboundCalls_chbx().click();
+        spinnerWaiter.waitSpinner();
+        general.getAvailableForDialerCalls_chbx().click();
+        spinnerWaiter.waitSpinner();
 
         spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getSaveFooter_btn().click();
@@ -82,29 +83,28 @@ public class AdminCreateDeletePrefix {
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
-    @Test(description = "This TC#00027 verifies that the Prefix was added to DataBase", dependsOnMethods = "testAdminCanCreatePrefix")
-    public void testPrefixWasAddedToDataBase() {
-        ConfigurationsExtentReport.test = extent.createTest("testPrefixWasAddedToDataBase", "This TC#00027 verifies that the Prefix was added to DataBase");
+    @Test(description = "This TC#00031 verifies that the Status was added to DataBase", dependsOnMethods = "testAdminCanCreateStatus")
+    public void testStatusWasAddedToDataBase() {
+        ConfigurationsExtentReport.test = extent.createTest("testStatusWasAddedToDataBase", "This TC#00031 verifies that the Status was added to DataBase");
 
         Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
         this.id = request.getRow(0).getColumnValue("id").getValue().toString();
         assertThat(request).row()
-                .value("prefix_name").isEqualTo(nameOfPrefix)
-                .value("prefix_number").isEqualTo(prefixNumber)
+                .value("status_text").isEqualTo(nameOfStatus)
                 .value("deleted").isEqualTo(false);
     }
 
     @Video
-    @Test(description = "This TC#00028 verifies that Admin can delete the Prefix", dependsOnMethods = "testPrefixWasAddedToDataBase")
-    public void testAdminCanDeletePrefix() {
-        ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeletePrefix", "This TC#00028 verifies that Admin can delete the Prefix");
+    @Test(description = "This TC#00032 verifies that Admin can delete the Status", dependsOnMethods = "testStatusWasAddedToDataBase")
+    public void testAdminCanDeleteStatus() {
+        ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteStatus", "This TC#00032 verifies that Admin can delete the Status");
 
-        AdminDeleteEntity.deleteEntity(2,nameOfPrefix);
+        AdminDeleteEntity.deleteEntity(2, nameOfStatus);
 
 //        spinnerWaiter.waitSpinner();
-//        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfPrefix).pressEnter();
+//        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfStatus).pressEnter();
 //        spinnerWaiter.waitSpinner();
-//        anyElementInListGrid.findCollectionByColumn(2).find(text(nameOfPrefix)).click();
+//        anyElementInListGrid.findCollectionByColumn(2).find(text(nameOfStatus)).click();
 //        spinnerWaiter.waitSpinner();
 //        globalButtonsInsideForm.getDeleteFooter_btn().click();
 //        spinnerWaiter.waitSpinner();
@@ -113,15 +113,14 @@ public class AdminCreateDeletePrefix {
 //        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
     }
 
-    @Test(description = "This TC#00029 verifies that the Prefix was deleted from DataBase", dependsOnMethods = "testAdminCanDeletePrefix")
-    public void testPrefixWasDeletedFromDataBase() {
-        ConfigurationsExtentReport.test = extent.createTest("testPrefixWasDeletedFromDataBase", "This TC#00029 verifies that the Prefix was deleted from DataBase");
+    @Test(description = "This TC#00033 verifies that the Status was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteStatus")
+    public void testStatusWasDeletedFromDataBase() {
+        ConfigurationsExtentReport.test = extent.createTest("testStatusWasDeletedFromDataBase", "This TC#00033 verifies that the Status was deleted from DataBase");
 
         Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
         assertThat(request).row()
                 .value("id").isEqualTo(this.id)
-                .value("prefix_name").isEqualTo(nameOfPrefix)
-                .value("prefix_number").isEqualTo(prefixNumber)
+                .value("status_text").isEqualTo(nameOfStatus)
                 .value("deleted").isEqualTo(true);
     }
 

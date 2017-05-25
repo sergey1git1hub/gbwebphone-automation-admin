@@ -1,4 +1,4 @@
-package tests;
+package tests.admin_side;
 
 import com.automation.remarks.testng.VideoListener;
 import com.automation.remarks.video.annotations.Video;

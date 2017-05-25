@@ -1,23 +1,23 @@
-package tests;
+package tests.admin_side;
 
 
+import com.automation.remarks.testng.VideoListener;
 import com.automation.remarks.video.annotations.Video;
 import org.assertj.db.type.Request;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import utils.AdminDeleteEntity;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
-import utils.AdminDeleteEntity;
 import utils.SpinnerWaiter;
-import webpages.admin_mode.global_elements.AnyElementInListGrid;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
 import webpages.admin_mode.location_form.LocationForm;
 import webpages.admin_mode.navigation.Navigation;
 import webpages.alerts.AdminMode;
-import webpages.alerts.Confirmation;
 
 import java.io.IOException;
 
@@ -27,13 +27,12 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
 
+@Listeners(VideoListener.class)
 public class AdminCreateDeleteLocation {
 
     private Navigation navigation = new Navigation();
     private GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
     private AdminMode adminMode = new AdminMode();
-    private AnyElementInListGrid anyElementInListGrid = new AnyElementInListGrid();
-    private Confirmation confirmation = new Confirmation();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
     private LocationForm locationForm = new LocationForm();
     private SpinnerWaiter spinnerWaiter = new SpinnerWaiter();
@@ -100,7 +99,7 @@ public class AdminCreateDeleteLocation {
     public void testAdminCanDeleteLocation() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteLocation", "This TC#00048 verifies that Admin can delete the Location");
 
-        AdminDeleteEntity.deleteEntity(2,nameOfLocation);
+        AdminDeleteEntity.deleteEntity(2, nameOfLocation);
 
 //        spinnerWaiter.waitSpinner();
 //        anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfLocation).pressEnter();

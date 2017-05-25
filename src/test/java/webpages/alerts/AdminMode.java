@@ -3,23 +3,21 @@ package webpages.alerts;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static utils.Highlighter.highlight;
 
 
 public class AdminMode {
 
-//    private SelenideElement msg = $(By.xpath(".//*[@id='growl_container']/div[2]/div/div[2]/span"));
     private SelenideElement msgSuccess = $x("//span[@class='ui-growl-title' and text()='Saved successfully!']");
     private SelenideElement msgDelete = $x("//span[@class='ui-growl-title' and text()='Deleted successfully!']");
-
-//                                            .//span[@class='ui-growl-title']
 
 
     //getters
     public SelenideElement getMsgSuccess() {
-        return msgSuccess;
+        return highlight(msgSuccess);
     }
 
     public SelenideElement getMsgDelete() {
-        return msgDelete;
+        return highlight(msgDelete);
     }
 }

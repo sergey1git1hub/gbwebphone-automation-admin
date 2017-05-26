@@ -75,7 +75,7 @@ public class AdminCreateDeleteResultCode {
         resultCodeForm.getProvisional_chbx().click();
 
         spinnerWaiter.waitSpinner();
-        globalButtonsInsideForm.getSaveFooter_btn().click();
+        globalButtonsInsideForm.getSaveFooter_btn().get(0).click();
 
 //        adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));   //todo enable after fix
     }

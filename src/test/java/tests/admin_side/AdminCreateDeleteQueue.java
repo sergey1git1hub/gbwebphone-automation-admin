@@ -159,7 +159,7 @@ public class AdminCreateDeleteQueue {
         general.getClose_leaveWhenEmpty_btn().click();  //must be known
 
         spinnerWaiter.waitSpinner();
-        globalButtonsInsideForm.getSaveFooter_btn().click();
+        globalButtonsInsideForm.getSaveFooter_btn().get(0).click();
 
         spinnerWaiter.waitSpinner();
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));

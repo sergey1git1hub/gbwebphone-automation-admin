@@ -78,7 +78,7 @@ public class AdminCreateDeleteNumber {
         general.getName_inpt().setValue(nameOfNumber);
 
         spinnerWaiter.waitSpinner();
-        globalButtonsInsideForm.getSaveFooter_btn().click();
+        globalButtonsInsideForm.getSaveFooter_btn().get(0).click();
 
 //        adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));  //todo enable after fix #5625
     }

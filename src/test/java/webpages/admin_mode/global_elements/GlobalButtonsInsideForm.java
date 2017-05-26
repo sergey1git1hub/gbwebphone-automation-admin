@@ -1,13 +1,15 @@
 package webpages.admin_mode.global_elements;
 
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class GlobalButtonsInsideForm {
 
-    private SelenideElement saveFooter_btn = $x(".//*[@aria-live='polite']//tfoot//button/span[text()='Save']");
+    private ElementsCollection saveFooter_btn = $$x("//*[@aria-live='polite']//button/span[text()='Save']");
     private SelenideElement cancelFooter_btn = $x(".//*[@aria-live='polite']//tfoot//button/span[text()='Cancel']");
     private SelenideElement cloneFooter_btn = $x(".//*[@aria-live='polite']//tfoot//button/span[text()='Clone']");
     private SelenideElement deleteFooter_btn = $x(".//*[@aria-live='polite']//tfoot//button/span[text()='Delete']");
@@ -17,7 +19,7 @@ public class GlobalButtonsInsideForm {
 
 
     //getters
-    public SelenideElement getSaveFooter_btn() {
+    public ElementsCollection getSaveFooter_btn() {
         return saveFooter_btn;
     }
 

@@ -72,7 +72,7 @@ public class AdminCreateDeletePrefix {
         general.getEnabled_chbx().click();
 
         spinnerWaiter.waitSpinner();
-        globalButtonsInsideForm.getSaveFooter_btn().click();
+        globalButtonsInsideForm.getSaveFooter_btn().get(0).click();
 
         spinnerWaiter.waitSpinner();
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));

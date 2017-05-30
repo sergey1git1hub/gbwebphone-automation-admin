@@ -18,10 +18,12 @@ import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
 import webpages.admin_mode.navigation.Navigation;
 import webpages.admin_mode.user_form.general.GeneralTab;
-import webpages.admin_mode.user_form.skills.SkillsTab;
 import webpages.admin_mode.user_form.groups.Groups;
 import webpages.admin_mode.user_form.groups.group_form.ScheduleTab;
 import webpages.admin_mode.user_form.groups.skill_form.SkillForm;
+import webpages.admin_mode.user_form.priorities.PrioritiesTab;
+import webpages.admin_mode.user_form.priorities.PriorityForm;
+import webpages.admin_mode.user_form.skills.SkillsTab;
 import webpages.admin_mode.user_form.user_properties.PropertyForm;
 import webpages.admin_mode.user_form.user_properties.UserPropertiesTab;
 import webpages.alerts.AdminMode;
@@ -54,6 +56,8 @@ public class AdminCreateDeleteAgent {
     private SkillsTab skillsTab = new SkillsTab();
     private PropertyForm propertyForm = new PropertyForm();
     private UserPropertiesTab userPropertiesTab = new UserPropertiesTab();
+    private PrioritiesTab prioritiesTab = new PrioritiesTab();
+    private PriorityForm priorityForm = new PriorityForm();
 
     private String usernameNew = "81600";
     private String firstName = "QA";
@@ -64,6 +68,8 @@ public class AdminCreateDeleteAgent {
     private String id;
     private String idGroup;
     private String idSkill;
+    private String groupName = "VadimShubkin_test_group1";
+    private String queue = "queue_daria";
 
 
     @BeforeClass
@@ -147,9 +153,8 @@ public class AdminCreateDeleteAgent {
         spinnerWaiter.waitSpinner();
         generalTab.getGroup_slct_btn().click();
         spinnerWaiter.waitSpinner();
-        generalTab.getGroups().get(1).click();  //must be known
+        generalTab.getGroups().findBy(text(groupName)).click();
         spinnerWaiter.waitSpinner();
-        String groupName = generalTab.getGroup_txt_box().getText();
         spinnerWaiter.waitSpinner();
         generalTab.getInitialStatus_slct_btn().click();
         spinnerWaiter.waitSpinner();
@@ -244,8 +249,8 @@ public class AdminCreateDeleteAgent {
     }
 
     @Video
-    @Test (description = "This TC#000?? verifies that Admin can add User Properties in the User Form")
-    public void test7AdminCanAddUserPropertiesInUserForm(){
+    @Test(description = "This TC#000?? verifies that Admin can add User Properties in the User Form")
+    public void test7AdminCanAddUserPropertiesInUserForm() {
         ConfigurationsExtentReport.test = extent.createTest("test7AdminCanAddUserPropertiesInUserForm", "This TC#000?? verifies that Admin can add User Properties in the User Form");
 
         refresh();
@@ -269,7 +274,7 @@ public class AdminCreateDeleteAgent {
         spinnerWaiter.waitSpinner();
         propertyForm.getManualCall().click();
         spinnerWaiter.waitSpinner();
-        propertyForm.getManualCall().click();
+        propertyForm.getAssistance().click();
         spinnerWaiter.waitSpinner();
         propertyForm.getAllowEmpty().click();
 
@@ -277,13 +282,42 @@ public class AdminCreateDeleteAgent {
         globalButtonsInsideForm.getSaveFooter_btn().get(1).click();
 
         userPropertiesTab.getProperties().first().shouldNotHave(text("No records found"));
-        userPropertiesTab.getProperties().first().shouldHave(attribute("role"),attribute("aria-selected"),attribute("data-ri","0"));
+        userPropertiesTab.getProperties().first().shouldHave(attribute("role"), attribute("aria-selected"), attribute("data-ri", "0"));
 
         spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getSaveFooter_btn().last().click();
 
     }
 
+    @Video
+    @Test(description = "This TC#000?? verifies that Admin can add Priorities in the User Form")
+    public void test8AdminCanAddPrioritiesInUserForm() {
+        ConfigurationsExtentReport.test = extent.createTest("test7AdminCanAddUserPropertiesInUserForm", "This TC#000?? verifies that Admin can add User Properties in the User Form");
+
+        refresh();
+
+        spinnerWaiter.waitSpinner();
+        anyElementByText.findUpperInput(anyElementByText.USERNAME).setValue(usernameNew).pressEnter();
+        spinnerWaiter.waitSpinner();
+        anyElementByText.findCollectionByColumn(2).find(Condition.text(usernameNew)).click();
+        spinnerWaiter.waitSpinner();
+        anyFormAndTabInForm.findTab(anyFormAndTabInForm.PRIORITIES).click();
+        spinnerWaiter.waitSpinner();
+        prioritiesTab.getPriorities().first().shouldHave(text("No records found"));
+        globalButtonsInsideForm.getAddLocal_btn().click();
+
+        spinnerWaiter.waitSpinner();
+        priorityForm.getQueue_btn().click();
+        priorityForm.getQueues().findBy(text(queue)).click();
+        spinnerWaiter.waitSpinner();
+        globalButtonsInsideForm.getSaveFooter_btn().get(1).click();
+
+        prioritiesTab.getPriorities().first().shouldNotHave(text("No records found"));
+        prioritiesTab.getPriorities().first().shouldHave(attribute("role"), attribute("aria-selected"), attribute("data-ri", "0"));
+
+        spinnerWaiter.waitSpinner();
+        globalButtonsInsideForm.getSaveFooter_btn().last().click();
+    }
 
     @Video
     @Test(description = "This TC#00011 verifies that Admin can delete the Agent"/*, dependsOnMethods = "testAgentWasAddedToDataBase"*/)

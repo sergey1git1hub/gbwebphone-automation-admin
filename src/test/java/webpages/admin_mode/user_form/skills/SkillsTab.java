@@ -1,4 +1,4 @@
-package webpages.admin_mode.user_form;
+package webpages.admin_mode.user_form.skills;
 
 
 import com.codeborne.selenide.ElementsCollection;

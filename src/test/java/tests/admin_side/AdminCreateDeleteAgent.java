@@ -17,11 +17,13 @@ import webpages.admin_mode.global_elements.AnyFormAndTabInForm;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
 import webpages.admin_mode.navigation.Navigation;
-import webpages.admin_mode.user_form.GeneralTab;
-import webpages.admin_mode.user_form.SkillsTab;
+import webpages.admin_mode.user_form.general.GeneralTab;
+import webpages.admin_mode.user_form.skills.SkillsTab;
 import webpages.admin_mode.user_form.groups.Groups;
 import webpages.admin_mode.user_form.groups.group_form.ScheduleTab;
 import webpages.admin_mode.user_form.groups.skill_form.SkillForm;
+import webpages.admin_mode.user_form.user_properties.PropertyForm;
+import webpages.admin_mode.user_form.user_properties.UserPropertiesTab;
 import webpages.alerts.AdminMode;
 import webpages.alerts.Confirmation;
 
@@ -50,6 +52,8 @@ public class AdminCreateDeleteAgent {
     private webpages.admin_mode.user_form.groups.group_form.GeneralTab generalTab = new webpages.admin_mode.user_form.groups.group_form.GeneralTab();
     private Groups groups = new Groups();
     private SkillsTab skillsTab = new SkillsTab();
+    private PropertyForm propertyForm = new PropertyForm();
+    private UserPropertiesTab userPropertiesTab = new UserPropertiesTab();
 
     private String usernameNew = "81600";
     private String firstName = "QA";
@@ -224,7 +228,6 @@ public class AdminCreateDeleteAgent {
         skillsTab.getSkills().get(2).shouldHave(text(skillName3));
 
         globalButtonsInsideForm.getSaveFooter_btn().last().click();
-
     }
 
     @Test(description = "This TC#000?? verifies that the Skill was added to Agent in DataBase")
@@ -239,6 +242,48 @@ public class AdminCreateDeleteAgent {
                 .value("user_id").isEqualTo(id)
                 .value("skill_id").isEqualTo(idSkill);
     }
+
+    @Video
+    @Test (description = "This TC#000?? verifies that Admin can add User Properties in the User Form")
+    public void test7AdminCanAddUserPropertiesInUserForm(){
+        ConfigurationsExtentReport.test = extent.createTest("test7AdminCanAddUserPropertiesInUserForm", "This TC#000?? verifies that Admin can add User Properties in the User Form");
+
+        refresh();
+
+        spinnerWaiter.waitSpinner();
+        anyElementByText.findUpperInput(anyElementByText.USERNAME).setValue(usernameNew).pressEnter();
+        spinnerWaiter.waitSpinner();
+        anyElementByText.findCollectionByColumn(2).find(Condition.text(usernameNew)).click();
+        spinnerWaiter.waitSpinner();
+        anyFormAndTabInForm.findTab(anyFormAndTabInForm.USER_PROPERTIES).click();
+        spinnerWaiter.waitSpinner();
+        userPropertiesTab.getProperties().first().shouldHave(text("No records found"));
+        globalButtonsInsideForm.getAddLocal_btn().click();
+
+        spinnerWaiter.waitSpinner();
+        propertyForm.getGroup_btn().click();
+        spinnerWaiter.waitSpinner();
+        propertyForm.getGroups().get(1).click();
+        spinnerWaiter.waitSpinner();
+        propertyForm.getTransferCall().click();
+        spinnerWaiter.waitSpinner();
+        propertyForm.getManualCall().click();
+        spinnerWaiter.waitSpinner();
+        propertyForm.getManualCall().click();
+        spinnerWaiter.waitSpinner();
+        propertyForm.getAllowEmpty().click();
+
+        spinnerWaiter.waitSpinner();
+        globalButtonsInsideForm.getSaveFooter_btn().get(1).click();
+
+        userPropertiesTab.getProperties().first().shouldNotHave(text("No records found"));
+        userPropertiesTab.getProperties().first().shouldHave(attribute("role"),attribute("aria-selected"),attribute("data-ri","0"));
+
+        spinnerWaiter.waitSpinner();
+        globalButtonsInsideForm.getSaveFooter_btn().last().click();
+
+    }
+
 
     @Video
     @Test(description = "This TC#00011 verifies that Admin can delete the Agent"/*, dependsOnMethods = "testAgentWasAddedToDataBase"*/)

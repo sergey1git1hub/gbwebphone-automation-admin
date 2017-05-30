@@ -25,6 +25,7 @@ public class AnyFormAndTabInForm {
     public final String CODE = "Code";
     public final String EMAIL = "Email";
     public final String PAID = "Paid";
+    public final String USER_PROPERTIES = "User Properties";
     public final String AVAILABLE_FOR_INBOUND_CALLS = "Available for inbound calls";
     public final String AVAILABLE_FOR_DAILER_CALLS = "Available for dialer calls";
     public final String AMI_Properties = "AMI Properties";

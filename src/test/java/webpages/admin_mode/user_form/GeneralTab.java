@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 
-public class General {
+public class GeneralTab {
 
     private SelenideElement username_inpt = $(By.xpath(".//input[@id='userDialogForm:tabs:username_input']"));
     private SelenideElement firstname_inpt = $(By.xpath(".//input[@id='userDialogForm:tabs:firstname_input']"));

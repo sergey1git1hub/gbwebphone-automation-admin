@@ -11,7 +11,7 @@ import utils.AdminDeleteEntity;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
 import utils.SpinnerWaiter;
-import webpages.admin_mode.global_elements.AnyFormAndTab;
+import webpages.admin_mode.global_elements.AnyFormAndTabInForm;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
 import webpages.admin_mode.navigation.Navigation;
@@ -35,7 +35,7 @@ public class AdminCreateDeleteServer {
     private AdminMode adminMode = new AdminMode();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
     private SpinnerWaiter spinnerWaiter = new SpinnerWaiter();
-    private AnyFormAndTab anyFormAndTab = new AnyFormAndTab();
+    private AnyFormAndTabInForm anyFormAndTab = new AnyFormAndTabInForm();
     private AMIProperties amiProperties = new AMIProperties();
 
     private String name = "Name_of_Server";

@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Regression">
-    <test name="Regression" preserve-order="true" parallel="false">
+    <test name="Admin Side" preserve-order="true" parallel="false">
 
         <classes>
             <!--GlobalConfigs-->

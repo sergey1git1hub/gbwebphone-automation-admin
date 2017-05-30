@@ -7,7 +7,7 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class General {
+public class GeneralTab {
 
     private SelenideElement tab = $("a[href='#groupDialogForm:editGroupTabView:j_idt243']");
 
@@ -16,6 +16,7 @@ public class General {
     private SelenideElement initialStatus_slct_btn = $("#groupDialogForm\\3a editGroupTabView\\3a initialStatus > div.ui-selectonemenu-trigger");
     private ElementsCollection initialStatuses = $$("#groupDialogForm\\3a editGroupTabView\\3a initialStatus_panel li");
 
+    private SelenideElement group_txt_box = $("#groupDialogForm\\3a editGroupTabView\\3a groups_selectOneMenu_label");
 
     //getters
     public SelenideElement getGroup_slct_btn() {
@@ -36,5 +37,9 @@ public class General {
 
     public SelenideElement getTab() {
         return tab;
+    }
+
+    public SelenideElement getGroup_txt_box() {
+        return group_txt_box;
     }
 }

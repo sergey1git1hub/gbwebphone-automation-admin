@@ -5,7 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class Schedule {
+public class ScheduleTab {
 
     private SelenideElement tab = $("a[href='#groupDialogForm:editGroupTabView:j_idt251']");
 

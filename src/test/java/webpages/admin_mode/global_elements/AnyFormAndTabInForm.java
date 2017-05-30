@@ -5,7 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
 
-public class AnyFormAndTab {
+public class AnyFormAndTabInForm {
 
     public final String ID = "id";
     public final String GENERAL = "General";
@@ -17,6 +17,7 @@ public class AnyFormAndTab {
     public final String FIRSTNAME = "Firstname";
     public final String LASTNAME = "Lastname";
     public final String GROUPS = "Groups";
+    public final String SKILLS = "Skills";
     public final String TEAM = "Team";
     public final String QUEUES = "Queues";
     public final String NUMBER = "Number";

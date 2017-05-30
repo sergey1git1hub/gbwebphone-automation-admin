@@ -1,8 +1,5 @@
 package webpages.admin_mode.user_form;
 
 
-
-public class Location {
-
-
+public class TenantsTab {
 }

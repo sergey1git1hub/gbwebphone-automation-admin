@@ -5,25 +5,30 @@ import com.automation.remarks.video.annotations.Video;
 import com.codeborne.selenide.Condition;
 import org.assertj.db.type.Request;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 import utils.ConfigurationsExtentReport;
 import utils.ConnectionDataBase;
 import utils.SpinnerWaiter;
 import webpages.admin_mode.global_elements.AnyElementInListGrid;
-import webpages.admin_mode.global_elements.AnyFormAndTab;
+import webpages.admin_mode.global_elements.AnyFormAndTabInForm;
 import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
 import webpages.admin_mode.navigation.Navigation;
-import webpages.admin_mode.user_form.General;
-import webpages.admin_mode.user_form.groups.group_form.Schedule;
+import webpages.admin_mode.user_form.GeneralTab;
+import webpages.admin_mode.user_form.SkillsTab;
+import webpages.admin_mode.user_form.groups.Groups;
+import webpages.admin_mode.user_form.groups.group_form.ScheduleTab;
+import webpages.admin_mode.user_form.groups.skill_form.SkillForm;
 import webpages.alerts.AdminMode;
 import webpages.alerts.Confirmation;
-import webpages.tabs.Tabs;
 
 import java.io.IOException;
 
-import static com.codeborne.selenide.Condition.enabled;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
@@ -31,17 +36,20 @@ import static utils.ConfigurationsExtentReport.extent;
 @Listeners(VideoListener.class)
 public class AdminCreateDeleteAgent {
 
-    private General general = new General();
+    private GeneralTab general = new GeneralTab();
+    private SkillForm skillForm = new SkillForm();
     private Navigation navigation = new Navigation();
     private Confirmation confirmation = new Confirmation();
     private AdminMode adminMode = new AdminMode();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
     private AnyElementInListGrid anyElementByText = new AnyElementInListGrid();
-    private AnyFormAndTab anyFormAndTab = new AnyFormAndTab();
+    private AnyFormAndTabInForm anyFormAndTabInForm = new AnyFormAndTabInForm();
     private GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
     private SpinnerWaiter spinnerWaiter = new SpinnerWaiter();
-    private Schedule schedule = new Schedule();
-    private webpages.admin_mode.user_form.groups.group_form.General generalGroupForm = new webpages.admin_mode.user_form.groups.group_form.General();
+    private ScheduleTab schedule = new ScheduleTab();
+    private webpages.admin_mode.user_form.groups.group_form.GeneralTab generalTab = new webpages.admin_mode.user_form.groups.group_form.GeneralTab();
+    private Groups groups = new Groups();
+    private SkillsTab skillsTab = new SkillsTab();
 
     private String usernameNew = "81600";
     private String firstName = "QA";
@@ -50,6 +58,8 @@ public class AdminCreateDeleteAgent {
     private String password = "1";
     private String sqlRequest = "SELECT * FROM wbp_user WHERE username = " + "\'" + usernameNew + "\'" + " AND id = (SELECT max(id)FROM wbp_user)";
     private String id;
+    private String idGroup;
+    private String idSkill;
 
 
     @BeforeClass
@@ -64,7 +74,7 @@ public class AdminCreateDeleteAgent {
 
 
     @Video
-    @Test(description = "This TC#00010 verifies that Admin can create a Agent")
+    @Test(description = "This TC#00010 verifies that Admin can create a Agent")  //General Tab
     public void test1AdminCanCreateAgent() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateAgent", "This TC#00010 verifies that Admin can create Agent");
 
@@ -73,7 +83,7 @@ public class AdminCreateDeleteAgent {
         spinnerWaiter.waitSpinner();
         globalButtonsAddAndCountInLists.getAdd_btn().click();
         spinnerWaiter.waitSpinner();
-        anyFormAndTab.findTab(anyFormAndTab.GENERAL).click();
+        anyFormAndTabInForm.findTab(anyFormAndTabInForm.GENERAL).click();
         spinnerWaiter.waitSpinner();
         general.getUsername_inpt().click();
         spinnerWaiter.waitSpinner();
@@ -113,7 +123,7 @@ public class AdminCreateDeleteAgent {
     }
 
     @Video
-    @Test(description = "This TC#000?? verifies that Admin can add Group in User Form")
+    @Test(description = "This TC#000?? verifies that Admin can add Group in the User Form")  //Groups Tab
     public void test3AdminCanAddGroupInUserForm() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanAddGroupInUserForm", "This TC#00011 verifies that Admin can delete Agent");
 
@@ -124,19 +134,22 @@ public class AdminCreateDeleteAgent {
         spinnerWaiter.waitSpinner();
         anyElementByText.findCollectionByColumn(2).find(Condition.text(usernameNew)).click();
         spinnerWaiter.waitSpinner();
-        anyFormAndTab.findTab(anyFormAndTab.GROUPS).click();
+        anyFormAndTabInForm.findTab(anyFormAndTabInForm.GROUPS).click();
         spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getAddLocal_btn().click();
         spinnerWaiter.waitSpinner();
-        generalGroupForm.getTab().click();
+
+        generalTab.getTab().click();
         spinnerWaiter.waitSpinner();
-        generalGroupForm.getGroup_slct_btn().click();
+        generalTab.getGroup_slct_btn().click();
         spinnerWaiter.waitSpinner();
-        generalGroupForm.getGroups().get(1).click();  //must be known
+        generalTab.getGroups().get(1).click();  //must be known
         spinnerWaiter.waitSpinner();
-        generalGroupForm.getInitialStatus_slct_btn().click();
+        String groupName = generalTab.getGroup_txt_box().getText();
         spinnerWaiter.waitSpinner();
-        generalGroupForm.getInitialStatuses().get(1);  //must be known
+        generalTab.getInitialStatus_slct_btn().click();
+        spinnerWaiter.waitSpinner();
+        generalTab.getInitialStatuses().get(1);  //must be known
 
         spinnerWaiter.waitSpinner();
         schedule.getTab().click();
@@ -155,11 +168,76 @@ public class AdminCreateDeleteAgent {
         spinnerWaiter.waitSpinner();
         schedule.getMinutes_25().click();
         spinnerWaiter.waitSpinner();
-        System.out.println(globalButtonsInsideForm.getSaveFooter_btn().size());
         globalButtonsInsideForm.getSaveFooter_btn().get(1).click();
+
+        groups.getGroups().shouldBe(sizeGreaterThanOrEqual(1));
+        groups.getGroups().get(0).shouldHave(text(groupName));
+        this.idGroup = groups.getIdS().get(0).getText();
         spinnerWaiter.waitSpinner();
         globalButtonsInsideForm.getSaveFooter_btn().last().click();
 
+    }
+
+    @Test(description = "This TC#000?? verifies that the Group was added to Agent in DataBase")
+    public void test4GroupWasAddedToAgentInDataBase() {
+        ConfigurationsExtentReport.test = extent.createTest("test4GroupWasAddedToAgentInDataBase", "This TC#000?? verifies that the Group was added to Agent in DataBase");
+
+        String sqlRequest = "SELECT * FROM wbp_user_group WHERE user_id = (SELECT max(user_id)FROM wbp_user_group)";
+        Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
+        assertThat(request).row()
+                .value("user_id").isEqualTo(id)
+                .value("group_id").isEqualTo(idGroup);
+    }
+
+    @Video
+    @Test(description = "This TC#000?? verifies that Admin can add Skills in the User Form")  //Skill Tab
+    public void test5AdminCanAddSkillInUserForm() {
+        ConfigurationsExtentReport.test = extent.createTest("test4AdminCanAddSkillInUserForm", "This TC#000?? verifies that Admin can add Skills in the User Form");
+
+        refresh();
+
+        spinnerWaiter.waitSpinner();
+        anyElementByText.findUpperInput(anyElementByText.USERNAME).setValue(usernameNew).pressEnter();
+        spinnerWaiter.waitSpinner();
+        anyElementByText.findCollectionByColumn(2).find(Condition.text(usernameNew)).click();
+        spinnerWaiter.waitSpinner();
+        anyFormAndTabInForm.findTab(anyFormAndTabInForm.SKILLS).click();
+        spinnerWaiter.waitSpinner();
+        globalButtonsInsideForm.getAddLocal_btn().click();
+
+        spinnerWaiter.waitSpinner();
+        skillForm.getFlag_chbx().get(1).click();
+        skillForm.getFlag_chbx().get(2).click();
+        skillForm.getFlag_chbx().get(3).click();
+
+        spinnerWaiter.waitSpinner();
+        String skillName1 = skillForm.getName_txt().get(1).getText();
+        String skillName2 = skillForm.getName_txt().get(2).getText();
+        String skillName3 = skillForm.getName_txt().get(3).getText();
+        globalButtonsInsideForm.getSaveFooter_btn().get(1).click();
+
+        this.idSkill = skillsTab.getIdS().get(0).getText();
+
+        spinnerWaiter.waitSpinner();
+        skillsTab.getSkills().get(0).shouldHave(text(skillName1));
+        skillsTab.getSkills().get(1).shouldHave(text(skillName2));
+        skillsTab.getSkills().get(2).shouldHave(text(skillName3));
+
+        globalButtonsInsideForm.getSaveFooter_btn().last().click();
+
+    }
+
+    @Test(description = "This TC#000?? verifies that the Skill was added to Agent in DataBase")
+    public void test6SkillWasAddedToDataBase() {
+        ConfigurationsExtentReport.test = extent.createTest("test6SkillWasAddedToDataBase", "This TC#000?? verifies that the Skill was added to Agent in DataBase");
+
+        String sqlRequest = "SELECT * FROM wbp_skill_user WHERE user_id = (SELECT max(user_id)FROM wbp_skill_user)";
+        Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
+        assertThat(request)
+                .hasNumberOfRows(3)
+                .row()
+                .value("user_id").isEqualTo(id)
+                .value("skill_id").isEqualTo(idSkill);
     }
 
     @Video

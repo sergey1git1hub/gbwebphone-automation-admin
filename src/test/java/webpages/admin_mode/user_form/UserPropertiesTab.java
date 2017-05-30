@@ -1,5 +1,5 @@
 package webpages.admin_mode.user_form;
 
 
-public class Tenants {
+public class UserPropertiesTab {
 }

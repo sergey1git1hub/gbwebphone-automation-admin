@@ -28,6 +28,6 @@ public class AdminCanLogin {
         loginPage.setUserData(data.getUsernameAdminValid(), data.getPasswordAdminValid());
         loginPage.clickConnect();
         selectModePage.clickAdminPanel();
-        Assert.assertEquals(url(),"http://172.21.7.239/gbwebphone/admin/userList.jsf");  //todo change verification
+        Assert.assertEquals(url(), "http://172.21.7.239/gbwebphone/admin/userList.jsf");  //todo change verification
     }
 }

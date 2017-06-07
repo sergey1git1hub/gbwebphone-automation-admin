@@ -148,6 +148,50 @@
                 </steps>
             </description>
         </testcase>
+        <testcase number="TC#00062">
+            <description title="This TC#00062 verifies that Admin can add Group in the User Form">
+                <steps>
+
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00063">
+            <description title="This TC#00063 verifies that the Group was added to Agent in DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00064">
+            <description title="This TC#00064 verifies that Admin can add Skills in the User Form">
+                <steps>
+
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00065">
+            <description title="This TC#00065 verifies that the Skill was added to Agent in DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00066">
+            <description title="This TC#00066 verifies that Admin can add User Properties in the User Form">
+                <steps>
+
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00067">
+            <description title="This TC#00067 verifies that Admin can add Priorities in the User Form">
+                <steps>
+
+                </steps>
+            </description>
+        </testcase>
         <testcase number="TC#00011">
             <description title="This TC#00011 verifies that Admin can delete the Agent">
                 <steps>
@@ -658,6 +702,51 @@
         </testcase>
         <testcase number="TC#00057">
             <description title="This TC#00057 verifies that the Tenant was deleted from DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+    </class>
+
+    <class name="AdminCreateDeleteTrunk">
+        <testcase number="TC#00058">
+            <description title="This TC#00058 verifies that Admin can create a Trunk">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click Trunk list
+                    4. Click add button
+                    5. Fill in the General tab
+                    6. Click save button
+                    7. Verify "Saved successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00059">
+            <description title="This TC#00059 verifies that the Trunk was added to DataBase">
+                <steps>
+                    1. Request to DB
+                    2. Verify fields
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00060">
+            <description title="This TC#00060 verifies that Admin can delete the Trunk">
+                <steps>
+                    1. Admin login
+                    2. Click adminPanel
+                    3. Click Trunk list
+                    4. Fill sort list of Trunk
+                    5. Click on the searched Trunk
+                    6. Click delete button
+                    7. Verify "Deleted successfully!" message is shown
+                </steps>
+            </description>
+        </testcase>
+        <testcase number="TC#00061">
+            <description title="This TC#00061 verifies that the Trunk was deleted from DataBase">
                 <steps>
                     1. Request to DB
                     2. Verify fields

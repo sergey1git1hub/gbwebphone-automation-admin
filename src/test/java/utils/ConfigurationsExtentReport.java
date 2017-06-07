@@ -49,8 +49,8 @@ public class ConfigurationsExtentReport {
             test.addScreenCaptureFromPath("screenshots/" + Screenshots.getLastScreenshot().getName());
         } else if (result.getStatus() == ITestResult.SUCCESS) {
             test.log(com.aventstack.extentreports.Status.PASS, MarkupHelper.createLabel(result.getName() + " PASSED", ExtentColor.GREEN));
-//            test.pass("<video width='320' height='240' controls> <source src='" + VideoRecorder.getLastRecording().toString().substring(14) + "' type='video/mp4'> </video>");
-//            test.pass("Video name is - " + VideoRecorder.getLastRecording().getName());
+            test.pass("<video width='320' height='240' controls> <source src='" + VideoRecorder.getLastRecording().toString().substring(14) + "' type='video/mp4'> </video>");
+            test.pass("Video name is - " + VideoRecorder.getLastRecording().getName());
         } else if (result.getStatus() == ITestResult.SKIP) {
             test.log(com.aventstack.extentreports.Status.SKIP, MarkupHelper.createLabel(result.getName() + " SKIPPED", ExtentColor.ORANGE));
             test.skip(result.getThrowable());

@@ -15,17 +15,19 @@ public class ChromeDriverProvider implements WebDriverProvider {
     @Override
     public WebDriver createDriver(DesiredCapabilities capabilities) {
         ChromeOptions options = new ChromeOptions();
-        Map<String, Object> chromePrefs = new HashMap<>();
-        chromePrefs.put("credentials_enable_service", false); // desired key
-        chromePrefs.put("profile.password_manager_enabled", false);
+//        Map<String, Object> chromePrefs = new HashMap<>();
+//        chromePrefs.put("credentials_enable_service", false); // desired key
+//        chromePrefs.put("profile.password_manager_enabled", false);
 
-        options.addArguments("--kiosk");
-        options.addArguments("--start-maximized");
-        options.addArguments("start-fullscreen");
-        options.addArguments("--no-sandbox"); // desired key
-        options.setExperimentalOption("prefs", chromePrefs);
-        options.addArguments("--disable-save-password-bubble");
+//        options.addArguments("--kiosk");
+//        options.addArguments("--start-maximized");
+//        options.addArguments("start-fullscreen");
+//        options.addArguments("--no-sandbox"); // desired key
+//        options.setExperimentalOption("prefs", chromePrefs);
+//        options.addArguments("--disable-save-password-bubble");
         options.addArguments("--disable-infobars");
+//        options.addArguments("headless");
+//        options.addArguments("window-size=1024x768");
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
         return new ChromeDriver(capabilities);
     }

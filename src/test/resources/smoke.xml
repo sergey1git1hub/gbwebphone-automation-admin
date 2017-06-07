@@ -5,10 +5,12 @@
     <test name="Smoke" preserve-order="true" parallel="false">
 
         <classes>
+            <!--GlobalConfigs-->
             <class name="configs.HighTierTestNGConfig"/>
+
             <!--<class name="tests.NegativeLogin"/>-->
             <class name="tests.agent_side.LoginAndCall"/>
-            <class name="tests.agent_side.AgentToAgent"/>
+            <!--<class name="tests.agent_side.AgentToAgent"/>-->
         </classes>
 
     </test>

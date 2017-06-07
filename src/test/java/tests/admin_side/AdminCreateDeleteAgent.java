@@ -133,7 +133,7 @@ public class AdminCreateDeleteAgent {
     }
 
     @Video
-    @Test(description = "This TC#000?? verifies that Admin can add Group in the User Form")  //Groups Tab
+    @Test(description = "This TC#00062 verifies that Admin can add Group in the User Form")  //Groups Tab
     public void test3AdminCanAddGroupInUserForm() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanAddGroupInUserForm", "This TC#00011 verifies that Admin can delete Agent");
 
@@ -187,7 +187,7 @@ public class AdminCreateDeleteAgent {
 
     }
 
-    @Test(description = "This TC#000?? verifies that the Group was added to Agent in DataBase")
+    @Test(description = "This TC#00063 verifies that the Group was added to Agent in DataBase")
     public void test4GroupWasAddedToAgentInDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("test4GroupWasAddedToAgentInDataBase", "This TC#000?? verifies that the Group was added to Agent in DataBase");
 
@@ -199,7 +199,7 @@ public class AdminCreateDeleteAgent {
     }
 
     @Video
-    @Test(description = "This TC#000?? verifies that Admin can add Skills in the User Form")  //Skill Tab
+    @Test(description = "This TC#00064 verifies that Admin can add Skills in the User Form")  //Skill Tab
     public void test5AdminCanAddSkillInUserForm() {
         ConfigurationsExtentReport.test = extent.createTest("test4AdminCanAddSkillInUserForm", "This TC#000?? verifies that Admin can add Skills in the User Form");
 
@@ -235,7 +235,7 @@ public class AdminCreateDeleteAgent {
         globalButtonsInsideForm.getSaveFooter_btn().last().click();
     }
 
-    @Test(description = "This TC#000?? verifies that the Skill was added to Agent in DataBase")
+    @Test(description = "This TC#00065 verifies that the Skill was added to Agent in DataBase")
     public void test6SkillWasAddedToDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("test6SkillWasAddedToDataBase", "This TC#000?? verifies that the Skill was added to Agent in DataBase");
 
@@ -249,7 +249,7 @@ public class AdminCreateDeleteAgent {
     }
 
     @Video
-    @Test(description = "This TC#000?? verifies that Admin can add User Properties in the User Form")
+    @Test(description = "This TC#00066 verifies that Admin can add User Properties in the User Form")
     public void test7AdminCanAddUserPropertiesInUserForm() {
         ConfigurationsExtentReport.test = extent.createTest("test7AdminCanAddUserPropertiesInUserForm", "This TC#000?? verifies that Admin can add User Properties in the User Form");
 
@@ -290,7 +290,7 @@ public class AdminCreateDeleteAgent {
     }
 
     @Video
-    @Test(description = "This TC#000?? verifies that Admin can add Priorities in the User Form")
+    @Test(description = "This TC#00067 verifies that Admin can add Priorities in the User Form")
     public void test8AdminCanAddPrioritiesInUserForm() {
         ConfigurationsExtentReport.test = extent.createTest("test7AdminCanAddUserPropertiesInUserForm", "This TC#000?? verifies that Admin can add User Properties in the User Form");
 

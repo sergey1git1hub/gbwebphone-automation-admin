@@ -17,10 +17,12 @@ import webpages.admin_mode.global_elements.GlobalButtonsInsideForm;
 import webpages.admin_mode.global_elements.GlobalElementsAddAndCount;
 import webpages.admin_mode.navigation.Navigation;
 import webpages.admin_mode.trunk_form.TrunkForm;
+import webpages.alerts.AdminMode;
 
 import java.io.IOException;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.db.api.Assertions.assertThat;
 import static utils.ConfigurationsExtentReport.extent;
@@ -34,6 +36,7 @@ public class AdminCreateDeleteTrunk {
     private GlobalButtonsInsideForm globalButtonsInsideForm = new GlobalButtonsInsideForm();
     private GlobalElementsAddAndCount globalButtonsAddAndCountInLists = new GlobalElementsAddAndCount();
     private SpinnerWaiter spinnerWaiter = new SpinnerWaiter();
+    private AdminMode adminMode = new AdminMode();
 
     private String name = "Name_of_Trunk";
     private String description = "Description_of_Trunk";
@@ -64,9 +67,9 @@ public class AdminCreateDeleteTrunk {
 
 
     @Video
-    @Test(description = "This TC#000?? verifies that Admin can create a Trunk")
+    @Test(description = "This TC#00058 verifies that Admin can create a Trunk")
     public void testAdminCanCreateTrunk() {
-        ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateTrunk", "This TC#000?? verifies that Admin can create a Trunk");
+        ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateTrunk", "This TC#00058 verifies that Admin can create a Trunk");
 
         spinnerWaiter.waitSpinner();
         navigation.clickTrunkList();
@@ -123,12 +126,12 @@ public class AdminCreateDeleteTrunk {
         globalButtonsInsideForm.getSaveFooter_btn().get(0).click();
 
         spinnerWaiter.waitSpinner();
-//        adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
+        adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
-    @Test(description = "This TC#000?? verifies that the Trunk was added to DataBase", dependsOnMethods = "testAdminCanCreateTrunk")
+    @Test(description = "This TC#00059 verifies that the Trunk was added to DataBase", dependsOnMethods = "testAdminCanCreateTrunk")
     public void testTrunkWasAddedToDataBase() {
-        ConfigurationsExtentReport.test = extent.createTest("testTrunkWasAddedToDataBase", "This TC#000?? verifies that the Trunk was added to DataBase");
+        ConfigurationsExtentReport.test = extent.createTest("testTrunkWasAddedToDataBase", "This TC#00059 verifies that the Trunk was added to DataBase");
 
         Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
         this.id = request.getRow(0).getColumnValue("id").getValue().toString();
@@ -153,16 +156,16 @@ public class AdminCreateDeleteTrunk {
     }
 
     @Video
-    @Test(description = "This TC#000?? verifies that Admin can delete the Trunk", dependsOnMethods = "testTrunkWasAddedToDataBase")
+    @Test(description = "This TC#00060 verifies that Admin can delete the Trunk", dependsOnMethods = "testTrunkWasAddedToDataBase")
     public void testAdminCanDeleteTrunk() {
-        ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteTrunk", "This TC#000?? verifies that Admin can delete the Trunk");
+        ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteTrunk", "This TC#00060 verifies that Admin can delete the Trunk");
 
         AdminDeleteEntity.deleteEntity(2, name);
     }
 
-    @Test(description = "This TC#000?? verifies that the Trunk was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteTrunk")
+    @Test(description = "This TC#00061 verifies that the Trunk was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteTrunk")
     public void testTrunkWasDeletedFromDataBase() {
-        ConfigurationsExtentReport.test = extent.createTest("testTrunkWasDeletedFromDataBase", "This TC#000?? verifies that the Trunk was deleted from DataBase");
+        ConfigurationsExtentReport.test = extent.createTest("testTrunkWasDeletedFromDataBase", "This TC#00061 verifies that the Trunk was deleted from DataBase");
 
         Request request = new Request(ConnectionDataBase.getSource(), sqlRequest);
         assertThat(request).row()

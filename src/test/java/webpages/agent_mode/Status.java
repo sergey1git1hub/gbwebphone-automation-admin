@@ -19,6 +19,8 @@ public class Status {
     private SelenideElement myNumber = $("#credit");
     private SelenideElement callStatus = $("#status");
     private SelenideElement displayEvent = $("#displayEvent");
+    private ElementsCollection callsLog = $$("#callLogData_data > tr > td");
+    private SelenideElement closeCallLog = $("#callLogPanel > a > span");
 
 
     //actions
@@ -71,5 +73,13 @@ public class Status {
 
     public SelenideElement getDisplayEvent() {
         return displayEvent;
+    }
+
+    public ElementsCollection getCallsLog() {
+        return callsLog;
+    }
+
+    public SelenideElement getCloseCallLog() {
+        return closeCallLog;
     }
 }

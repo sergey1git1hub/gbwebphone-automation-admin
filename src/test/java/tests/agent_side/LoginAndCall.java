@@ -7,6 +7,7 @@ import com.codeborne.selenide.Condition;
 import configs.AgentUIRules;
 import configs.MizuStatusChecker;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -42,10 +43,14 @@ public class LoginAndCall {
         ConfigurationsExtentReport.getResult(result);
     }
 
+    @AfterClass
+    public void logout() {
+        loginPage.getConnect().waitUntil(visible, AgentUIRules.AFTER_LOGOUT_WAIT_TIME);
+    }
 
     @Video
     @Test(description = "This TC#00002 verifies that Agent can Login")
-    public void testAgentCanLogin() {
+    public void test1AgentCanLogin() {
         ConfigurationsExtentReport.test = extent.createTest("testAgentCanLogin", "This TC#00002 verifies that Agent can Login");
 
         loginPage.setUserData(data.getUsernameAgentValid(), data.getPasswordAgentValid());
@@ -58,8 +63,8 @@ public class LoginAndCall {
 
 
     @Video
-    @Test(description = "This TC#00004 verifies that Agent can call", dependsOnMethods = "testAgentCanLogin")
-    public void testAgentCanCall() {
+    @Test(description = "This TC#00004 verifies that Agent can call")
+    public void test2AgentCanCall() {
         ConfigurationsExtentReport.test = extent.createTest("testAgentCanCall", "This TC#00004 verifies that Agent can call");
 
         status.setPhoneNumber("94629");
@@ -75,8 +80,8 @@ public class LoginAndCall {
 
 
     @Video
-    @Test(description = "This TC#00009 verifies that Agent can call via Keypad", dependsOnMethods = "testAgentCanLogin")
-    public void testAgentCanCallViaKeypad() {
+    @Test(description = "This TC#00009 verifies that Agent can call via Keypad")
+    public void test3AgentCanCallViaKeypad() {
         ConfigurationsExtentReport.test = extent.createTest("testAgentCanCallViaKeypad", "This TC#00009 verifies that Agent can call via Keypad");
 
         status.getCallStatus().waitUntil(text("Registered"), 60000);
@@ -97,7 +102,26 @@ public class LoginAndCall {
         status.getStatusDuration().waitUntil(exactText("(00:00:10)"), 15000);
         controls.clickPower();
 
-        loginPage.getConnect().waitUntil(visible, AgentUIRules.AFTER_LOGOUT_WAIT_TIME);
+
     }
 
+
+    @Video
+    @Test(description = "This TC#000?? verifies that Agent can call to the last client within CallLogs.")
+    public void test3AgentCanCallToTheLastClientWithinCallLogs() {
+        ConfigurationsExtentReport.test = extent.createTest("testAgentCanCallViaKeypad", "This TC#00009 verifies that Agent can call via Keypad");
+
+        status.getCallLog_btn().click();
+        status.getCallsLog().first().click();
+        status.getCloseCallLog().click();
+        call.getCall_btn().click();
+        call.getCall_btn().waitUntil(disabled, 5000);
+        status.getCallStatus().waitUntil(text("Ringing"), 60000);
+        status.getStatusDuration().waitUntil(text(AgentUIRules.DEFAULT_STATUS_WAIT_TIME_TEXT), 15000);
+        call.clickHangup();
+        call.getHangup_btn().waitUntil(disabled, 5000);
+        status.getStatus_btnText().waitUntil(text("Wrapup"), 10000);
+        status.getStatusDuration().waitUntil(text(AgentUIRules.DEFAULT_STATUS_WAIT_TIME_TEXT), 15000);
+
+    }
 }

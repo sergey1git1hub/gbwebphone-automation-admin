@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ScheduleTab {
 
-    private SelenideElement tab = $("a[href='#groupDialogForm:editGroupTabView:j_idt251']");
+    private SelenideElement tab = $("#groupDialogForm\\3a editGroupTabView ul li.ui-state-default.ui-corner-top.ui-state-focus.ui-tabs-selected.ui-state-active a");
 
     private SelenideElement enabled_chbx = $("#groupDialogForm\\3a editGroupTabView\\3a scheduleEnable > div.ui-chkbox-box");
 

@@ -154,11 +154,11 @@ public class AdminCreateDeleteAgent {
         generalTab.getGroup_slct_btn().click();
         spinnerWaiter.waitSpinner();
         generalTab.getGroups().findBy(text(groupName)).click();
+        /*spinnerWaiter.waitSpinner();
+        spinnerWaiter.waitSpinner();*/
+       /* generalTab.getInitialStatus_slct_btn().click();
         spinnerWaiter.waitSpinner();
-        spinnerWaiter.waitSpinner();
-        generalTab.getInitialStatus_slct_btn().click();
-        spinnerWaiter.waitSpinner();
-        generalTab.getInitialStatuses().get(1);  //must be known
+        generalTab.getInitialStatuses().get(1);  //must be known*/
 
         spinnerWaiter.waitSpinner();
         schedule.getTab().click();

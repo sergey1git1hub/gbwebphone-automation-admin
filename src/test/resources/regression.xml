@@ -12,7 +12,7 @@
 
             <!--Tests-->
             <class name="tests.admin_side.AdminCreateDeleteAgent"/>
-            <class name="tests.admin_side.AdminCreateDeleteGroup"/>
+          <!--  <class name="tests.admin_side.AdminCreateDeleteGroup"/>
             <class name="tests.admin_side.AdminCreateDeleteQueue"/>
             <class name="tests.admin_side.AdminCreateDeleteDepartment"/>
             <class name="tests.admin_side.AdminCreateDeletePrefix"/>
@@ -24,7 +24,7 @@
             <class name="tests.admin_side.AdminCreateDeleteServer"/>
             <class name="tests.admin_side.AdminCreateDeleteTenant"/>
             <class name="tests.admin_side.AdminCreateDeleteSkill"/>
-            <class name="tests.admin_side.AdminCreateDeleteTrunk"/>
+            <class name="tests.admin_side.AdminCreateDeleteTrunk"/>-->
         </classes>
 
     </test>

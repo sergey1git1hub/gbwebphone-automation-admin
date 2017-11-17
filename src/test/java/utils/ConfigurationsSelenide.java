@@ -1,6 +1,8 @@
 package utils;
 
 
+import com.automation.remarks.video.annotations.Video;
+import com.automation.remarks.video.enums.RecorderType;
 import com.automation.remarks.video.enums.RecordingMode;
 import com.automation.remarks.video.enums.VideoSaveMode;
 import com.automation.remarks.video.recorder.VideoRecorder;
@@ -22,11 +24,10 @@ public class ConfigurationsSelenide {
         Configuration.browser = ChromeDriverProvider.class.getName();
         Configuration.reportsFolder = "build/reports/screenshots";
         Configuration.timeout = 15000;
-        VideoRecorder.conf()
-                .withVideoFolder("build/reports/video")
+       /* VideoRecorder.conf().withVideoFolder("build/reports/video")
                 .withRecorderType(FFMPEG)
                 .withRecordMode(RecordingMode.ANNOTATED)
-                .withVideoSaveMode(VideoSaveMode.ALL);
+                .withVideoSaveMode(VideoSaveMode.ALL);*/
     }
 
     public static void openURL() {

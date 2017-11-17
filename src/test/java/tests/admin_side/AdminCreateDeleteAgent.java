@@ -83,7 +83,7 @@ public class AdminCreateDeleteAgent {
     }
 
 
-    @Video
+   /* @Video
     @Test(description = "This TC#00010 verifies that Admin can create a Agent")  //General Tab
     public void test1AdminCanCreateAgent() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateAgent", "This TC#00010 verifies that Admin can create Agent");
@@ -118,7 +118,7 @@ public class AdminCreateDeleteAgent {
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(Condition.text("Saved successfully!"));
     }
 
-    @Test(description = "This TC#00012 verifies that the Agent was added to DataBase"/*, dependsOnMethods = "testAdminCanCreateAgent"*/)
+    @Test(description = "This TC#00012 verifies that the Agent was added to DataBase"*//*, dependsOnMethods = "testAdminCanCreateAgent"*//*)
     public void test2AgentWasAddedToDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testAgentWasAddedToDataBase", "This TC#00012 verifies that Agent was added to DataBase");
 
@@ -131,7 +131,7 @@ public class AdminCreateDeleteAgent {
                 .value("email").isEqualTo(email)
                 .value("deleted").isEqualTo(false);
     }
-
+*/
     @Video
     @Test(description = "This TC#00062 verifies that Admin can add Group in the User Form")  //Groups Tab
     public void test3AdminCanAddGroupInUserForm() {

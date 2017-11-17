@@ -11,7 +11,7 @@ public class GeneralTab {
 
     //wrong selector
     // private SelenideElement tab = $("a[href='#groupDialogForm:editGroupTabView:j_idt243']");
-    private SelenideElement tab = $("#groupDialogForm\\3a editGroupTabView  ul  li.ui-state-default.ui-tabs-selected.ui-state-active.ui-corner-top  a]");
+    private SelenideElement tab = $("#groupDialogForm\\3a editGroupTabView  ul  li.ui-state-default.ui-tabs-selected.ui-state-active.ui-corner-top  a");
 
     private SelenideElement group_slct_btn = $("#groupDialogForm\\3a editGroupTabView\\3a groups_selectOneMenu > div.ui-selectonemenu-trigger");
     private ElementsCollection groups = $$("#groupDialogForm\\3a editGroupTabView\\3a groups_selectOneMenu_panel li");

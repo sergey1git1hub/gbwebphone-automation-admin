@@ -252,7 +252,6 @@ public class AdminCreateDeleteAgent {
     @Test(description = "This TC#00066 verifies that Admin can add User Properties in the User Form")
     public void test7AdminCanAddUserPropertiesInUserForm() {
         ConfigurationsExtentReport.test = extent.createTest("test7AdminCanAddUserPropertiesInUserForm", "This TC#000?? verifies that Admin can add User Properties in the User Form");
-
         refresh();
 
         spinnerWaiter.waitSpinner();

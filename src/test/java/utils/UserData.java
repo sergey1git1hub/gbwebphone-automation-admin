@@ -6,7 +6,7 @@ public class UserData {
     private String usernameAgentValid = "81777";
     private String passwordAgentValid = "1";
 
-    private String usernameAdminValid = "81017";
+    private String usernameAdminValid = "81060";
     private String passwordAdminValid = "1";
 
     private String usernameAgentInvalid = "01777";

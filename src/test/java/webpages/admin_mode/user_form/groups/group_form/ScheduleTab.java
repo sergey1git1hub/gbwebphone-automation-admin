@@ -3,11 +3,14 @@ package webpages.admin_mode.user_form.groups.group_form;
 
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ScheduleTab {
 
-    private SelenideElement tab = $("#groupDialogForm\\3a editGroupTabView ul li.ui-state-default.ui-corner-top.ui-state-focus.ui-tabs-selected.ui-state-active a");
+    /*private SelenideElement tab = $("#groupDialogForm\\3a editGroupTabView ul li.ui-state-default.ui-corner-top.ui-state-focus.ui-tabs-selected.ui-state-active a");*/
+    private SelenideElement tab = $(byXpath("//*[@id=\"groupDialogForm:editGroupTabView\"]/ul/li[2]/a"));
+
 
     private SelenideElement enabled_chbx = $("#groupDialogForm\\3a editGroupTabView\\3a scheduleEnable > div.ui-chkbox-box");
 

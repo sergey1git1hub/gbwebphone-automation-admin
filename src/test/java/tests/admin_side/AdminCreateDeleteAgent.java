@@ -68,14 +68,14 @@ public class AdminCreateDeleteAgent {
     private String id;
     private String idGroup;
     private String idSkill;
-    private String groupName = "VadimShubkin_test_group1";
+    private String groupName = "VadimShubkin_test_group2";
     private String queue = "queue_daria";
 
 
-    @BeforeClass
+  /*  @BeforeClass
     public void refresh() {
         getWebDriver().navigate().refresh();
-    }
+    }*/
 
     @AfterMethod
     public void recordTestsToExtentReport(ITestResult result) throws IOException {
@@ -83,7 +83,7 @@ public class AdminCreateDeleteAgent {
     }
 
 
-   /* @Video
+    @Video
     @Test(description = "This TC#00010 verifies that Admin can create a Agent")  //General Tab
     public void test1AdminCanCreateAgent() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanCreateAgent", "This TC#00010 verifies that Admin can create Agent");
@@ -118,7 +118,7 @@ public class AdminCreateDeleteAgent {
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(Condition.text("Saved successfully!"));
     }
 
-    @Test(description = "This TC#00012 verifies that the Agent was added to DataBase"*//*, dependsOnMethods = "testAdminCanCreateAgent"*//*)
+    @Test(description = "This TC#00012 verifies that the Agent was added to DataBase", dependsOnMethods = "test1AdminCanCreateAgent")
     public void test2AgentWasAddedToDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testAgentWasAddedToDataBase", "This TC#00012 verifies that Agent was added to DataBase");
 
@@ -131,13 +131,12 @@ public class AdminCreateDeleteAgent {
                 .value("email").isEqualTo(email)
                 .value("deleted").isEqualTo(false);
     }
-*/
     @Video
     @Test(description = "This TC#00062 verifies that Admin can add Group in the User Form")  //Groups Tab
     public void test3AdminCanAddGroupInUserForm() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanAddGroupInUserForm", "This TC#00011 verifies that Admin can delete Agent");
 
-        refresh();
+       // refresh();
 
         spinnerWaiter.waitSpinner();
         anyElementByText.findUpperInput(anyElementByText.USERNAME).setValue(usernameNew).pressEnter();
@@ -154,11 +153,11 @@ public class AdminCreateDeleteAgent {
         generalTab.getGroup_slct_btn().click();
         spinnerWaiter.waitSpinner();
         generalTab.getGroups().findBy(text(groupName)).click();
-        /*spinnerWaiter.waitSpinner();
-        spinnerWaiter.waitSpinner();*/
-       /* generalTab.getInitialStatus_slct_btn().click();
         spinnerWaiter.waitSpinner();
-        generalTab.getInitialStatuses().get(1);  //must be known*/
+        spinnerWaiter.waitSpinner();
+        generalTab.getInitialStatus_slct_btn().click();
+        spinnerWaiter.waitSpinner();
+        generalTab.getInitialStatuses().get(1);  //must be known
 
         spinnerWaiter.waitSpinner();
         schedule.getTab().click();
@@ -187,7 +186,7 @@ public class AdminCreateDeleteAgent {
 
     }
 
-    @Test(description = "This TC#00063 verifies that the Group was added to Agent in DataBase")
+    /*@Test(description = "This TC#00063 verifies that the Group was added to Agent in DataBase")
     public void test4GroupWasAddedToAgentInDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("test4GroupWasAddedToAgentInDataBase", "This TC#000?? verifies that the Group was added to Agent in DataBase");
 
@@ -203,7 +202,7 @@ public class AdminCreateDeleteAgent {
     public void test5AdminCanAddSkillInUserForm() {
         ConfigurationsExtentReport.test = extent.createTest("test4AdminCanAddSkillInUserForm", "This TC#000?? verifies that Admin can add Skills in the User Form");
 
-        refresh();
+       // refresh();
 
         spinnerWaiter.waitSpinner();
         anyElementByText.findUpperInput(anyElementByText.USERNAME).setValue(usernameNew).pressEnter();
@@ -252,7 +251,7 @@ public class AdminCreateDeleteAgent {
     @Test(description = "This TC#00066 verifies that Admin can add User Properties in the User Form")
     public void test7AdminCanAddUserPropertiesInUserForm() {
         ConfigurationsExtentReport.test = extent.createTest("test7AdminCanAddUserPropertiesInUserForm", "This TC#000?? verifies that Admin can add User Properties in the User Form");
-        refresh();
+       // refresh();
 
         spinnerWaiter.waitSpinner();
         anyElementByText.findUpperInput(anyElementByText.USERNAME).setValue(usernameNew).pressEnter();
@@ -293,7 +292,7 @@ public class AdminCreateDeleteAgent {
     public void test8AdminCanAddPrioritiesInUserForm() {
         ConfigurationsExtentReport.test = extent.createTest("test7AdminCanAddUserPropertiesInUserForm", "This TC#000?? verifies that Admin can add User Properties in the User Form");
 
-        refresh();
+        //refresh();
 
         spinnerWaiter.waitSpinner();
         anyElementByText.findUpperInput(anyElementByText.USERNAME).setValue(usernameNew).pressEnter();
@@ -319,11 +318,11 @@ public class AdminCreateDeleteAgent {
     }
 
     @Video
-    @Test(description = "This TC#00011 verifies that Admin can delete the Agent"/*, dependsOnMethods = "testAgentWasAddedToDataBase"*/)
+    @Test(description = "This TC#00011 verifies that Admin can delete the Agent", dependsOnMethods = "testAgentWasAddedToDataBase")
     public void test98AdminCanDeleteAgent() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteAgent", "This TC#00011 verifies that Admin can delete Agent");
 
-        refresh();
+        //refresh();
 
         spinnerWaiter.waitSpinner();
         anyElementByText.findUpperInput(anyElementByText.USERNAME).setValue(usernameNew).pressEnter();
@@ -337,7 +336,7 @@ public class AdminCreateDeleteAgent {
         adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(Condition.text("Deleted successfully!"));
     }
 
-    @Test(description = "This TC#00013 verifies that the Agent was deleted from DataBase"/*, dependsOnMethods = "testAdminCanDeleteAgent"*/)
+    @Test(description = "This TC#00013 verifies that the Agent was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteAgent")
     public void test99AgentWasDeletedFromDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testAgentWasDeletedFromDataBase", "This TC#00013 verifies that Agent was deleted from DataBase");
 
@@ -349,6 +348,6 @@ public class AdminCreateDeleteAgent {
                 .value("lastname").isEqualTo(lastName)
                 .value("email").isEqualTo(email)
                 .value("deleted").isEqualTo(true);
-    }
+    }*/
 
 }

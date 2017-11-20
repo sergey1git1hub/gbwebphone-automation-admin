@@ -22,7 +22,12 @@ public class HighTierTestNGConfig {
     @AfterTest
     public static void tearDown() {
         ConfigurationsExtentReport.endExtentReporting();
-        ConfigurationsSelenide.closeDriver();
+       /* try {
+            Thread.sleep(1000000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
+       /* ConfigurationsSelenide.closeDriver();*/
     }
 
 }

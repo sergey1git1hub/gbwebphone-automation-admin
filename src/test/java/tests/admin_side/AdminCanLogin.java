@@ -84,7 +84,7 @@ query =
         "update wbp_server set deleted = 1 where name = 'Name_of_Server';" +
         "update wbp_skill set deleted = 1 where skill_name = 'Name_of_Skill';" +
         "update wbp_status set deleted = 1 where status_text = 'Name_of_Status';" +
-        "update wbp_team set deleted = 1 where team_name = 'Name_of_Team';" +
+        "update wbp_team set deleted = 1 where team_name = 'Name_of_TeamList';" +
         "update wbp_tenant set deleted = 1 where name = 'Name_of_Tenant';" +
         "update wbp_trunk set deleted = 1 where name = 'Name_of_Trunk';";
 

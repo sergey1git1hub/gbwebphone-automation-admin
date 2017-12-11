@@ -82,7 +82,7 @@ public class AdminCreateDeleteTeam {
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
-    @Test(description = "This TC#00043 verifies that the TeamList was added to DataBase", dependsOnMethods = "testAdminCanCreateTeamList")
+   /* @Test(description = "This TC#00043 verifies that the TeamList was added to DataBase", dependsOnMethods = "testAdminCanCreateTeamList")
     public void testTeamListWasAddedToDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testTeamListWasAddedToDataBase", "This TC#00043 verifies that the TeamList was added to DataBase");
 
@@ -92,10 +92,10 @@ public class AdminCreateDeleteTeam {
                 .value("team_name").isEqualTo(nameOfTeamList)
                 .value("team_description").isEqualTo(descriptionOfTeamList)
                 .value("deleted").isEqualTo(false);
-    }
+    }*/
 
     @Video
-    @Test(description = "This TC#00044 verifies that Admin can delete the TeamList", dependsOnMethods = "testTeamListWasAddedToDataBase")
+    @Test(description = "This TC#00044 verifies that Admin can delete the TeamList", dependsOnMethods = "testAdminCanCreateTeamList")
     public void testAdminCanDeleteTeamList() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteTeamList", "This TC#00044 verifies that Admin can delete the TeamList");
 

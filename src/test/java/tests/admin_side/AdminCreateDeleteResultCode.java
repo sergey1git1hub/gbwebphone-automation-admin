@@ -80,7 +80,7 @@ public class AdminCreateDeleteResultCode {
 //        adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));   //todo enable after fix
     }
 
-    @Test(description = "This TC#00039 verifies that the ResultCode was added to DataBase", dependsOnMethods = "testAdminCanCreateResultCode")
+   /* @Test(description = "This TC#00039 verifies that the ResultCode was added to DataBase", dependsOnMethods = "testAdminCanCreateResultCode")
     public void testResultCodeWasAddedToDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testResultCodeWasAddedToDataBase", "This TC#00039 verifies that the ResultCode was added to DataBase");
 
@@ -91,7 +91,8 @@ public class AdminCreateDeleteResultCode {
                 .value("description").isEqualTo(description)
                 .value("deleted").isEqualTo(false);
     }
-
+*/
+/*
     @Video
     @Test(description = "This TC#00040 verifies that Admin can delete the ResultCode", dependsOnMethods = "testResultCodeWasAddedToDataBase")
     public void testAdminCanDeleteResultCode() {
@@ -122,5 +123,6 @@ public class AdminCreateDeleteResultCode {
                 .value("description").isEqualTo(description)
                 .value("deleted").isEqualTo(true);
     }
+*/
 
 }

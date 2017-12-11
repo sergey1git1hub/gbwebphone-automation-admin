@@ -118,7 +118,7 @@ public class AdminCreateDeleteGroup {
         spinnerWaiter.waitSpinner();
         general.getChat_chbx().click();
         spinnerWaiter.waitSpinner();
-        general.getAutoAccept_chbx().click();
+  //      general.getAutoAccept_chbx().click();
         spinnerWaiter.waitSpinner();
         general.getHold_chbx().click();
         spinnerWaiter.waitSpinner();

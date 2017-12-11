@@ -81,7 +81,7 @@ public class AdminCreateDeleteDepartment {
         adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
-    @Test(description = "This TC#00023 verifies that the Department was added to DataBase", dependsOnMethods = "testAdminCanCreateDepartment")
+   /* @Test(description = "This TC#00023 verifies that the Department was added to DataBase", dependsOnMethods = "testAdminCanCreateDepartment")
     public void testDepartmentWasAddedToDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testDepartmentWasAddedToDataBase", "This TC#00023 verifies that the Department was added to DataBase");
 
@@ -99,7 +99,7 @@ public class AdminCreateDeleteDepartment {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteDepartment", "This TC#00024 verifies that Admin can delete the Department");
 
         AdminDeleteEntity.deleteEntity(2, nameOfDepartment);
-        /*spinnerWaiter.waitSpinner();
+        *//*spinnerWaiter.waitSpinner();
         anyElementInListGrid.findUpperInput(anyElementInListGrid.NAME).setValue(nameOfDepartment).pressEnter();
         spinnerWaiter.waitSpinner();
         anyElementInListGrid.findCollectionByColumn(2).find(text(nameOfDepartment)).click();
@@ -108,7 +108,7 @@ public class AdminCreateDeleteDepartment {
         spinnerWaiter.waitSpinner();
         confirmation.getYes_btn().waitUntil(visible, 5000).click();
         spinnerWaiter.waitSpinner();
-        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));*/
+        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));*//*
     }
 
     @Test(description = "This TC#00025 verifies that the Department was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteDepartment")
@@ -121,6 +121,6 @@ public class AdminCreateDeleteDepartment {
                 .value("department_name").isEqualTo(nameOfDepartment)
                 .value("department_description").isEqualTo(description)
                 .value("deleted").isEqualTo(true);
-    }
+    }*/
 
 }

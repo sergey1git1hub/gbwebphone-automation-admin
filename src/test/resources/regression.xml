@@ -12,19 +12,19 @@
 
             <!--Tests-->
             <class name="tests.admin_side.AdminCreateDeleteAgent"/>
-            <!--<class name="tests.admin_side.AdminCreateDeleteGroup"/>-->
-            <!--   <class name="tests.admin_side.AdminCreateDeleteQueue"/>
-             <class name="tests.admin_side.AdminCreateDeleteDepartment"/>
-             <class name="tests.admin_side.AdminCreateDeletePrefix"/>
-             <class name="tests.admin_side.AdminCreateDeleteStatus"/>
-             <class name="tests.admin_side.AdminCreateDeleteNumber"/>
-             <class name="tests.admin_side.AdminCreateDeleteResultCode"/>
-             <class name="tests.admin_side.AdminCreateDeleteTeam"/>
-             <class name="tests.admin_side.AdminCreateDeleteLocation"/>
-             <class name="tests.admin_side.AdminCreateDeleteServer"/>
-             <class name="tests.admin_side.AdminCreateDeleteTenant"/>
-             <class name="tests.admin_side.AdminCreateDeleteSkill"/>
-             <class name="tests.admin_side.AdminCreateDeleteTrunk"/>-->
+            <class name="tests.admin_side.AdminCreateDeleteGroup"/> <!--works-->
+            <class name="tests.admin_side.AdminCreateDeleteQueue"/> <!--works partially-->
+            <class name="tests.admin_side.AdminCreateDeleteDepartment"/>    <!--workspartially-->
+            <class name="tests.admin_side.AdminCreateDeletePrefix"/>
+            <class name="tests.admin_side.AdminCreateDeleteStatus"/>   <!--works-->
+            <class name="tests.admin_side.AdminCreateDeleteNumber"/> <!--works partially-->
+            <class name="tests.admin_side.AdminCreateDeleteResultCode"/>   <!-- endOnTests-->
+            <class name="tests.admin_side.AdminCreateDeleteTeam"/> <!--don't work-->
+            <class name="tests.admin_side.AdminCreateDeleteLocation"/>   <!--works-->
+            <class name="tests.admin_side.AdminCreateDeleteServer"/>    <!--works-->
+            <class name="tests.admin_side.AdminCreateDeleteTenant"/>
+            <class name="tests.admin_side.AdminCreateDeleteSkill"/>
+            <class name="tests.admin_side.AdminCreateDeleteTrunk"/>
         </classes>
 
     </test>

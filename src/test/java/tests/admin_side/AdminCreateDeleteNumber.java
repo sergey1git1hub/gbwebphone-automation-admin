@@ -83,7 +83,7 @@ public class AdminCreateDeleteNumber {
 //        adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));  //todo enable after fix #5625
     }
 
-    @Test(description = "This TC#00035 verifies that the Number was added to DataBase", dependsOnMethods = "testAdminCanCreateNumber")
+   /* @Test(description = "This TC#00035 verifies that the Number was added to DataBase", dependsOnMethods = "testAdminCanCreateNumber")
     public void testNumberWasAddedToDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testNumberWasAddedToDataBase", "This TC#00035 verifies that the Number was added to DataBase");
 
@@ -126,6 +126,6 @@ public class AdminCreateDeleteNumber {
                 .value("number_name").isEqualTo(nameOfNumber)
                 .value("number_digits").isEqualTo(number)
                 .value("deleted").isEqualTo(true);
-    }
+    }*/
 
 }

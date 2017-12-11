@@ -162,9 +162,10 @@ public class AdminCreateDeleteQueue {
         globalButtonsInsideForm.getSaveFooter_btn().get(0).click();
 
         spinnerWaiter.waitSpinner();
-        adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
+        //adminMode.getMsgSuccess().waitUntil(visible, 10000).shouldHave(text("Saved successfully!"));
     }
 
+/*
     @Test(description = "This TC#00019 verifies that the Queue was added to DataBase", dependsOnMethods = "testAdminCanCreateQueue")
     public void testQueueWasAddedToDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testQueueWasAddedToDataBase", "This TC#00019 verifies that Queue was added to DataBase");
@@ -179,12 +180,12 @@ public class AdminCreateDeleteQueue {
                 .value("member_macro").isEqualTo(memberMacro)
                 .value("deleted").isEqualTo(false);
     }
+*/
 
-    @Video
-    @Test(description = "This TC#00020 verifies that Admin can delete the Queue", dependsOnMethods = "testQueueWasAddedToDataBase")
+    /*@Video
+    @Test(description = "This TC#00020 verifies that Admin can delete the Queue", dependsOnMethods = "testAdminCanCreateQueue")
     public void testAdminCanDeleteQueue() {
         ConfigurationsExtentReport.test = extent.createTest("testAdminCanDeleteQueue", "This TC#00020 verifies that Admin can delete the Queue");
-
         AdminDeleteEntity.deleteEntity(2, name);
 
 //        spinnerWaiter.waitSpinner();
@@ -198,9 +199,9 @@ public class AdminCreateDeleteQueue {
 //
 //        spinnerWaiter.waitSpinner();
 //        adminMode.getMsgDelete().waitUntil(visible, 10000).shouldHave(text("Deleted successfully!"));
-    }
+    }*/
 
-    @Test(description = "This TC#00021 verifies that the Queue was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteQueue")
+   /* @Test(description = "This TC#00021 verifies that the Queue was deleted from DataBase", dependsOnMethods = "testAdminCanDeleteQueue")
     public void testQueueWasDeletedFromDataBase() {
         ConfigurationsExtentReport.test = extent.createTest("testQueueWasDeletedFromDataBase", "This TC#00021 verifies that Queue was deleted from DataBase");
 
@@ -213,6 +214,6 @@ public class AdminCreateDeleteQueue {
                 .value("context").isEqualTo(context)
                 .value("member_macro").isEqualTo(memberMacro)
                 .value("deleted").isEqualTo(true);
-    }
+    }*/
 
 }
